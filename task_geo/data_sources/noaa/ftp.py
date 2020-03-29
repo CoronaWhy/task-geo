@@ -11,7 +11,7 @@ from ftplib import FTP
 
 import pandas as pd
 
-from references import load_dataset, DATA_DIRECTORY
+from task_geo.data_sources.noaa.references import load_dataset, DATA_DIRECTORY
 
 logging.basicConfig(level=logging.DEBUG)
 

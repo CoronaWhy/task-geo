@@ -338,5 +338,6 @@ def filter_active_stations_map_country():
 Due to its size its on a separate file, and retrieved once on module loading.
 Not the best practice, but better than having a 8k lines dictionary roaming free in the file.
 '''
-with open('country_stations_map.json') as f:
+path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'country_stations_map.json')
+with open(path) as f:
     TERRITORY_ACTIVE_STATIONS_MAP = json.load(f)

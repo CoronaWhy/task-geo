@@ -5,8 +5,8 @@ from datetime import datetime
 import pandas as pd
 import requests
 
-from ftp import download_noaa_files
-from references import COUNTRY_AND_TERRITORY_CODES, \
+from task_geo.data_sources.noaa.ftp import download_noaa_files
+from task_geo.data_sources.noaa.references import COUNTRY_AND_TERRITORY_CODES, \
     TERRITORY_ACTIVE_STATIONS_MAP, DATA_DIRECTORY, load_dataset
 
 

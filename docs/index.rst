@@ -12,6 +12,7 @@
 
    API Reference <api/task_geo>
    contributing
+   data_model
    authors
    history
 
