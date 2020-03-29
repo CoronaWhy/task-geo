@@ -53,11 +53,12 @@ def download_noaa_files(large_files=True, skip_downloaded=False):
     ftp.cwd('/pub/data/ghcn/daily/')
 
     for filename, action in NOAA_FTP_FILES.items():
-        logging.debug('Downloading %s', filename)
+
         if filename.endswith('tar.gz'):
             if not large_files:
                 continue
 
+        logging.debug('Downloading %s', filename)
             logging.debug('This is file is more than 3Gb+, it may take a long time.')
         path = os.path.join(DATA_DIRECTORY, filename)
 
@@ -72,10 +73,11 @@ def download_noaa_files(large_files=True, skip_downloaded=False):
         with open(path, 'wb') as fp:
             ftp.retrbinary(action, fp.write)
 
-    logging.debug('Extracting daily data.')
-    tar_path = f'{DATA_DIRECTORY}/all_daily_data.tar.gz'
-    with tar.open(tar_path) as tar_all:
-        tar_all.extractall(path=f'{DATA_DIRECTORY}/all_daily/')
+    if large_files:
+        logging.debug('Extracting daily data.')
+        tar_path = f'{DATA_DIRECTORY}/all_daily_data.tar.gz'
+        with tar.open(tar_path) as tar_all:
+            tar_all.extractall(path=f'{DATA_DIRECTORY}/all_daily/')
 
     logging.debug('Done!')
 
