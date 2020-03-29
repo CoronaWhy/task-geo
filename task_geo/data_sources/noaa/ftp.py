@@ -59,7 +59,7 @@ def download_noaa_files(large_files=True, skip_downloaded=False):
                 continue
 
         logging.debug('Downloading %s', filename)
-            logging.debug('This is file is more than 3Gb+, it may take a long time.')
+        logging.debug('This is file is more than 3Gb+, it may take a long time.')
         path = os.path.join(DATA_DIRECTORY, filename)
 
         if not os.path.exists(path) and not os.path.isdir(DATA_DIRECTORY):
