@@ -49,7 +49,7 @@ General guidelines
 
 - Avoid unnecesary flattening/unstacking of data: (Yes, it may seem contradictory with the last point but it's not!)
 
-  This may come in hand when working with unstructured or schemaless data using dataframes, for example, for the following JSON:
+  This may come in hand when working with one-hot encoded variables or unstructured or schemaless data using dataframes, for example, for the following JSON:
 
   .. code-block:: python
 
