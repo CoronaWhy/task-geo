@@ -1,4 +1,4 @@
-# CoronaWhy Geographical Task Force
+# CoronaWhy Geography Task Force
 
 <p align="left">
 <img width=15% src="https://uploads-ssl.webflow.com/5e729ef3ef0f906b804d4f27/5e77e9db1ede36135bbb1927_logo%203%402x.png" alt=“CoronaWhy” />
@@ -24,9 +24,17 @@ CoronaWhy is a crowd-sourced team of over 350 engineers, researchers, project ma
 
 ## About CoronaWhy Geo Task 
 
-*Pending*
+The goal of our team is to understand how geography affects the spread of the virus. We are currently focusing on two streams:
+* In close collaboration with #task-risk and #task-ties, we identify potential risk factors for the spread of COVID-19, extract data about such risk factors from various sources, and perform analyses to assess teir impact on the spread of the virus. Examples of such risk factors are population density in a region, temperature, humidity, social distancing policies in place, ... an many others!
+* Using Natural Language Processing on a vast dataset of scientific papers, we try to support the expert's understanding on how location might impact the effects of the virus. For example, one of our goals is to map clinical studies to the region where they were performed and to present a simple interface to the wider comunity to visualize their distribution.
 
 ## About CoronaWhy Geo Task Force
+
+We are an international team of 15 people with different backgrounds (and growing!), all united to understand how geography impacts the spread of COVID-19.
+
+*List of collaborators (pending)*
+
+## Datasets
 
 *Pending*
 
