@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 import requests
 
-from task_geo.data_sources.noaa.ftp import download_noaa_files
+from task_geo.data_sources.noaa.ftp_connector import download_noaa_files
 from task_geo.data_sources.noaa.references import COUNTRY_AND_TERRITORY_CODES, \
     TERRITORY_ACTIVE_STATIONS_MAP, DATA_DIRECTORY, load_dataset
 
@@ -60,7 +60,7 @@ def get_request_urls(country, start_date, end_date=None):
     if len(stations_list) < 10:
         stations = ','.join(stations_list)
         return [f'{base_url}&stations={stations}&startDate={start}&endDate={end}&format=json']
-    
+
     else:
         chunked_station_list = [stations_list[i:i + 15] for i in range(0, len(stations_list), 15)]
         return [
@@ -78,7 +78,7 @@ def get_parse_response(urls):
     Returns:
         tuple[list[dict], list[Exception]]:
             The first element of the tuple is a list of dictionary with all the responses.
-            The second element is a list with all the exceptions raised during the calls.    
+            The second element is a list with all the exceptions raised during the calls.
     """
 
     results = list()
@@ -90,7 +90,7 @@ def get_parse_response(urls):
         response = requests.get(url)
         try:
             response.raise_for_status()
-        except requests.exceptions.HTTPError as e: 
+        except requests.exceptions.HTTPError as e:
             errors.append({
                 'url': url,
                 'error': e
@@ -102,7 +102,7 @@ def get_parse_response(urls):
     return results, errors
 
 
-def noaa_worldwide_api(countries, start_date, end_date=None):
+def noaa_api_connector(countries, start_date, end_date=None):
     """Get data from NOAA API.
 
     Arguments:
