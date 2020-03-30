@@ -12,6 +12,8 @@ with open('HISTORY.md') as history_file:
     history = history_file.read()
 
 install_requires = [
+    'pandas',
+    'requests'
 ]
 
 setup_requires = [
@@ -77,7 +79,7 @@ setup(
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
     include_package_data=True,
-    keywords='coronawhy', 'task_geo',
+    keywords='coronawhy',
     name='task_geo',
     packages=find_packages(include=['task_geo', 'task_geo.*']),
     python_requires='>=3.4',

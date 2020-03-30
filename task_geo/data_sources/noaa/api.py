@@ -5,8 +5,8 @@ from datetime import datetime
 import pandas as pd
 import requests
 
-from ftp import download_noaa_files
-from references import COUNTRY_AND_TERRITORY_CODES, \
+from task_geo.data_sources.noaa.ftp import download_noaa_files
+from task_geo.data_sources.noaa.references import COUNTRY_AND_TERRITORY_CODES, \
     TERRITORY_ACTIVE_STATIONS_MAP, DATA_DIRECTORY, load_dataset
 
 
@@ -102,14 +102,13 @@ def get_parse_response(urls):
     return results, errors
 
 
-def noaa_worldwide_api(countries, start_date, end_date=None, enrich_data=True):
+def noaa_worldwide_api(countries, start_date, end_date=None):
     """Get data from NOAA API.
 
     Arguments:
         countries(list[str]): List of FIPS country codes to retrieve.
         start_date(datetime)
         end_date(datetime)
-        enrich_data(bool): Add metadata from the metereological stations
 
     Returns:
         tuple[list[dict], list[Exception]]
@@ -132,7 +131,6 @@ def noaa_worldwide_api(countries, start_date, end_date=None, enrich_data=True):
 
     data = pd.DataFrame(result)
     stations = load_dataset('stations')
-    data.merge(stations, how='left', left_on='STATION', right_on='ID')
     data = data.merge(stations, how='left', left_on='STATION', right_on='ID')
 
     del data['ID']
