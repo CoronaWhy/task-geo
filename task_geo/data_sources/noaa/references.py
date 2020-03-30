@@ -7,25 +7,25 @@ DATA_DIRECTORY = 'data'
 
 
 def generate_daily_reports_column_info():
-    '''This function was used to generate the colnames and colspecs of DATASETS['daily_report'].'''
+    """This function was used to generate the colnames and colspecs of DATASETS['daily_report']."""
     colnames = ['ID', 'YEAR', 'MONTH', 'ELEMENT']
     colspecs = [(0, 11), (11, 15), (15, 17), (17, 21)]
     last = 21
     for day in range(1, 32):
         colnames.append(f'VALUE{day}')
-        colspecs.append((last, last+5))
+        colspecs.append((last, last + 5))
         last += 5
 
         colnames.append(f'MFLAG{day}')
-        colspecs.append((last, last+1))
+        colspecs.append((last, last + 1))
         last += 1
 
         colnames.append(f'QFLAG{day}')
-        colspecs.append((last, last+1))
+        colspecs.append((last, last + 1))
         last += 1
 
         colnames.append(f'SFLAG{day}')
-        colspecs.append((last, last+1))
+        colspecs.append((last, last + 1))
         last += 1
 
     return colspecs, colnames
@@ -43,9 +43,15 @@ DATASETS = {
     'stations': {
         'filename': 'stations_metadata.txt',
         'args': dict(
-            colspecs=[(0, 11), (12, 20), (21, 30), (31, 37), (38, 40), (41, 71), (72, 75), (76, 79), (80, 85)],
+            colspecs=[
+                (0, 11), (12, 20), (21, 30), (31, 37), (38, 40),
+                (41, 71), (72, 75), (76, 79), (80, 85)
+            ],
             header=None,
-            names=['ID', 'LATITUDE', 'LONGITUDE', 'ELEVATION', 'STATE', 'NAME', 'GSN FLAG', 'HCN/CRN FLAG', 'WMO ID']
+            names=[
+                'ID', 'LATITUDE', 'LONGITUDE', 'ELEVATION', 'STATE', 'NAME', 'GSN FLAG',
+                'HCN/CRN FLAG', 'WMO ID'
+            ]
         ),
     },
     'inventory': {
@@ -59,11 +65,12 @@ DATASETS = {
     'daily_report': {
         'args': dict(
             colspecs=[
-                (0, 11), (11, 15), (15, 17), (17, 21), (21, 26), (26, 27), (27, 28), (28, 29), (29, 34),
-                (34, 35), (35, 36), (36, 37), (37, 42), (42, 43), (43, 44), (44, 45), (45, 50), (50, 51),
-                (51, 52), (52, 53), (53, 58), (58, 59), (59, 60), (60, 61), (61, 66), (66, 67), (67, 68),
-                (68, 69), (69, 74), (74, 75), (75, 76), (76, 77), (77, 82), (82, 83), (83, 84), (84, 85),
-                (85, 90), (90, 91), (91, 92), (92, 93), (93, 98), (98, 99), (99, 100), (100, 101),
+                (0, 11), (11, 15), (15, 17), (17, 21), (21, 26), (26, 27), (27, 28), (28, 29),
+                (29, 34), (34, 35), (35, 36), (36, 37), (37, 42), (42, 43), (43, 44), (44, 45),
+                (45, 50), (50, 51), (51, 52), (52, 53), (53, 58), (58, 59), (59, 60), (60, 61),
+                (61, 66), (66, 67), (67, 68), (68, 69), (69, 74), (74, 75), (75, 76), (76, 77),
+                (77, 82), (82, 83), (83, 84), (84, 85), (85, 90), (90, 91), (91, 92), (92, 93),
+                (93, 98), (98, 99), (99, 100), (100, 101),
                 (101, 106), (106, 107), (107, 108), (108, 109), (109, 114), (114, 115), (115, 116),
                 (116, 117), (117, 122), (122, 123), (123, 124), (124, 125), (125, 130), (130, 131),
                 (131, 132), (132, 133), (133, 138), (138, 139), (139, 140), (140, 141), (141, 146),
@@ -79,20 +86,24 @@ DATASETS = {
             ],
             header=None,
             names=[
-                'ID', 'YEAR', 'MONTH', 'ELEMENT', 'VALUE1', 'MFLAG1', 'QFLAG1', 'SFLAG1', 'VALUE2', 'MFLAG2',
-                'QFLAG2', 'SFLAG2', 'VALUE3', 'MFLAG3', 'QFLAG3', 'SFLAG3', 'VALUE4', 'MFLAG4', 'QFLAG4', 'SFLAG4',
-                'VALUE5', 'MFLAG5', 'QFLAG5', 'SFLAG5', 'VALUE6', 'MFLAG6', 'QFLAG6', 'SFLAG6', 'VALUE7', 'MFLAG7',
-                'QFLAG7', 'SFLAG7', 'VALUE8', 'MFLAG8', 'QFLAG8', 'SFLAG8', 'VALUE9', 'MFLAG9', 'QFLAG9', 'SFLAG9',
-                'VALUE10', 'MFLAG10', 'QFLAG10', 'SFLAG10', 'VALUE11', 'MFLAG11', 'QFLAG11', 'SFLAG11', 'VALUE12',
-                'MFLAG12', 'QFLAG12', 'SFLAG12', 'VALUE13', 'MFLAG13', 'QFLAG13', 'SFLAG13', 'VALUE14', 'MFLAG14',
-                'QFLAG14', 'SFLAG14', 'VALUE15', 'MFLAG15', 'QFLAG15', 'SFLAG15', 'VALUE16', 'MFLAG16', 'QFLAG16',
-                'SFLAG16', 'VALUE17', 'MFLAG17', 'QFLAG17', 'SFLAG17', 'VALUE18', 'MFLAG18', 'QFLAG18', 'SFLAG18',
-                'VALUE19', 'MFLAG19', 'QFLAG19', 'SFLAG19', 'VALUE20', 'MFLAG20', 'QFLAG20', 'SFLAG20', 'VALUE21',
-                'MFLAG21', 'QFLAG21', 'SFLAG21', 'VALUE22', 'MFLAG22', 'QFLAG22', 'SFLAG22', 'VALUE23', 'MFLAG23',
-                'QFLAG23', 'SFLAG23', 'VALUE24', 'MFLAG24', 'QFLAG24', 'SFLAG24', 'VALUE25', 'MFLAG25', 'QFLAG25',
-                'SFLAG25', 'VALUE26', 'MFLAG26', 'QFLAG26', 'SFLAG26', 'VALUE27', 'MFLAG27', 'QFLAG27', 'SFLAG27',
-                'VALUE28', 'MFLAG28', 'QFLAG28', 'SFLAG28', 'VALUE29', 'MFLAG29', 'QFLAG29', 'SFLAG29', 'VALUE30',
-                'MFLAG30', 'QFLAG30', 'SFLAG30', 'VALUE31', 'MFLAG31', 'QFLAG31', 'SFLAG31'
+                'ID', 'YEAR', 'MONTH', 'ELEMENT', 'VALUE1', 'MFLAG1', 'QFLAG1', 'SFLAG1', 'VALUE2',
+                'MFLAG2', 'QFLAG2', 'SFLAG2', 'VALUE3', 'MFLAG3', 'QFLAG3', 'SFLAG3', 'VALUE4',
+                'MFLAG4', 'QFLAG4', 'SFLAG4', 'VALUE5', 'MFLAG5', 'QFLAG5', 'SFLAG5', 'VALUE6',
+                'MFLAG6', 'QFLAG6', 'SFLAG6', 'VALUE7', 'MFLAG7', 'QFLAG7', 'SFLAG7', 'VALUE8',
+                'MFLAG8', 'QFLAG8', 'SFLAG8', 'VALUE9', 'MFLAG9', 'QFLAG9', 'SFLAG9', 'VALUE10',
+                'MFLAG10', 'QFLAG10', 'SFLAG10', 'VALUE11', 'MFLAG11', 'QFLAG11', 'SFLAG11',
+                'VALUE12', 'MFLAG12', 'QFLAG12', 'SFLAG12', 'VALUE13', 'MFLAG13', 'QFLAG13',
+                'SFLAG13', 'VALUE14', 'MFLAG14', 'QFLAG14', 'SFLAG14', 'VALUE15', 'MFLAG15',
+                'QFLAG15', 'SFLAG15', 'VALUE16', 'MFLAG16', 'QFLAG16', 'SFLAG16', 'VALUE17',
+                'MFLAG17', 'QFLAG17', 'SFLAG17', 'VALUE18', 'MFLAG18', 'QFLAG18', 'SFLAG18',
+                'VALUE19', 'MFLAG19', 'QFLAG19', 'SFLAG19', 'VALUE20', 'MFLAG20', 'QFLAG20',
+                'SFLAG20', 'VALUE21', 'MFLAG21', 'QFLAG21', 'SFLAG21', 'VALUE22', 'MFLAG22',
+                'QFLAG22', 'SFLAG22', 'VALUE23', 'MFLAG23', 'QFLAG23', 'SFLAG23', 'VALUE24',
+                'MFLAG24', 'QFLAG24', 'SFLAG24', 'VALUE25', 'MFLAG25', 'QFLAG25', 'SFLAG25',
+                'VALUE26', 'MFLAG26', 'QFLAG26', 'SFLAG26', 'VALUE27', 'MFLAG27', 'QFLAG27',
+                'SFLAG27', 'VALUE28', 'MFLAG28', 'QFLAG28', 'SFLAG28', 'VALUE29', 'MFLAG29',
+                'QFLAG29', 'SFLAG29', 'VALUE30', 'MFLAG30', 'QFLAG30', 'SFLAG30', 'VALUE31',
+                'MFLAG31', 'QFLAG31', 'SFLAG31'
             ]
         )
     }
@@ -100,7 +111,7 @@ DATASETS = {
 
 
 def load_dataset(dataset_name):
-    '''Load a downloaded dataset as a pandas dataframe.
+    """Load a downloaded dataset as a pandas dataframe.
 
     Arguments:
         dataset_name(str):
@@ -109,7 +120,7 @@ def load_dataset(dataset_name):
 
     Returns:
         pandas.DataFrame
-    '''
+    """
 
     dataset_params = DATASETS.get(dataset_name)
 
@@ -122,21 +133,21 @@ def load_dataset(dataset_name):
 
 
 def get_territory_codes(name, countries):
-    '''Get all the codes for territories that belong to another country.'''
+    """Get all the codes for territories that belong to another country."""
     codes = countries[countries.COUNTRY == name].COUNTRY_CODE.tolist()
     codes.extend(countries[countries.COUNTRY.str.endswith(f' [{name}]')].COUNTRY_CODE.tolist())
     return codes
 
 
 def get_country_territory_codes_map(df_countries):
-    '''Generate the mapping of countries and all their territories codes.'''
+    """Generate the mapping of countries and all their territories codes."""
     metropolis = df_countries[~df_countries.COUNTRY.str.contains(r'\[')].to_dict('records')
     return {row['COUNTRY_CODE']: get_territory_codes(row['COUNTRY']) for row in metropolis}
 
 
-'''This dictionary was obtained by running:
+"""This dictionary was obtained by running:
 >>> countries = load_dataset('countries')
->>> get_country_territory_map(countries)'''
+>>> get_country_territory_map(countries)"""
 COUNTRY_AND_TERRITORY_CODES = {
     'AC': ['AC'],
     'AE': ['AE'],
@@ -322,22 +333,22 @@ COUNTRY_AND_TERRITORY_CODES = {
 
 
 def filter_active_stations_map_country():
-    '''Filter active stations using inventory data, then returns a dictionary country -> stations'''
+    """Filter active stations using inventory data and returns a dictionary country -> stations"""
     stations = load_dataset('stations')
     inventory = load_dataset('inventory')
 
-    stations['country'] = stations.ID.str.slice(0,2)
+    stations['country'] = stations.ID.str.slice(0, 2)
 
     active_stations = inventory[inventory.end_date >= 2019]
     active = stations[stations['ID'].isin(active_stations.ID.unique())]
     return active[['ID', 'country']].groupby('country')['ID'].apply(list).to_dict()
 
 
-'''Map territory codes to active stations, it was generated by running:
+"""Map territory codes to active stations, it was generated by running:
 >>> filter_active_stations_map_country('country_stations_map.json')
 Due to its size its on a separate file, and retrieved once on module loading.
 Not the best practice, but better than having a 8k lines dictionary roaming free in the file.
-'''
+"""
 path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'country_stations_map.json')
 with open(path) as f:
     TERRITORY_ACTIVE_STATIONS_MAP = json.load(f)
