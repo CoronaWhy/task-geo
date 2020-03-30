@@ -24,13 +24,6 @@ def all_country_datasource_formatter(df):
   df = df[df['country'].notna()]
   #df = df[df['state'].notna()]
 
-  #Fill NULL values with 0 for features - cases, deaths, recovered, active, growthFactor
-  df['cases'] = df['cases'].fillna(0)
-  df['deaths'] = df['deaths'].fillna(0)
-  df['recovered'] = df['recovered'].fillna(0)
-  df['active'] = df['active'].fillna(0)
-  df['growthFactor'] = df['growthFactor'].fillna(0)
-
   #Get all country list present in dataset
 
   country_list = df.country.unique()

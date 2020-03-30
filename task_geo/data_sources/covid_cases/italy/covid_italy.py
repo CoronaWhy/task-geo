@@ -20,13 +20,6 @@ def italy_datasource_formatter(df):
   #Remove rows where country is not provided
   df = df[df['country'].notna()]
 
-  #Fill NULL values with 0 for features - cases, deaths, recovered, active, growthFactor
-  df['cases'] = df['cases'].fillna(0)
-  df['deaths'] = df['deaths'].fillna(0)
-  df['recovered'] = df['recovered'].fillna(0)
-  df['active'] = df['active'].fillna(0)
-  df['growthFactor'] = df['growthFactor'].fillna(0)
-
   idx = 0
 
   #Create empty dataframe for storing Italy data
