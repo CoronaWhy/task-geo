@@ -10,16 +10,16 @@ e.g. Version 3.12].
 NOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [2020].
 """
 
-from datetime import datetime
 import logging
 import os
 import re
 import tarfile as tar
+from datetime import datetime
 from ftplib import FTP
 
 import pandas as pd
 
-from task_geo.data_sources.noaa.references import load_dataset, DATA_DIRECTORY
+from task_geo.data_sources.noaa.references import DATA_DIRECTORY, load_dataset
 
 logging.basicConfig(level=logging.DEBUG)
 

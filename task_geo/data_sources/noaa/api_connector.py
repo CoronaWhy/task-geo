@@ -1,14 +1,13 @@
-import os
 import logging
+import os
 from datetime import datetime
 
 import pandas as pd
 import requests
 
 from task_geo.data_sources.noaa.ftp_connector import download_noaa_files
-from task_geo.data_sources.noaa.references import COUNTRY_AND_TERRITORY_CODES, \
-    TERRITORY_ACTIVE_STATIONS_MAP, DATA_DIRECTORY, load_dataset
-
+from task_geo.data_sources.noaa.references import (
+    COUNTRY_AND_TERRITORY_CODES, DATA_DIRECTORY, TERRITORY_ACTIVE_STATIONS_MAP, load_dataset)
 
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
