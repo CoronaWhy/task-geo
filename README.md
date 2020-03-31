@@ -7,7 +7,7 @@
 </p>
 
 
-[![Travis CI Shield](https://travis-ci.org/CoronaWhy/task-geo.svg?branch=master)](https://travis-ci.org/CoronaWhy/task-geo)
+![CI](https://github.com/CoronaWhy/task-geo/workflows/CI/badge.svg)
 
 
 Help us understand how geography affects virality.
