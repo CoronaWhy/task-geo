@@ -17,7 +17,7 @@ jobs:
         run: |
           make install-develop
           make docs
-      -name: Deploy
+      - name: Deploy
         if: success()
         uses: crazy-max/ghaction-github-pages@v1
         with:
