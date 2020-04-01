@@ -1,9 +1,13 @@
-from demog import download_us_data, process_us_data
+"""
+Main method
+
+Description:
+    - Runs us_census which gets the finalized DataFrame for US Census Data
+    - Converts and exports to CSV
+"""
 
 def main():
-	df = download_us_data()
-	new_df = process_us_data(df)
-	new_df.to_csv("us-census-data.csv", header=True)
-	
+	us_census().to_csv("us-census-data.csv", header=True)
+
 if __name__ == '__main__':
 	main()
