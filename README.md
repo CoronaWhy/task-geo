@@ -81,7 +81,7 @@ With your virtualenv activated, you can fork the repository, clone your fork loc
 1. Fork the `task-geo` repo on GitHub.
 2. Clone your fork locally and install it using `make install-develop`:
 
-```
+```bash
 git clone git@github.com:your_name_here/task-geo.git
 cd task-geo/
 make install-develop
