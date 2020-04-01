@@ -1,9 +1,20 @@
-### Description
+---
+name: Feature request
+about: Suggest an idea for this project
+title: ''
+labels: ''
+assignees: ''
 
-Trello card : (Only for task-geo members.)
+---
 
-1. Describe your idea in simple, non technical terms, explaining what you want to
-be done, and how it can benefit the Coronawhy community effort.
-You can start by copying the contents of the trello card description.
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-2. Describe, if you know how, a basic technical approach that you propose. Don't dig to deep into details, just, module structure, function/class  prototypes ( input, output for functions, attributes, methods for classes)
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
