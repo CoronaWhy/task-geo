@@ -13,6 +13,9 @@ logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
+DEFAULT_METRICS = ['TMAX', 'TMIN', 'PCRP']
+
+
 def get_stations_by_country(country):
     """Get all stations for a given country code.
 
@@ -36,13 +39,19 @@ def get_stations_by_country(country):
     return stations
 
 
-def get_request_urls(country, start_date, end_date=None):
+def get_request_urls(country, start_date, end_date=None, metrics=None):
     """Encodes the parameters the URL to make a GET request
 
     Arguments:
         country(str): FIPS Country code
         start_date(datetime)
         end_date(datetime): Defaults to today
+        metrics(list[str]): Optional.List of metrics to retrieve,valid values are:
+            TMIN: Minimum temperature.
+            TMAX: Maximum temperature.
+            TAVG: Average of temperature.
+            SNOW: Snowfall (mm).
+            SNWD: Snow depth (mm).
 
     Returns:
         str
@@ -50,20 +59,34 @@ def get_request_urls(country, start_date, end_date=None):
 
     base_url = 'https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries'
 
+    if metrics is None:
+        metrics = DEFAULT_METRICS
+
+    request_common_args = (
+        f'&format=json'
+        f'&units=metric'
+        f'&dataTypes={",".join(metrics)}'
+    )
+
     if end_date is None:
         end_date = datetime.now()
+
     start = start_date.date().isoformat()
     end = end_date.date().isoformat()
 
     stations_list = get_stations_by_country(country)
     if len(stations_list) < 10:
         stations = ','.join(stations_list)
-        return [f'{base_url}&stations={stations}&startDate={start}&endDate={end}&format=json']
+        return [
+            f'{base_url}&stations={stations}&startDate={start}&endDate={end}{request_common_args}']
 
     else:
         chunked_station_list = [stations_list[i:i + 15] for i in range(0, len(stations_list), 15)]
         return [
-            f'{base_url}&stations={",".join(chunk)}&startDate={start}&endDate={end}&format=json'
+            (
+                f'{base_url}&stations={",".join(chunk)}&startDate={start}'
+                f'&endDate={end}{request_common_args}'
+            )
             for chunk in chunked_station_list
         ]
 
@@ -85,7 +108,7 @@ def get_parse_response(urls):
 
     total = len(urls) - 1
     for i, url in enumerate(urls):
-        logging.debug('Making request %s / %s', i, total)
+        logging.debug('Making request %s / %s', i + 1, total + 1)
         response = requests.get(url)
         try:
             response.raise_for_status()
@@ -101,13 +124,19 @@ def get_parse_response(urls):
     return results, errors
 
 
-def noaa_api_connector(countries, start_date, end_date=None):
+def noaa_api_connector(countries, start_date, end_date=None, metrics=None):
     """Get data from NOAA API.
 
     Arguments:
         countries(list[str]): List of FIPS country codes to retrieve.
         start_date(datetime)
         end_date(datetime)
+        metrics(list[str]): Optional.List of metrics to retrieve,valid values are:
+            TMIN: Minimum temperature.
+            TMAX: Maximum temperature.
+            TAVG: Average of temperature.
+            SNOW: Snowfall (mm).
+            SNWD: Snow depth (mm).
 
     Returns:
         tuple[list[dict], list[Exception]]
@@ -118,7 +147,7 @@ def noaa_api_connector(countries, start_date, end_date=None):
     result = list()
     for country in countries:
         logging.info('Requesting data for %s', country)
-        urls = get_request_urls(country, start_date, end_date)
+        urls = get_request_urls(country, start_date, end_date, metrics)
         country_results, errors = get_parse_response(urls)
 
         if errors:
@@ -137,6 +166,11 @@ def noaa_api_connector(countries, start_date, end_date=None):
 
     columns = [
         'DATE', 'STATION', 'LATITUDE', 'LONGITUDE', 'ELEVATION', 'NAME',
-        'GSN FLAG', 'HCN/CRN FLAG', 'WMO ID', 'TMAX', 'TAVG', 'TMIN', 'PRCP', 'SNWD'
+        'GSN FLAG', 'HCN/CRN FLAG', 'WMO ID'
     ]
+
+    if metrics is None:
+        metrics = DEFAULT_METRICS
+
+    columns.extend([metric for metric in metrics if metric in data.columns])
     return data[columns]
