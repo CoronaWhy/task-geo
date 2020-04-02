@@ -3,5 +3,22 @@ from task_geo.data_sources.noaa.api_formatter import noaa_api_formatter
 
 
 def noaa_api(countries, start_date, end_date):
+    """NOAA API Data Source.
+
+    Arguments:
+        countries(list[str]):
+            List of country names in FIPS format.
+        start_date(datetime):
+            Start date for the data.
+        end_date(datetime):
+            End date for the date. (Optional, if not present will be set to the current day.)
+
+    Example:
+    >>> from datetime import datetime
+    >>> countries = ['FR']
+    >>> start_date = datetime(2020, 1, 1)
+    >>> end_date = datetime(2020, 1, 15)
+    >>> noaa_api(countries, start_date, end_date)
+    """
     raw = noaa_api_connector(countries, start_date, end_date)
     return noaa_api_formatter(raw)

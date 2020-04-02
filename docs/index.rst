@@ -7,13 +7,24 @@
    Overview <readme>
 
 .. toctree::
-   :caption: Resources
-   :hidden:
+   :caption: Usage
 
-   API Reference <api/task_geo>
+   basic_usage
+
+.. toctree::
+   :caption: Resources for developers
+   
    contributing
    data_model
    data_sources
+   API Reference <api/task_geo>
+
+
+.. toctree::
+   :caption: Resources
+   :hidden:
+
+   code_of_conduct
    authors
    history
 
