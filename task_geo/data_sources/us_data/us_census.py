@@ -55,7 +55,7 @@ def us_census_connector():
         listFiles = myzip.namelist()
 
         myzip.extract(listFiles[5])
-        data = pd.read_csv(listFiles[5], low_memory = False)
+        data = pd.read_csv(listFiles[5], low_memory=False)
 
     return data
 
@@ -75,7 +75,6 @@ Returns: Cleaned Pandas DataFrame
 
 def us_census_formatter(data):
 
-
     data.columns = data.iloc[0]
     data.drop(0, inplace=True)
     data.drop("id", axis=1, inplace=True)
@@ -92,4 +91,3 @@ def us_census_formatter(data):
     data.drop(data.columns[-1], axis=1, inplace=True)
 
     return data
-
