@@ -43,8 +43,3 @@ In case you needed access to a data source which still haven't been uploaded, th
     >>> noaa_api = get_data_source('noaa_api')
 
     # At this point we can use the example or start hacking on our own.
-
-3. When available, using the CLI for the desired data source(Not recomended):
-
-    python task_geo/
-
