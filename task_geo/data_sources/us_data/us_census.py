@@ -12,8 +12,9 @@ Data Credits:
 """
 
 import urllib.request
-import pandas as pd
 import zipfile
+
+import pandas as pd
 
 url = 'https://data.census.gov/api/access/table/download?download_id=iuGrLXEBm-bIwvlxENnx'
 

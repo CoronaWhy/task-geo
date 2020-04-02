@@ -6,7 +6,7 @@ Description:
     - Converts and exports to CSV
 """
 
-from us_census import us_census
+import us_census
 
 
 def main():
