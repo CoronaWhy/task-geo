@@ -26,9 +26,11 @@ Returns:
 
 """
 
+
 def us_census():
     df = us_census_connector()
-	return us_census_formatter(df)
+    return us_census_formatter(df)
+
 
 """
 us_census_connector
@@ -43,18 +45,20 @@ Returns:
 
 """
 
+
 def us_census_connector():
 
-	urllib.request.urlretrieve(url, "uscensus.zip")
+    urllib.request.urlretrieve(url, "uscensus.zip")
 
-	with zipfile.ZipFile("uscensus.zip") as myzip:
+    with zipfile.ZipFile("uscensus.zip") as myzip:
 
-		listFiles = myzip.namelist()
+        listFiles = myzip.namelist()
 
-		myzip.extract(listFiles[5])
-		data = pd.read_csv(listFiles[5], low_memory = False)
+        myzip.extract(listFiles[5])
+        data = pd.read_csv(listFiles[5], low_memory = False)
 
-	return data
+    return data
+
 
 """
 us_census_formatter
@@ -68,21 +72,24 @@ Returns: Cleaned Pandas DataFrame
 
 """
 
+
 def us_census_formatter(data):
 
-	data.columns = data.iloc[0]
-	data.drop(0, inplace=True)
-	data.drop("id", axis=1, inplace=True)
-	data = data.set_index('Geographic Area Name')
 
-	cols = [c for c in data.columns if '2018' in c]
-	data = data[cols]
-	data.columns = [x.split("!!")[-1] for x in data.columns]
+    data.columns = data.iloc[0]
+    data.drop(0, inplace=True)
+    data.drop("id", axis=1, inplace=True)
+    data = data.set_index('Geographic Area Name')
 
-	data = data.replace("N", 0.0)
-	data.columns = [x.lower() for x in data.columns]
+    cols = [c for c in data.columns if '2018' in c]
+    data = data[cols]
+    data.columns = [x.split("!!")[-1] for x in data.columns]
 
-	data.drop(data.columns[-1], axis=1, inplace=True)
-	data.drop(data.columns[-1], axis=1, inplace=True)
+    data = data.replace("N", 0.0)
+    data.columns = [x.lower() for x in data.columns]
 
-	return data
+    data.drop(data.columns[-1], axis=1, inplace=True)
+    data.drop(data.columns[-1], axis=1, inplace=True)
+
+    return data
+

@@ -8,7 +8,7 @@ Description:
 from us_census import us_census
 
 def main():
-	us_census().to_csv("us-census-data.csv", header=True)
+    us_census().to_csv("us-census-data.csv", header=True)
 
 if __name__ == '__main__':
-	main()
+    main()
