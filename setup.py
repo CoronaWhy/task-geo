@@ -5,15 +5,22 @@
 
 from setuptools import setup, find_packages
 
-with open('README.md', encoding='utf-8') as readme_file:
-    readme = readme_file.read()
+try:
+    with open('README.md', encoding='utf-8') as readme_file:
+        readme = readme_file.read()
+except IOError:
+    readme = ''
 
-with open('HISTORY.md', encoding='utf-8') as history_file:
-    history = history_file.read()
+try:
+    with open('HISTORY.md', encoding='utf-8') as history_file:
+        history = history_file.read()
+except IOError:
+    history = ''
 
 install_requires = [
     'pandas',
-    'requests'
+    'requests',
+    'jupyter'
 ]
 
 setup_requires = [
