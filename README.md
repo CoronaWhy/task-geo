@@ -20,12 +20,12 @@ Help us understand how geography affects virality.
 
 ## About CoronaWhy
 
-CoronaWhy is a crowd-sourced team of over 350 engineers, researchers, project managers, and all sorts of other professionals with diverse backgrounds who joined forces to tackle the greatest global problem of today--understanding and conquering the COVID-19 pandemic. This team formed in response to the Kaggle CORD-19 competition to synthesize the flood of new knowledge being generated every day about COVID-19. The goal for the organization is to inform policy makers and care providers about how to combat this virus with knowledge from the latest research at their disposal.
+CoronaWhy is a crowd-sourced team of over 550 engineers, researchers, project managers, and all sorts of other professionals with diverse backgrounds who joined forces to tackle the greatest global problem of today--understanding and conquering the COVID-19 pandemic. This team formed in response to the Kaggle CORD-19 competition to synthesize the flood of new knowledge being generated every day about COVID-19. The goal for the organization is to inform policy makers and care providers about how to combat this virus with knowledge from the latest research at their disposal.
 
 
 ## About CoronaWhy Task Geo Tea,
 
-The Geo Task Team is a subgroup of the CoronaWhy team, it's formed by a group of multidisciplinar people from across the world focused on understand how the many different geography-related factors may affect the spread of the virus.
+The Geo Task Team is a subgroup of the CoronaWhy team, it is formed by an interdisciplinary group of volunteers from across the world focused on understand how the many different geography-related factors may affect the spread of the virus.
 
 The team is currently being led by Daniel (@DanielRobertNicoud) and Manuel (@ManuelAlvarezC), please direct any inquiries or issues with permissions to either of these two.
 
@@ -60,7 +60,7 @@ Remember to execute it every time you start a new console to work on **task-geo*
 
 ## Installation for users
 
-You should use this instructions if you plan to **USE** this repository.
+You should use these instructions if you plan to **USE** this repository.
 
 With your virtualenv activated, you can clone the repository and install it from
 source by running `make install`:

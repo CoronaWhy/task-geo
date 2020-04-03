@@ -10,7 +10,7 @@ General guidelines
 ==================
 
 - Cite the source of your data. ( In the docstring of your data_source file, and on the
-  ``AUTHORS.rst`` Data Sources, of course, include yourself between the contributors).
+  ``AUTHORS.rst`` Data Sources section and, of course, include yourself among the contributors).
 
 - Units should be in metric system, codes like country codes, should be ISO.
 
@@ -115,7 +115,7 @@ Geographical data
 
 - Latitude and longitude should be in decimal values, not in degrees.
 
-- Enrich your location (lat, long) data with the political information(city, country) when possible.
+- Enrich your location (lat, long) data with the geopolitical information(city, country) when possible.
   You can use something like https://opencagedata.com/
 
 - Columns containing ISO codes instead of names, should append `_iso` at the end of the name.

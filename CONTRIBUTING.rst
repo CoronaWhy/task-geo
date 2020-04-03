@@ -21,8 +21,8 @@ Everyone is welcome to contribute code via pull requests, file issues on GitHub,
 add to our documentation, or to help out in any other way, and their work will be greatly
 appreciated! Every little bit helps, and credit will always be given.
 
-If you are interested in getting involved ping @Daniel Robert-Nicoud or @ManuelAlvarez in the
-CoronaWhy slack team.
+If you are interested in getting involved ping @Daniel Robert-Nicoud or @Manuel Alvarez in the
+`CoronaWhy slack team`_.
 
 We will be communicating primarily through the Slack #task-geo channel. Project management/task
 delegation will be visible on the team's Trello board (ping @Marie Bjerede to get access to that).
@@ -198,3 +198,4 @@ To run a subset of tests::
 .. _GitHub issues page: https://github.com/CoronaWhy/task-geo/issues
 .. _Github Build Status page: https://github.com/CoronaWhy/task-geo/actions
 .. _Google docstrings style: https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments
+.. _CoronaWhy slack team: https://join.slack.com/t/coronawhy/shared_invite/zt-cw83m6ds-p4AwsMV65tha2joKhn~s5Q

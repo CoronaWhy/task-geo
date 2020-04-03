@@ -35,20 +35,22 @@ A connector is a function that handles the retrieval of data, it follows the pro
         ...
         return pandas.DataFrame(...)
 
-It has to follow the following rules:
+It must follow these rules:
 
-- It doesn't have a fixed set of arguments, as it depends from the data we are trying to retrieve. It's not the same a function that downloads a file, and has no need for arguments, that a function that connects to an API allowing for 5 diferent parameters.
+- It doesn't have a fixed set of arguments, as it depends from the data we are trying to retrieve.
+  It's not the same a function that downloads a file, and has no need for arguments, that a function
+  that connects to an API accepting for 5 diferent parameters.
 
-- It will, however, allow to be used with the least possible amount of parameters, that is,
-  accept as many default arguments as possible.
+- It allows, however, use with the least possible amount of parameters, that is,
+  accepting as many default arguments as possible.
 
-- It will, imperatively, return a ``pandas.DataFrame``.
+- It must return a ``pandas.DataFrame``.
 
-- It will have a docstring explaining its arguments and type.
+- It have a docstring explaining its arguments and type.
 
-- All access to external data, as mapping of reference values should be done at this step.
+- All access to external data, as mapping of reference values is done at this step.
 
-- It will be named ``xxxx_connector`` where ``xxxx`` is the name of the source.
+- It's named ``xxxx_connector`` where ``xxxx`` is the name of the source.
 
 
 Formatter specification
@@ -75,15 +77,15 @@ It has a prototype:
         return formatted_dataset
 
 
-It has to follow the following rules:
+It must follow these rules:
 
-- Its first argument will be a ``pandas.DataFrame`` and return a ``pandas.DataFrame`` too.
+- Its first argument is a ``pandas.DataFrame`` and return a ``pandas.DataFrame`` too.
   In case that the connector allows to multiple formats and/or metrics in the data, additional parameters
   can be passed to the formatter too.
 
 - The returned ``pandas.DataFrame`` must follow the Data Model.
 
-- It will named ``xxx_formatter`` where ``xxx`` is the name of the source.
+- It'snamed ``xxx_formatter`` where ``xxx`` is the name of the source.
 
 - It should not access to any external data.
 
@@ -148,7 +150,7 @@ For a complete reference of how to format the docstrings, please check the
 Tests
 =====
 
-As per the Contributing Guide is required to add unit tests to your submissions, beyond that, a
+As per the Contributing Guide you are required to add unit tests to your submissions, beyond that, a
 compliance test for your formatter is also required, the test should be done in the following way.
 
 1. Retrieve some data using your `connector`, and store 50 rows in a csv file.
