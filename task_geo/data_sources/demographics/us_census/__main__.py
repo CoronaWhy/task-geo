@@ -6,7 +6,7 @@ Description:
     - Converts and exports to CSV
 """
 
-import us_census
+from task_geo.data_sources.demographics.us_census import us_census
 
 
 def main():

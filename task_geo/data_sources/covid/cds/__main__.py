@@ -1,4 +1,4 @@
-from task_geo.data_sources.covid_cases.all_countries import cds_connector, cds_formatter
+from task_geo.data_sources.covid.cds import cds_connector, cds_formatter
 
 
 def main():
