@@ -71,7 +71,7 @@ The quickest way to get started using **task-geo** is to launch a [Binder](https
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/CoronaWhy/task-geo/master?filepath=notebooks) 
 
-Please click at the button above and follow the example notebooks!
+Just click at the button above and follow the example notebooks!
 
 # What's next?
 
