@@ -4,8 +4,31 @@
 Contributing
 ============
 
-Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.
+Welcome
+-------
+
+Welcome to the team! The CoronaWhy Geo Task Force is excited to have you be part of this incredible
+crowd-sourced effort to better understand and synthesize COVID-19-related literature.
+The main focus of our task force is centered around three goals:
+
+- Provide high-quality data to complement the literature provided by #task-risk on geographical
+  risk factors for the spread of COVID-19.
+- Extract information to enable compelling visualizations of what is currently happening by #data-viz .
+- Extract important geographic location data from the corpus of scientific papers to help domain experts
+  select the most relevant literature for various topics.
+
+Everyone is welcome to contribute code via pull requests, file issues on GitHub,
+add to our documentation, or to help out in any other way, and their work will be greatly
+appreciated! Every little bit helps, and credit will always be given.
+
+If you are interested in getting involved ping @Daniel Robert-Nicoud or @Manuel Alvarez in the
+`CoronaWhy slack team`_.
+
+We will be communicating primarily through the Slack #task-geo channel. Project management/task
+delegation will be visible on the team's Trello board (ping @Marie Bjerede to get access to that).
+
+Your hard work is invaluable in making quick, actionable progress on understanding the state of
+the world with regard to the combatting this terrible pandemic. THANK YOU.
 
 You can contribute in many ways:
 
@@ -51,8 +74,7 @@ If you are proposing a feature:
 
 * Explain in detail how it would work.
 * Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
+* Remember that this is a volunteer-driven project, and that contributions are welcome :)
 
 Get Started!
 ------------
@@ -123,8 +145,12 @@ Before you submit a pull request, check that it meets these guidelines:
 4. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the documentation in an appropriate place.
-5. The pull request should work for all the supported Python versions. Check the `Travis Build
+5. The pull request should work for all the supported Python versions. Check the `Github Build
    Status page`_ and make sure that all the checks pass.
+6. If you are working on the task-geo team, please make one of your team mates review your code before
+   submitting the PR.
+7. Have a look at older PR for the same kind of submission, and check that your code is compliant
+   of the comments made to them, and the rationale behind them.
 
 Unit Testing Guidelines
 -----------------------
@@ -170,5 +196,6 @@ To run a subset of tests::
 
 
 .. _GitHub issues page: https://github.com/CoronaWhy/task-geo/issues
-.. _Travis Build Status page: https://travis-ci.org/CoronaWhy/task-geo/pull_requests
+.. _Github Build Status page: https://github.com/CoronaWhy/task-geo/actions
 .. _Google docstrings style: https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments
+.. _CoronaWhy slack team: https://join.slack.com/t/coronawhy/shared_invite/zt-cw83m6ds-p4AwsMV65tha2joKhn~s5Q

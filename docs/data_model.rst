@@ -1,4 +1,4 @@
-Data Model
+Data model
 ----------
 
 This is a reference for the data model of the different data we are gathering:
@@ -9,7 +9,8 @@ Altough there are no rules on which language or framework to use, I will write i
 General guidelines
 ==================
 
-- Cite the source of your data. ( In the docstring of your data_source file, and on the AUTHORS.rst Data Sources, of course, include yourself between the contributors.).
+- Cite the source of your data. ( In the docstring of your data_source file, and on the
+  ``AUTHORS.rst`` Data Sources section and, of course, include yourself among the contributors).
 
 - Units should be in metric system, codes like country codes, should be ISO.
 
@@ -17,7 +18,8 @@ General guidelines
 
 - Unless strictly necessary, we should try avoid having multiindices.
 
-- Avoid making totalizations of data, the more granular data, the best, we can always aggregate, but we can't disaggregate.
+- Avoid making totalizations of data, the more granular data, the best, we can always aggregate,
+  but we can't disaggregate.
 
 - Avoid unecessary stacking of data:
 
@@ -47,9 +49,11 @@ General guidelines
 
    **THIS DOESN'T APPLY TO TIME DATA!!!**
 
-- Avoid unnecesary flattening/unstacking of data: (Yes, it may seem contradictory with the last point but it's not!)
+- Avoid unnecesary flattening/unstacking of data: (Yes, it may seem contradictory with the last
+  point but it's not!)
 
-  This may come in hand when working with one-hot encoded variables or unstructured or schemaless data using dataframes, for example, for the following JSON:
+  This may come in hand when working with one-hot encoded variables or unstructured or schemaless
+  data using dataframes, for example, for the following JSON:
 
   .. code-block:: python
 
@@ -104,23 +108,32 @@ General guidelines
   3. In case of doubt, please, don't hesistate to ask on Slack #team-geo!
 
 
-Geographical data guidelines
-============================
+Geographical data
+=================
 
 - Columns with geographical-related information should be at the beginning of the dataset.
 
 - Latitude and longitude should be in decimal values, not in degrees.
 
-- Enrich your location (lat, long) data with the political information(city, country) when possible. You can use something like https://opencagedata.com/
+- Enrich your location (lat, long) data with the geopolitical information(city, country) when possible.
+  You can use something like https://opencagedata.com/
 
-- In case political subdivisions are available, each subdivision should be in its own column, those columns should be: `country`, `region`, `subregion` `city`. If information after some level is not available the column is not required.
+- Columns containing ISO codes instead of names, should append `_iso` at the end of the name.
+
+- In case political subdivisions are available, each subdivision should be in its own column,
+  those columns should be: ``country``, ``region``, ``subregion`` ``city``. If information after some
+  level is not available the column is not required.
 
 
-Time-related data guidelines
-============================
+Time-related data
+=================
 
-- If we have have columns for time-related data, they should be after the geographical columns of the dataframe.
+- If we have have columns for time-related data, they should be after the geographical columns
+  of the dataframe.
 
-- The column containing the date should be of `dtype` `datetime`, that is: no date as string or int(something like 20200328 instead of 2020/03/28).
+- The column containing the date should be of `dtype` `datetime`, that is: no date as string or
+  int(something like ``20200328`` instead of ``2020/03/28``).
 
-- Avoid using full timestamps (date + time) if your data doesn't provide time information, will avoid unnecessary noise. ( don't use 2020-03-28T00:00:00, instead use 2020/03/28, but I think that pandas does that for you automatically most of the time)
+- Avoid using full timestamps (date + time) if your data doesn't provide time information, will
+  avoid unnecessary noise. ( don't use ``2020-03-28T00:00:00``, instead use ``2020/03/28``, altough
+  pandas does that for you automatically most of the time)

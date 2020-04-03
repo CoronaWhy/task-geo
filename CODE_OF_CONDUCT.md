@@ -1,4 +1,3 @@
-
 # Code of conduct
 
 We expect all members of the Geo Task Force to act professionally and respectfully, and

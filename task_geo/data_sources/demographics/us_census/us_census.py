@@ -18,36 +18,31 @@ import pandas as pd
 
 url = 'https://data.census.gov/api/access/table/download?download_id=iuGrLXEBm-bIwvlxENnx'
 
-"""
-us_census
-Method for combining the connector and formatter functions
-
-Returns:
-    finalized data (Cleaned DataFrame)
-
-"""
-
 
 def us_census():
+    """Data Source for the US census.
+
+    Arguments:
+        None
+
+    Returns:
+        pandas.DataFrame
+    """
     df = us_census_connector()
     return us_census_formatter(df)
 
 
-"""
-us_census_connector
-Method for extracting data from the US Census CSV URL
-
-Description:
-    - Opens the zip file URL and extracts the correct CSV
-    - Correct CSV: ACS 5Y Statistics
-
-Returns:
-    data (DataFrame with CSV Data)
-
-"""
-
-
 def us_census_connector():
+    """Extract data from the US Census.
+
+
+    Description:
+        - Opens the zip file URL and extracts the correct CSV
+        - Correct CSV: ACS 5Y Statistics
+
+    Returns:
+        data (DataFrame with CSV Data)
+    """
 
     urllib.request.urlretrieve(url, "uscensus.zip")
 
@@ -61,20 +56,19 @@ def us_census_connector():
     return data
 
 
-"""
-us_census_formatter
-Method for filtering out unwanted census statistics and formatting columns
-
-Description:
-    - Drop unnecessary columns and set index to county
-    - Make column values more readable
-
-Returns: Cleaned Pandas DataFrame
-
-"""
-
-
 def us_census_formatter(data):
+    """Formatter for US Census.
+
+    Arguments:
+        data(pandas.DataFrame): Data as returned by us_census_connector.
+
+    Description:
+        - Drop unnecessary columns and set index to county
+        - Make column values more readable
+
+    Returns:
+        pandas.DataFrame
+    """
 
     data.columns = data.iloc[0]
     data.drop(0, inplace=True)
