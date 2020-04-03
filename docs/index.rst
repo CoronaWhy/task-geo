@@ -7,23 +7,24 @@
    Overview <readme>
 
 .. toctree::
-   :caption: Usage
+   :caption: User Guide
 
    basic_usage
 
 .. toctree::
-   :caption: Resources for developers
-   
-   contributing
-   data_model
-   data_sources
-   API Reference <api/task_geo>
+   :caption: Examples
 
+   /examples/NOAA_API.ipynb
 
 .. toctree::
    :caption: Resources
    :hidden:
 
+   contributing
+   style_guide
+   data_model
+   data_sources
+   API Reference <api/task_geo>
    code_of_conduct
    authors
    history
