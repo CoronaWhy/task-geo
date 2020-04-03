@@ -5,12 +5,11 @@ acap: Organization providing the dataset
 """
 import logging
 
-from hdx.utilities.easy_logging import setup_logging
-from hdx.hdx_configuration import Configuration
+import pandas as pd
 from hdx.data.dataset import Dataset
 from hdx.data.resource import Resource
-
-import pandas as pd
+from hdx.hdx_configuration import Configuration
+from hdx.utilities.easy_logging import setup_logging
 
 setup_logging()
 logger = logging.getLogger(__name__)
