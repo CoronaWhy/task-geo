@@ -8,6 +8,4 @@ recursive-include tests *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
-recursive-include docs *.md *.rst conf.py Makefile make.bat *.jpg *.png *.gif
-
-include task_geo/data_sources/noaa/country_stations_map.json
+recursive-include docs *.json *.md *.rst conf.py Makefile make.bat *.jpg *.png *.gif

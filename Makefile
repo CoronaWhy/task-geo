@@ -73,7 +73,7 @@ coverage: ## check code coverage quickly with the default Python
 
 .PHONY: docs
 docs: clean-docs ## generate Sphinx HTML documentation, including API docs
-	cp -r notebooks/examples/ docs/examples
+	cp -r notebooks docs
 	sphinx-apidoc --separate --no-toc -o docs/api/ task_geo
 	$(MAKE) -C docs html
 
@@ -124,6 +124,6 @@ clean-test: ## remove test artifacts
 
 .PHONY: clean-docs
 clean-docs: ## remove previously built docs
-	rm -rf docs/examples
+	rm -rf docs/notebooks
 	rm -f docs/api/*.rst
 	-$(MAKE) -C docs clean 2>/dev/null  # this fails if sphinx is not yet installed
