@@ -9,6 +9,7 @@
 
 ![CI](https://github.com/CoronaWhy/task-geo/workflows/CI/badge.svg)
 ![docs](https://github.com/CoronaWhy/task-geo/workflows/Docs/badge.svg)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/CoronaWhy/task-geo/master?filepath=notebooks)
 
 
 Help us understand how geography affects virality.
@@ -36,56 +37,44 @@ We are currently focusing on two streams:
 * Using Natural Language Processing on the CORD-19 dataset, we try to support the expert's understanding on how geography-related factors (meterology, demographics, ...) might impact the effects on the the virus. For example, one of our goals is to map clinical studies to the region where they were performed and to present a simple interface to the wider comunity to visualize their distribution.
 
 
-# Install
+# Usage Example
 
-## General recomendations
+In this short example we show you how to use the NOAA Data Source to download data from all the
+France Stations over a period of time as a `pandas.DataFrame`.
 
-Also, although it is not strictly required, the usage of a [virtualenv](https://virtualenv.pypa.io/en/latest/)
-is highly recommended in order to avoid interfering with other software installed in the system.
+```python3
+from datetime import datetime
+from task_geo.data_sources.noaa import noaa_api
 
-These are the minimum commands needed to create a virtualenv using python3.7 for **task-geo**:
+start_date = datetime(2020, 1, 1)
+end_date = datetime(2020, 1, 15)
+countries = ['FR']
 
-```bash
-pip install virtualenv
-virtualenv -p $(which python3.7) task-geo
+data = noaa_api(countries, start_date, end_date)
 ```
 
-Afterwards, you have to execute this command to activate the virtualenv:
+The returned `data` variable will be a `pandas.DataFrame` containing a table such as:
 
-```bash
-source task-geo/bin/activate
-```
+| atitude | longitude | elevation | country | name              | date       | station     |  tmax |  tmin |
+|---------|-----------|-----------|---------|-------------------|------------|-------------|-------|-------|
+| 48.0689 |   -1.7339 |        36 | France  | RENNES-ST JACQUES | 2020-01-01 | FR000007130 |  10.4 |   4.8 |
+| 48.0689 |   -1.7339 |        36 | France  | RENNES-ST JACQUES | 2020-01-02 | FR000007130 |  11   |   7.8 |
+| 48.0689 |   -1.7339 |        36 | France  | RENNES-ST JACQUES | 2020-01-03 | FR000007130 |  13.1 | nan   |
+| 48.0689 |   -1.7339 |        36 | France  | RENNES-ST JACQUES | 2020-01-04 | FR000007130 |  10.4 |   1.4 |
+| 48.0689 |   -1.7339 |        36 | France  | RENNES-ST JACQUES | 2020-01-05 | FR000007130 |   9.5 |   3   |
+| 48.0689 |   -1.7339 |        36 | France  | RENNES-ST JACQUES | 2020-01-06 | FR000007130 | nan   |  -1.5 |
+|     ... |       ... |       ... | ...     | ...               | ...        | ...         |    ...|   ... |
 
-Remember to execute it every time you start a new console to work on **task-geo**!
+# Try it out!
 
-## Installation for users
+The quickest way to get started using **task-geo** is to launch a [Binder](https://mybinder.org/) environment:
 
-You should use these instructions if you plan to **USE** this repository.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/CoronaWhy/task-geo/master?filepath=notebooks) 
 
-With your virtualenv activated, you can clone the repository and install it from
-source by running `make install`:
+Just click at the button above and follow the example notebooks!
 
-```bash
-git clone https://github.com/CoronaWhy/task-geo.git
-cd task-geo
-make install
-```
+# What's next?
 
-Now you are ready to go!
-
-## Installation for developers
-
-If you plan to **CONTRIBUTE**, here's how to set up `task-geo` for local development.
-With your virtualenv activated, you can fork the repository, clone your fork locally and install by running `make install-develop`:
-
-1. Fork the `task-geo` repo on GitHub.
-2. Clone your fork locally and install it using `make install-develop`:
-
-```bash
-git clone git@github.com:your_name_here/task-geo.git
-cd task-geo/
-make install-develop
-```
-
-Now you have the code installed on your local system, and you are ready to help us with your contribution, but first, please have a look at the [Contributing Guide](https://CoronaWhy.github.io/task-geo/contributing.html).
+Please check our [documentation](https://CoronaWhy.github.io/task-geo) site to learn more about
+the different data sources and about how to get startet contributing to the project.
 
