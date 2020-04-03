@@ -16,7 +16,7 @@ def get_argparser():
 def main():
     parser = get_argparser()
     args = parser.parse_args()
-    
+
     dataset = us_covid_nyt()
     dataset.to_csv(args.output, index=False, header=True)
 
