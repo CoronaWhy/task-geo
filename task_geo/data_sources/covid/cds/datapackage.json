@@ -1,0 +1,97 @@
+{
+    "title": "Granular COVID-19 Data All Country",
+    "description": "Granular data about the spread of COVID-19 for all countries. Sourced from Corona Data Scraper, https://coronadatascraper.com/timeseries.csv",
+    "licenses": [{"name": "copyright-authors"}],
+    "fields": [
+        {
+            "name": "city",
+            "description": "Geographical location - city",
+            "type": "str"
+        },
+        {
+            "name": "county",
+            "description": "Geographical location - county",
+            "type": "str"
+        },
+        {
+            "name": "state",
+            "description": "Geographical location - state",
+            "type": "str"
+        },
+        {
+            "name": "country",
+            "description": "Geographical location - ISO 3166-1 alpha-3 country code",
+            "type": "str"
+        },
+        {
+            "name": "population",
+            "description": "The estimated population of the location",
+            "type": "long"
+        },
+        {
+            "name": "lat",
+            "description": "Cordinate - Latitiude",
+            "type": "float"
+        },
+        {
+            "name": "long",
+            "description": "Cordinate - Longitude",
+            "type": "float"
+        },
+        {
+            "name": "date",
+            "description": "Time of report",
+            "type": "datettime"
+        },
+        {
+            "name": "url",
+            "description": "Source of information",
+            "type": "str"
+        },
+        {
+            "name": "aggregate",
+            "description": "Region specification - Country/State/County",
+            "type": "str"
+        },
+        {
+            "name": "tz",
+            "description": "Timezone followed for that region",
+            "type": "str"
+        },
+        {
+            "name": "cases",
+            "description": "Total number of cases",
+            "type": "int"
+        },
+        {
+            "name": "deaths",
+            "description": "Total number of deaths",
+            "type": "int"
+        },
+        {
+            "name": "recovered",
+            "description": "Total number recovered",
+            "type": "int"
+        },
+        {
+            "name": "active",
+            "description": "Total number active",
+            "type": "int"
+        },
+        {
+            "name": "tested",
+            "description": "Total number tested",
+            "type": "int"
+        },
+        {
+            "name": "growth_factor",
+            "description": "Rate of increasing for that particular region",
+            "type": "float"
+        }
+    ],
+    "keywords": [
+        "COVID-19",
+        "Cases",
+        "Country"
+    ]
+}
