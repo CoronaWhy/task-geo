@@ -17,11 +17,9 @@ logger = logging.getLogger(__name__)
 Configuration.create(hdx_site='prod', user_agent='CoronaWhy', hdx_read_only=True)
 
 
-def acap_connector(path: str = './'):
-    """
-    Connects to HDX, and fetches acaps covid 19 government measures dataset
-    Args:
-        path (): Path to download dataset
+def acap_connector():
+    """Connects to HDX, and fetches acaps covid 19 government measures dataset
+    Args: None
 
     Returns: Acap dataset formatted as DataFrame
 
@@ -37,7 +35,7 @@ def acap_connector(path: str = './'):
     logger.info('Dataset Url: %s', resources[0]['url'])
     logger.info('Tags: %s', dataset.get_tags())
     resource = Resource.read_from_hdx(resources[0]['id'])
-    url, absolute_path = resource.download(path)
+    url, absolute_path = resource.download('./')
     logger.info('Downloaded dataset at path: %s', absolute_path)
     xl = pd.ExcelFile(absolute_path)
     logger.info(xl.sheet_names)
