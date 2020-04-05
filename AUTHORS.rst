@@ -7,6 +7,7 @@ Contributors
 
 - Daniel Robert-Nicoud <daniel.robertnicoud@gmail.com>
 - Manuel Alvarez <manuel@pythiac.com>
+- Krishna Sheth <krishnamsheth31@gmail.com>
 
 
 Data Sources
@@ -26,6 +27,12 @@ R.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Ne
 Daily (GHCN-Daily), Version 3.26 NOAA National Climatic Data Center.
 http://doi.org/10.7289/V5D21VHZ [2020/03/30].
 
+HDX Data Source
+***************
+
+The [**ACAPS COVID-19: Government Measures Dataset**](https://data.humdata.org/dataset/acaps-covid19-government-measures-dataset)
+is added on the [Humanitarian Data Exchange](https://data.humdata.org) website and we acknowledge the
+[ACAPS](https://www.acaps.org/) organization for the effort they put into collecting and updating their dataset regularly
 
 Special Thanks
 --------------
