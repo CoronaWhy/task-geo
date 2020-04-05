@@ -12,12 +12,15 @@ Data Credits:
     https://github.com/opencovid19-fr/data
 """
 
-import requests
 import io
 
 import pandas as pd
+import requests
 
-url = 'https://raw.githubusercontent.com/opencovid19-fr/data/master/dist/chiffres-cles.csv'
+url = (
+    'https://raw.githubusercontent.com/opencovid19-fr/'
+    'data/master/dist/chiffres-cles.csv'
+    )
 
 
 def fr_covidata():
@@ -39,7 +42,7 @@ def fr_covidata_connector():
     Returns:
         dataset (DataFrame with CSV Data)
     """
-  
+
     urlData = requests.get(url).content
 
     dataset = pd.read_csv(io.StringIO(urlData.decode('utf-8')))
@@ -51,12 +54,14 @@ def fr_covidata_formatter(dataset):
     Arguments:
         dataset(pandas.DataFrame): Data as returned by fr_covidata_connector.
     Description:
-        - Drop unnecessary rows with irrelevant regions' info and only keep info
-        related to subregions in Metropolitan France, as well as repetitive data
+        - Drop unnecessary rows with irrelevant regions' info and only keep
+        info related to subregions in Metropolitan France, as well as
+        repetitive data
         - Check the dataset for instances where there are more than one source
-        of data in the same subregion for the same date, then complement all the
-        sources information, and take the highest value in case there are
-        different values for the same column, while aggregating the sources info
+        of data in the same subregion for the same date, then complement all
+        the sources information, and take the highest value in case there are
+        different values for the same column, while aggregating the sources
+        info
         - Rename/Translate the column titles, and add a country column (France)
     Returns:
         frcovidata(pandas.DataFrame)
@@ -73,113 +78,180 @@ def fr_covidata_formatter(dataset):
     dataset = dataset[dataset.maille_code != 'DEP-976']
     dataset = dataset.drop(['depistes'], axis=1)
     dataset = dataset.drop(['granularite'], axis=1)
-    dataset = dataset.drop_duplicates(subset=['date', 'maille_code', 'cas_confirmes', 'deces', 'reanimation', 'hospitalises', 'gueris'], keep=False)
+    dataset = dataset.drop_duplicates(
+        subset=['date', 'maille_code', 'cas_confirmes', 'deces',
+                'reanimation',
+                'hospitalises', 'gueris'], keep=False)
 
-    #Reset indices:
+    # Reset indices:
     dataset = dataset.reset_index()
     dataset = dataset.drop(['index'], axis=1)
 
-    #Turn source columns' values type to string:
+    # Turn source columns' values type to string:
     dataset['source_nom'] = dataset['source_nom'].astype(str)
     dataset['source_url'] = dataset['source_url'].astype(str)
     dataset['source_archive'] = dataset['source_archive'].astype(str)
     dataset['source_type'] = dataset['source_type'].astype(str)
 
+    for i in range(len(dataset) - 1):
+        if dataset.loc[i, 'maille_code'] == dataset.loc[
+            i + 1, 'maille_code'] and dataset.loc[i, 'date'] == dataset.loc[
+            i + 1, 'date'] and dataset.loc[
+                i, 'cas_confirmes'] != 'inv' and i != len(dataset):
+            # Combine Source names, url, archive and type for repetitive
+            # subregions at the same date:
+            dataset.loc[i, 'source_nom'] = dataset.loc[i, 'source_nom'] + \
+                                           dataset.loc[i + 1, 'source_nom']
+            dataset.loc[i, 'source_url'] = dataset.loc[i, 'source_url'] + \
+                dataset.loc[i + 1, 'source_url']
+            dataset.loc[i, 'source_archive'] = dataset.loc[
+                                                   i, 'source_archive'] + \
+                dataset.loc[
+                                                   i + 1, 'source_archive']
+            dataset.loc[i, 'source_type'] = dataset.loc[i, 'source_type'] + \
+                dataset.loc[i + 1, 'source_type']
+            if pd.isnull(
+                    dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'cas_confirmes']) is False:
+                    dataset.loc[i, 'cas_confirmes'] = dataset.loc[
+                                                        i + 1, 'cas_confirmes']
+                    dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+            elif pd.isnull(
+                    dataset.loc[i, 'cas_confirmes']) is False and pd.isnull(
+                    dataset.loc[i + 1, 'cas_confirmes']) is True:
+                        dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+            elif pd.isnull(
+                    dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'cas_confirmes']) is True:
+                        dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+            elif dataset.loc[i, 'cas_confirmes'] == dataset.loc[
+                                                    i + 1, 'cas_confirmes']:
+                dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+            elif dataset.loc[i, 'cas_confirmes'] > dataset.loc[
+                                                    i + 1, 'cas_confirmes']:
+                dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+            elif dataset.loc[i, 'cas_confirmes'] < dataset.loc[
+                                                    i + 1, 'cas_confirmes']:
+                dataset.loc[i, 'cas_confirmes'] = dataset.loc[
+                    i + 1, 'cas_confirmes']
+                dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
 
-    for i in range(len(dataset)-1):
-      if dataset.loc[i,'maille_code'] == dataset.loc[i+1,'maille_code'] and dataset.loc[i,'date'] == dataset.loc[i+1,'date'] and dataset.loc[i,'cas_confirmes'] != 'inv' and i != len(dataset):
-        #Combine Source names, url, archive and type for repetitive subregions at the same date:
-        dataset.loc[i,'source_nom'] = dataset.loc[i,'source_nom'] + dataset.loc[i+1,'source_nom']
-        dataset.loc[i,'source_url'] = dataset.loc[i,'source_url'] + dataset.loc[i+1,'source_url']
-        dataset.loc[i,'source_archive'] = dataset.loc[i,'source_archive'] + dataset.loc[i+1,'source_archive']
-        dataset.loc[i,'source_type'] = dataset.loc[i,'source_type'] + dataset.loc[i+1,'source_type']
-        if pd.isnull(dataset.loc[i,'cas_confirmes']) == True and pd.isnull(dataset.loc[i+1,'cas_confirmes']) == False:
-          dataset.loc[i,'cas_confirmes'] = dataset.loc[i+1,'cas_confirmes']
-          dataset.loc[i+1,'cas_confirmes'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'cas_confirmes']) == False and pd.isnull(dataset.loc[i+1,'cas_confirmes']) == True:
-          dataset.loc[i+1,'cas_confirmes'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'cas_confirmes']) == True and pd.isnull(dataset.loc[i+1,'cas_confirmes']) == True:
-          dataset.loc[i+1,'cas_confirmes'] = 'inv'
-        elif dataset.loc[i,'cas_confirmes'] == dataset.loc[i+1,'cas_confirmes']:
-          dataset.loc[i+1,'cas_confirmes'] = 'inv'
-        elif dataset.loc[i,'cas_confirmes'] > dataset.loc[i+1,'cas_confirmes']:
-          dataset.loc[i+1,'cas_confirmes'] = 'inv'
-        elif dataset.loc[i,'cas_confirmes'] < dataset.loc[i+1,'cas_confirmes']:
-          dataset.loc[i,'cas_confirmes'] = dataset.loc[i+1,'cas_confirmes']
-          dataset.loc[i+1,'cas_confirmes'] = 'inv'        
+        if dataset.loc[i, 'maille_code'] == dataset.loc[
+            i + 1, 'maille_code'] and dataset.loc[i, 'date'] == dataset.loc[
+                i + 1, 'date'] and dataset.loc[i, 'deces'] != 'inv':
+            if pd.isnull(dataset.loc[i, 'deces']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'deces']) is False:
+                dataset.loc[i, 'deces'] = dataset.loc[i + 1, 'deces']
+                dataset.loc[i + 1, 'deces'] = 'inv'
+            elif pd.isnull(dataset.loc[i, 'deces']) is False and pd.isnull(
+                    dataset.loc[i + 1, 'deces']) is True:
+                dataset.loc[i + 1, 'deces'] = 'inv'
+            elif pd.isnull(dataset.loc[i, 'deces']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'deces']) is True:
+                dataset.loc[i + 1, 'deces'] = 'inv'
+            elif dataset.loc[i, 'deces'] == dataset.loc[i + 1, 'deces']:
+                dataset.loc[i + 1, 'deces'] = 'inv'
+            elif dataset.loc[i, 'deces'] > dataset.loc[i + 1, 'deces']:
+                dataset.loc[i + 1, 'deces'] = 'inv'
+            elif dataset.loc[i, 'deces'] < dataset.loc[i + 1, 'deces']:
+                dataset.loc[i, 'deces'] = dataset.loc[i + 1, 'deces']
+                dataset.loc[i + 1, 'deces'] = 'inv'
 
-      if dataset.loc[i,'maille_code'] == dataset.loc[i+1,'maille_code'] and dataset.loc[i,'date'] == dataset.loc[i+1,'date'] and dataset.loc[i,'deces'] != 'inv':
-        if pd.isnull(dataset.loc[i,'deces']) == True and pd.isnull(dataset.loc[i+1,'deces']) == False:
-          dataset.loc[i,'deces'] = dataset.loc[i+1,'deces']
-          dataset.loc[i+1,'deces'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'deces']) == False and pd.isnull(dataset.loc[i+1,'deces']) == True:
-          dataset.loc[i+1,'deces'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'deces']) == True and pd.isnull(dataset.loc[i+1,'deces']) == True:
-          dataset.loc[i+1,'deces'] = 'inv'
-        elif dataset.loc[i,'deces'] == dataset.loc[i+1,'deces']:
-          dataset.loc[i+1,'deces'] = 'inv'
-        elif dataset.loc[i,'deces'] > dataset.loc[i+1,'deces']:
-          dataset.loc[i+1,'deces'] = 'inv'
-        elif dataset.loc[i,'deces'] < dataset.loc[i+1,'deces']:
-          dataset.loc[i,'deces'] = dataset.loc[i+1,'deces']
-          dataset.loc[i+1,'deces'] = 'inv'
+        if dataset.loc[i, 'maille_code'] == dataset.loc[
+            i + 1, 'maille_code'] and dataset.loc[i, 'date'] == dataset.loc[
+                i + 1, 'date'] and dataset.loc[i, 'reanimation'] != 'inv':
+            if pd.isnull(dataset.loc[i, 'reanimation']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'reanimation']) is False:
+                dataset.loc[i, 'reanimation'] = dataset.loc[
+                    i + 1, 'reanimation']
+                dataset.loc[i + 1, 'reanimation'] = 'inv'
+            elif pd.isnull(
+                    dataset.loc[i, 'reanimation']) is False and pd.isnull(
+                        dataset.loc[i + 1, 'reanimation']) is True:
+                dataset.loc[i + 1, 'reanimation'] = 'inv'
+            elif pd.isnull(
+                    dataset.loc[i, 'reanimation']) is True and pd.isnull(
+                        dataset.loc[i + 1, 'reanimation']) is True:
+                dataset.loc[i + 1, 'reanimation'] = 'inv'
+            elif dataset.loc[i, 'reanimation'] == dataset.loc[
+                                                    i + 1, 'reanimation']:
+                dataset.loc[i + 1, 'reanimation'] = 'inv'
+            elif dataset.loc[i, 'reanimation'] > dataset.loc[
+                                                    i + 1, 'reanimation']:
+                dataset.loc[i + 1, 'reanimation'] = 'inv'
+            elif dataset.loc[i, 'reanimation'] < dataset.loc[
+                                                    i + 1, 'reanimation']:
+                dataset.loc[i, 'reanimation'] = dataset.loc[
+                    i + 1, 'reanimation']
+                dataset.loc[i + 1, 'reanimation'] = 'inv'
 
-      if dataset.loc[i,'maille_code'] == dataset.loc[i+1,'maille_code'] and dataset.loc[i,'date'] == dataset.loc[i+1,'date'] and dataset.loc[i,'reanimation'] != 'inv':
-        if pd.isnull(dataset.loc[i,'reanimation']) == True and pd.isnull(dataset.loc[i+1,'reanimation']) == False:
-          dataset.loc[i,'reanimation'] = dataset.loc[i+1,'reanimation']
-          dataset.loc[i+1,'reanimation'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'reanimation']) == False and pd.isnull(dataset.loc[i+1,'reanimation']) == True:
-          dataset.loc[i+1,'reanimation'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'reanimation']) == True and pd.isnull(dataset.loc[i+1,'reanimation']) == True:
-          dataset.loc[i+1,'reanimation'] = 'inv'
-        elif dataset.loc[i,'reanimation'] == dataset.loc[i+1,'reanimation']:
-          dataset.loc[i+1,'reanimation'] = 'inv'
-        elif dataset.loc[i,'reanimation'] > dataset.loc[i+1,'reanimation']:
-          dataset.loc[i+1,'reanimation'] = 'inv'
-        elif dataset.loc[i,'reanimation'] < dataset.loc[i+1,'reanimation']:
-          dataset.loc[i,'reanimation'] = dataset.loc[i+1,'reanimation']
-          dataset.loc[i+1,'reanimation'] = 'inv'
+        if dataset.loc[i, 'maille_code'] == dataset.loc[
+            i + 1, 'maille_code'] and dataset.loc[i, 'date'] == dataset.loc[
+                i + 1, 'date'] and dataset.loc[i, 'hospitalises'] != 'inv':
+            if pd.isnull(
+                dataset.loc[i, 'hospitalises']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'hospitalises']) is False:
+                    dataset.loc[i, 'hospitalises'] = dataset.loc[
+                        i + 1, 'hospitalises']
+                    dataset.loc[i + 1, 'hospitalises'] = 'inv'
+            elif pd.isnull(
+                    dataset.loc[i, 'hospitalises']) is False and pd.isnull(
+                    dataset.loc[i + 1, 'hospitalises']) is True:
+                dataset.loc[i + 1, 'hospitalises'] = 'inv'
+            elif pd.isnull(
+                    dataset.loc[i, 'hospitalises']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'hospitalises']) is True:
+                        dataset.loc[i + 1, 'hospitalises'] = 'inv'
+            elif dataset.loc[i, 'hospitalises'] == dataset.loc[
+                                                    i + 1, 'hospitalises']:
+                dataset.loc[i + 1, 'hospitalises'] = 'inv'
+            elif dataset.loc[i, 'hospitalises'] > dataset.loc[
+                                                    i + 1, 'hospitalises']:
+                dataset.loc[i + 1, 'hospitalises'] = 'inv'
+            elif dataset.loc[i, 'hospitalises'] < dataset.loc[
+                                                    i + 1, 'hospitalises']:
+                dataset.loc[i, 'hospitalises'] = dataset.loc[
+                    i + 1, 'hospitalises']
+                dataset.loc[i + 1, 'hospitalises'] = 'inv'
 
-      if dataset.loc[i,'maille_code'] == dataset.loc[i+1,'maille_code'] and dataset.loc[i,'date'] == dataset.loc[i+1,'date'] and dataset.loc[i,'hospitalises'] != 'inv':
-        if pd.isnull(dataset.loc[i,'hospitalises']) == True and pd.isnull(dataset.loc[i+1,'hospitalises']) == False:
-          dataset.loc[i,'hospitalises'] = dataset.loc[i+1,'hospitalises']
-          dataset.loc[i+1,'hospitalises'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'hospitalises']) == False and pd.isnull(dataset.loc[i+1,'hospitalises']) == True:
-          dataset.loc[i+1,'hospitalises'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'hospitalises']) == True and pd.isnull(dataset.loc[i+1,'hospitalises']) == True:
-          dataset.loc[i+1,'hospitalises'] = 'inv'
-        elif dataset.loc[i,'hospitalises'] == dataset.loc[i+1,'hospitalises']:
-          dataset.loc[i+1,'hospitalises'] = 'inv'
-        elif dataset.loc[i,'hospitalises'] > dataset.loc[i+1,'hospitalises']:
-          dataset.loc[i+1,'hospitalises'] = 'inv'
-        elif dataset.loc[i,'hospitalises'] < dataset.loc[i+1,'hospitalises']:
-          dataset.loc[i,'hospitalises'] = dataset.loc[i+1,'hospitalises']
-          dataset.loc[i+1,'hospitalises'] = 'inv'
-      
-      if dataset.loc[i,'maille_code'] == dataset.loc[i+1,'maille_code'] and dataset.loc[i,'date'] == dataset.loc[i+1,'date'] and dataset.loc[i,'gueris'] != 'inv':
-        if pd.isnull(dataset.loc[i,'gueris']) == True and pd.isnull(dataset.loc[i+1,'gueris']) == False:
-          dataset.loc[i,'gueris'] = dataset.loc[i+1,'gueris']
-          dataset.loc[i+1,'gueris'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'gueris']) == False and pd.isnull(dataset.loc[i+1,'gueris']) == True:
-          dataset.loc[i+1,'gueris'] = 'inv'
-        elif pd.isnull(dataset.loc[i,'gueris']) == True and pd.isnull(dataset.loc[i+1,'gueris']) == True:
-          dataset.loc[i+1,'gueris'] = 'inv'
-        elif dataset.loc[i,'gueris'] == dataset.loc[i+1,'gueris']:
-          dataset.loc[i+1,'gueris'] = 'inv'
-        elif dataset.loc[i,'gueris'] > dataset.loc[i+1,'gueris']:
-          dataset.loc[i+1,'gueris'] = 'inv'
-        elif dataset.loc[i,'gueris'] < dataset.loc[i+1,'gueris']:
-          dataset.loc[i,'gueris'] = dataset.loc[i+1,'gueris']
-          dataset.loc[i+1,'gueris'] = 'inv'
+        if dataset.loc[i, 'maille_code'] == dataset.loc[
+            i + 1, 'maille_code'] and dataset.loc[i, 'date'] == dataset.loc[
+                i + 1, 'date'] and dataset.loc[i, 'gueris'] != 'inv':
+            if pd.isnull(dataset.loc[i, 'gueris']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'gueris']) is False:
+                dataset.loc[i, 'gueris'] = dataset.loc[i + 1, 'gueris']
+                dataset.loc[i + 1, 'gueris'] = 'inv'
+            elif pd.isnull(dataset.loc[i, 'gueris']) is False and pd.isnull(
+                    dataset.loc[i + 1, 'gueris']) is True:
+                dataset.loc[i + 1, 'gueris'] = 'inv'
+            elif pd.isnull(dataset.loc[i, 'gueris']) is True and pd.isnull(
+                    dataset.loc[i + 1, 'gueris']) is True:
+                dataset.loc[i + 1, 'gueris'] = 'inv'
+            elif dataset.loc[i, 'gueris'] == dataset.loc[i + 1, 'gueris']:
+                dataset.loc[i + 1, 'gueris'] = 'inv'
+            elif dataset.loc[i, 'gueris'] > dataset.loc[i + 1, 'gueris']:
+                dataset.loc[i + 1, 'gueris'] = 'inv'
+            elif dataset.loc[i, 'gueris'] < dataset.loc[i + 1, 'gueris']:
+                dataset.loc[i, 'gueris'] = dataset.loc[i + 1, 'gueris']
+                dataset.loc[i + 1, 'gueris'] = 'inv'
 
-    #Delete the redundant resulting rows and reset the indices:
+    # Delete the redundant resulting rows and reset the indices:
     dataset = dataset[dataset.cas_confirmes != 'inv']
     dataset = dataset.reset_index()
     dataset = dataset.drop(['index'], axis=1)
 
-    #Rename/Translate the column titles:
-    dataset = dataset.rename(columns={"maille_code":"subregion_code", "maille_nom":"subregion_name", "cas_confirmes": "confirmed", "deces": "deaths", "reanimation": "recovering", "hospitalises": "hospitalized", "gueris": "recovered", "source_nom": "source_name"})
+    # Rename/Translate the column titles:
+    dataset = dataset.rename(
+        columns={"maille_code": "subregion_code",
+                 "maille_nom": "subregion_name", "cas_confirmes": "confirmed",
+                 "deces": "deaths", "reanimation": "recovering",
+                 "hospitalises": "hospitalized", "gueris": "recovered",
+                 "source_nom": "source_name"})
     dataset['country'] = 'France'
-    frcovidata = dataset[['subregion_code', 'subregion_name', 'country', 'date', 'confirmed', 'hospitalized', 'recovering', 'recovered', 'deaths', 'source_name', 'source_url', 'source_archive', 'source_type']]
+    frcovidata = dataset[
+        ['subregion_code', 'subregion_name', 'country', 'date', 'confirmed',
+         'hospitalized', 'recovering', 'recovered',
+         'deaths', 'source_name', 'source_url', 'source_archive',
+         'source_type']]
 
     return frcovidata
