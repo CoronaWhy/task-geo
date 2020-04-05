@@ -1,0 +1,27 @@
+{
+    "id": "ca45faef-c1c7-48bf-b89e-56444e080451",
+    "name": "COVID-19 Goverment Measures Dataset v4",
+    "description": "ACAPS COVID-19 Government Measures Dataset",
+    "created": "2020-04-03T08:34:38.820418",
+    "revision_last_updated": "2020-04-03T08:34:44.192029",
+    "last_modified": "2020-04-03T08:34:37.402213",
+    "size": 1038429,
+    "state": "active",
+    "format": "XLSX",
+    "mimetype": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "url": "http://data.humdata.org/dataset/e1a91ae0-292d-4434-bc75-bf863d4608ba/resource/ca45faef-c1c7-48bf-b89e-56444e080451/download/20200402-acaps-covid-19-goverment-measures-dataset-v4.xlsx",
+    "download_url": "http://data.humdata.org/dataset/e1a91ae0-292d-4434-bc75-bf863d4608ba/resource/ca45faef-c1c7-48bf-b89e-56444e080451/download/20200402-acaps-covid-19-goverment-measures-dataset-v4.xlsx",
+    "keywords": [
+        "affected schools",
+        "covid-19",
+        "economics",
+        "epidemics and outbreaks",
+        "geodata",
+        "government data",
+        "health",
+        "human rights",
+        "population movement",
+        "public services",
+        "transportation"
+    ]
+}
