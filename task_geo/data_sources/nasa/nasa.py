@@ -21,7 +21,7 @@ PARAMETERS = {
     "temperature": ["T2M", "T2M_MIN", "T2M_MAX"],
     "humidity": ["RH2M", "QV2M"],
     "pressure": ["PS"]
-    }
+}
 
 COL_NAMES = {
     "T2M": "avg_temperature",
@@ -30,7 +30,7 @@ COL_NAMES = {
     "RH2M": "relative_humidity",
     "QV2M": "specific_humidity",
     "PS": "pressure"
-    }
+}
 
 
 def nasa_data_loc(country, region, sub_region, lat, lon, str_start_date,
@@ -99,9 +99,9 @@ def nasa_connector(df_locations, start_date, end_date=None,
         pandas.DataFrame:   Columns are country, region, sub_region (non-null),
                             lon, lat, date, and the desired data.
     """
-    df_locations = df_locations[~pd.isna(df_locations[level]) &
-                                ~pd.isna(df_locations['lon']) &
-                                ~pd.isna(df_locations['lat'])]
+    df_locations = df_locations[~pd.isna(df_locations[level])
+                                & ~pd.isna(df_locations['lon'])
+                                & ~pd.isna(df_locations['lat'])]
     location_data = ['country', 'region', 'sub_region', 'lon', 'lat']
     locations = df_locations[location_data].drop_duplicates()
 
@@ -120,7 +120,7 @@ def nasa_connector(df_locations, start_date, end_date=None,
         nasa_data_loc(row.country, row.region, row.sub_region, row.lat,
                       row.lon, str_start_date, str_end_date, parms_str)
         for row in locations.itertuples()
-        ])
+    ])
 
 
 def nasa_formatter(df_nasa, parms):
@@ -143,7 +143,7 @@ def nasa_formatter(df_nasa, parms):
     df_nasa['date'] = df_nasa['date'].apply(lambda dt:
                                             pd.to_datetime(
                                                 f"{dt[:4]}-{dt[4:6]}-{dt[6:]}"
-                                                ).date())
+                                            ).date())
 
     # reorder columns
     base_parms = ['country', 'region', 'sub_region', 'lon', 'lat', 'date']
@@ -211,4 +211,4 @@ def nasa_meteo_data(df, start_date, end_date=None,
         return df.merge(
             nasa_formatter(df_nasa, parms),
             how='left', on=['country', 'region', 'sub_region', 'lon', 'lat']
-            )
+        )
