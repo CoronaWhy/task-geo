@@ -20,7 +20,7 @@ import requests
 url = (
     'https://raw.githubusercontent.com/opencovid19-fr/'
     'data/master/dist/chiffres-cles.csv'
-    )
+)
 
 
 def fr_covidata():
@@ -101,37 +101,37 @@ def fr_covidata_formatter(dataset):
             # Combine Source names, url, archive and type for repetitive
             # subregions at the same date:
             dataset.loc[i, 'source_nom'] = dataset.loc[i, 'source_nom'] + \
-                                           dataset.loc[i + 1, 'source_nom']
+                dataset.loc[i + 1, 'source_nom']
             dataset.loc[i, 'source_url'] = dataset.loc[i, 'source_url'] + \
                 dataset.loc[i + 1, 'source_url']
             dataset.loc[i, 'source_archive'] = dataset.loc[
-                                                   i, 'source_archive'] + \
+                i, 'source_archive'] + \
                 dataset.loc[
-                                                   i + 1, 'source_archive']
+                    i + 1, 'source_archive']
             dataset.loc[i, 'source_type'] = dataset.loc[i, 'source_type'] + \
                 dataset.loc[i + 1, 'source_type']
             if pd.isnull(
-                    dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
+                dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
                     dataset.loc[i + 1, 'cas_confirmes']) is False:
-                    dataset.loc[i, 'cas_confirmes'] = dataset.loc[
-                                                        i + 1, 'cas_confirmes']
-                    dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+                dataset.loc[i, 'cas_confirmes'] = dataset.loc[
+                    i + 1, 'cas_confirmes']
+                dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
             elif pd.isnull(
-                    dataset.loc[i, 'cas_confirmes']) is False and pd.isnull(
+                dataset.loc[i, 'cas_confirmes']) is False and pd.isnull(
                     dataset.loc[i + 1, 'cas_confirmes']) is True:
-                        dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+                dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
             elif pd.isnull(
-                    dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
+                dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
                     dataset.loc[i + 1, 'cas_confirmes']) is True:
-                        dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
+                dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
             elif dataset.loc[i, 'cas_confirmes'] == dataset.loc[
-                                                    i + 1, 'cas_confirmes']:
+                    i + 1, 'cas_confirmes']:
                 dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
             elif dataset.loc[i, 'cas_confirmes'] > dataset.loc[
-                                                    i + 1, 'cas_confirmes']:
+                    i + 1, 'cas_confirmes']:
                 dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
             elif dataset.loc[i, 'cas_confirmes'] < dataset.loc[
-                                                    i + 1, 'cas_confirmes']:
+                    i + 1, 'cas_confirmes']:
                 dataset.loc[i, 'cas_confirmes'] = dataset.loc[
                     i + 1, 'cas_confirmes']
                 dataset.loc[i + 1, 'cas_confirmes'] = 'inv'
@@ -174,13 +174,13 @@ def fr_covidata_formatter(dataset):
                         dataset.loc[i + 1, 'reanimation']) is True:
                 dataset.loc[i + 1, 'reanimation'] = 'inv'
             elif dataset.loc[i, 'reanimation'] == dataset.loc[
-                                                    i + 1, 'reanimation']:
+                    i + 1, 'reanimation']:
                 dataset.loc[i + 1, 'reanimation'] = 'inv'
             elif dataset.loc[i, 'reanimation'] > dataset.loc[
-                                                    i + 1, 'reanimation']:
+                    i + 1, 'reanimation']:
                 dataset.loc[i + 1, 'reanimation'] = 'inv'
             elif dataset.loc[i, 'reanimation'] < dataset.loc[
-                                                    i + 1, 'reanimation']:
+                    i + 1, 'reanimation']:
                 dataset.loc[i, 'reanimation'] = dataset.loc[
                     i + 1, 'reanimation']
                 dataset.loc[i + 1, 'reanimation'] = 'inv'
@@ -191,25 +191,25 @@ def fr_covidata_formatter(dataset):
             if pd.isnull(
                 dataset.loc[i, 'hospitalises']) is True and pd.isnull(
                     dataset.loc[i + 1, 'hospitalises']) is False:
-                    dataset.loc[i, 'hospitalises'] = dataset.loc[
-                        i + 1, 'hospitalises']
-                    dataset.loc[i + 1, 'hospitalises'] = 'inv'
+                dataset.loc[i, 'hospitalises'] = dataset.loc[
+                    i + 1, 'hospitalises']
+                dataset.loc[i + 1, 'hospitalises'] = 'inv'
             elif pd.isnull(
                     dataset.loc[i, 'hospitalises']) is False and pd.isnull(
                     dataset.loc[i + 1, 'hospitalises']) is True:
                 dataset.loc[i + 1, 'hospitalises'] = 'inv'
             elif pd.isnull(
-                    dataset.loc[i, 'hospitalises']) is True and pd.isnull(
+                dataset.loc[i, 'hospitalises']) is True and pd.isnull(
                     dataset.loc[i + 1, 'hospitalises']) is True:
-                        dataset.loc[i + 1, 'hospitalises'] = 'inv'
+                dataset.loc[i + 1, 'hospitalises'] = 'inv'
             elif dataset.loc[i, 'hospitalises'] == dataset.loc[
-                                                    i + 1, 'hospitalises']:
+                    i + 1, 'hospitalises']:
                 dataset.loc[i + 1, 'hospitalises'] = 'inv'
             elif dataset.loc[i, 'hospitalises'] > dataset.loc[
-                                                    i + 1, 'hospitalises']:
+                    i + 1, 'hospitalises']:
                 dataset.loc[i + 1, 'hospitalises'] = 'inv'
             elif dataset.loc[i, 'hospitalises'] < dataset.loc[
-                                                    i + 1, 'hospitalises']:
+                    i + 1, 'hospitalises']:
                 dataset.loc[i, 'hospitalises'] = dataset.loc[
                     i + 1, 'hospitalises']
                 dataset.loc[i + 1, 'hospitalises'] = 'inv'
