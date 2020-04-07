@@ -11,10 +11,10 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.6, 3.7, 3.8]
 
     steps:
@@ -33,3 +33,15 @@ jobs:
     - name: Test with pytest
       run: |
         make test
+    - if: matrix.os == 'ubuntu-latest'
+      name: Install pandoc - Ubuntu
+      run: sudo apt install pandoc
+    - if: matrix.os == 'macos-latest'
+      name: Install pandoc - MacOS
+      run: brew install pandoc
+    - if: matrix.os == 'windows-latest'
+      name: Install pandoc - Windows
+      run: choco install pandoc
+    - name: Build docs
+      run: |
+        make docs
