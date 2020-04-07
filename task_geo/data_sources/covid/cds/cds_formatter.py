@@ -12,12 +12,20 @@ def cds_formatter(df):
 
     assert df[pd.isnull(df.country)].empty
 
-    df = df.rename(columns={'growthFactor': 'growth_factor'})
+    df = df.rename(columns={
+        'growthFactor': 'growth_factor',
+        'state': 'region',
+        'county': 'sub_region'
+    })
     df = df.reindex(columns=[
-        'city', 'county', 'state', 'country', 'population', 'lat', 'long',
+        'country', 'region', 'sub_region', 'city', 'lat', 'long', 'population',
         'date', 'url', 'aggregate', 'tz', 'cases', 'deaths', 'recovered',
         'active', 'tested', 'growth_factor'
     ])
     df['date'] = pd.to_datetime(df.date)
+
+    metrics = ['cases', 'deaths', 'recovered', 'active', 'tested']
+    df[metrics] = df[metrics].fillna(0).astype(int)
+    df.loc[(df["aggregate"] == "state") & (df["region"].isnull()), "aggregate"] = "country"
 
     return df.sort_values(by='date').reset_index(drop=True)
