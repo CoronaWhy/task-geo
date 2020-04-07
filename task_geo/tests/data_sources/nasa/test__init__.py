@@ -1,3 +1,5 @@
+"""Test for NASA API."""
+
 from unittest import TestCase
 
 import pandas as pd
@@ -8,9 +10,10 @@ from task_geo.testing import check_dataset_format
 
 
 class TestNasaAPI(TestCase):
+    """Test for NASA API."""
 
     def test_validate_formatter(self):
-        """ Validate formatter result according to Data Model"""
+        """Validate formatter result according to Data Model."""
         # Setup
         data = {
             'country': ['Japan'],
@@ -20,9 +23,9 @@ class TestNasaAPI(TestCase):
             'lon':	[141.350006]
         }
         data = pd.DataFrame(data)
-    
+
         start_date = pd.to_datetime('01nov2019')
-    
+
         df = nasa.nasa_meteo_data(data, start_date).iloc[:10]
 
         # Check.

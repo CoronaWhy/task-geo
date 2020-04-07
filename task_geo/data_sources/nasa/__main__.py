@@ -19,8 +19,8 @@ def main():
         'region': ['Hokkaido'],
         'sub_region': [np.nan],
         'lat': [43.066666],
-        'lon':	[141.350006]
-        }
+        'lon': [141.350006]
+    }
     data = pd.DataFrame(data)
 
     start_date = pd.to_datetime('01nov2019')
