@@ -79,3 +79,16 @@ class TestCheckDatasetFormat(TestCase):
 
         # Run / Check
         check_dataset_format(data)
+
+    def test_geopolitical_divisions(self):
+        """If all 4 levels of geopolitical divisions are present and ordered, this test passes."""
+        # Setup
+        data = pd.DataFrame([{
+            'country': 'xxx',
+            'region': 'yyy',
+            'sub_region': 'zzzz',
+            'city': 'ttt'
+        }])
+
+        # Run / Check
+        check_dataset_format(data)
