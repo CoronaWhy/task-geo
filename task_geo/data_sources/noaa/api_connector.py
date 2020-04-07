@@ -1,17 +1,36 @@
-import os
+"""Connector to the NOAA API.
+
+
+Contributors:
+
+The journal article describing GHCN-Daily is:
+Menne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview
+of the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric
+and Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.
+
+To acknowledge the specific version of the dataset used, please cite:
+Menne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray,
+R.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network -
+Daily (GHCN-Daily), Version 3.26
+NOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [2020/03/30].
+"""
+
 import logging
+import os
 from datetime import datetime
 
 import pandas as pd
 import requests
 
-from ftp import download_noaa_files
-from references import COUNTRY_AND_TERRITORY_CODES, \
-    TERRITORY_ACTIVE_STATIONS_MAP, DATA_DIRECTORY, load_dataset
-
+from task_geo.data_sources.noaa.ftp_connector import download_noaa_files
+from task_geo.data_sources.noaa.references import (
+    COUNTRY_AND_TERRITORY_CODES, DATA_DIRECTORY, TERRITORY_ACTIVE_STATIONS_MAP, load_dataset)
 
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
+
+
+DEFAULT_METRICS = ['TMAX', 'TMIN', 'PCRP']
 
 
 def get_stations_by_country(country):
@@ -37,13 +56,19 @@ def get_stations_by_country(country):
     return stations
 
 
-def get_request_urls(country, start_date, end_date=None):
+def get_request_urls(country, start_date, end_date=None, metrics=None):
     """Encodes the parameters the URL to make a GET request
 
     Arguments:
         country(str): FIPS Country code
         start_date(datetime)
         end_date(datetime): Defaults to today
+        metrics(list[str]): Optional.List of metrics to retrieve,valid values are:
+            TMIN: Minimum temperature.
+            TMAX: Maximum temperature.
+            TAVG: Average of temperature.
+            SNOW: Snowfall (mm).
+            SNWD: Snow depth (mm).
 
     Returns:
         str
@@ -51,20 +76,34 @@ def get_request_urls(country, start_date, end_date=None):
 
     base_url = 'https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries'
 
+    if metrics is None:
+        metrics = DEFAULT_METRICS
+
+    request_common_args = (
+        f'&format=json'
+        f'&units=metric'
+        f'&dataTypes={",".join(metrics)}'
+    )
+
     if end_date is None:
         end_date = datetime.now()
+
     start = start_date.date().isoformat()
     end = end_date.date().isoformat()
 
     stations_list = get_stations_by_country(country)
     if len(stations_list) < 10:
         stations = ','.join(stations_list)
-        return [f'{base_url}&stations={stations}&startDate={start}&endDate={end}&format=json']
-    
+        return [
+            f'{base_url}&stations={stations}&startDate={start}&endDate={end}{request_common_args}']
+
     else:
         chunked_station_list = [stations_list[i:i + 15] for i in range(0, len(stations_list), 15)]
         return [
-            f'{base_url}&stations={",".join(chunk)}&startDate={start}&endDate={end}&format=json'
+            (
+                f'{base_url}&stations={",".join(chunk)}&startDate={start}'
+                f'&endDate={end}{request_common_args}'
+            )
             for chunk in chunked_station_list
         ]
 
@@ -78,7 +117,7 @@ def get_parse_response(urls):
     Returns:
         tuple[list[dict], list[Exception]]:
             The first element of the tuple is a list of dictionary with all the responses.
-            The second element is a list with all the exceptions raised during the calls.    
+            The second element is a list with all the exceptions raised during the calls.
     """
 
     results = list()
@@ -86,11 +125,11 @@ def get_parse_response(urls):
 
     total = len(urls) - 1
     for i, url in enumerate(urls):
-        logging.debug('Making request %s / %s', i, total)
+        logging.debug('Making request %s / %s', i + 1, total + 1)
         response = requests.get(url)
         try:
             response.raise_for_status()
-        except requests.exceptions.HTTPError as e: 
+        except requests.exceptions.HTTPError as e:
             errors.append({
                 'url': url,
                 'error': e
@@ -102,14 +141,19 @@ def get_parse_response(urls):
     return results, errors
 
 
-def noaa_worldwide_api(countries, start_date, end_date=None, enrich_data=True):
+def noaa_api_connector(countries, start_date, end_date=None, metrics=None):
     """Get data from NOAA API.
 
     Arguments:
         countries(list[str]): List of FIPS country codes to retrieve.
         start_date(datetime)
         end_date(datetime)
-        enrich_data(bool): Add metadata from the metereological stations
+        metrics(list[str]): Optional.List of metrics to retrieve,valid values are:
+            TMIN: Minimum temperature.
+            TMAX: Maximum temperature.
+            TAVG: Average of temperature.
+            SNOW: Snowfall (mm).
+            SNWD: Snow depth (mm).
 
     Returns:
         tuple[list[dict], list[Exception]]
@@ -120,7 +164,7 @@ def noaa_worldwide_api(countries, start_date, end_date=None, enrich_data=True):
     result = list()
     for country in countries:
         logging.info('Requesting data for %s', country)
-        urls = get_request_urls(country, start_date, end_date)
+        urls = get_request_urls(country, start_date, end_date, metrics)
         country_results, errors = get_parse_response(urls)
 
         if errors:
@@ -132,7 +176,6 @@ def noaa_worldwide_api(countries, start_date, end_date=None, enrich_data=True):
 
     data = pd.DataFrame(result)
     stations = load_dataset('stations')
-    data.merge(stations, how='left', left_on='STATION', right_on='ID')
     data = data.merge(stations, how='left', left_on='STATION', right_on='ID')
 
     del data['ID']
@@ -140,6 +183,11 @@ def noaa_worldwide_api(countries, start_date, end_date=None, enrich_data=True):
 
     columns = [
         'DATE', 'STATION', 'LATITUDE', 'LONGITUDE', 'ELEVATION', 'NAME',
-        'GSN FLAG', 'HCN/CRN FLAG', 'WMO ID', 'TMAX', 'TAVG', 'TMIN', 'PRCP', 'SNWD'
+        'GSN FLAG', 'HCN/CRN FLAG', 'WMO ID'
     ]
+
+    if metrics is None:
+        metrics = DEFAULT_METRICS
+
+    columns.extend([metric for metric in metrics if metric in data.columns])
     return data[columns]

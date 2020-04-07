@@ -5,13 +5,22 @@
 
 from setuptools import setup, find_packages
 
-with open('README.md') as readme_file:
-    readme = readme_file.read()
+try:
+    with open('README.md', encoding='utf-8') as readme_file:
+        readme = readme_file.read()
+except IOError:
+    readme = ''
 
-with open('HISTORY.md') as history_file:
-    history = history_file.read()
+try:
+    with open('HISTORY.md', encoding='utf-8') as history_file:
+        history = history_file.read()
+except IOError:
+    history = ''
 
 install_requires = [
+    'pandas',
+    'requests',
+    'jupyter'
 ]
 
 setup_requires = [
@@ -31,6 +40,7 @@ development_requires = [
 
     # docs
     'm2r>=0.2.0',
+    'nbsphinx>=0.5.0',
     'Sphinx>=1.7.1',
     'sphinx_rtd_theme>=0.2.4',
     'autodocsumm>=0.1.10',
@@ -50,6 +60,10 @@ development_requires = [
     # Advanced testing
     'coverage>=4.5.1',
     'tox>=2.9.1',
+
+    # Documentation style
+    'doc8==0.8.0',
+    'pydocstyle==3.0.0',
 ]
 
 setup(
@@ -77,7 +91,7 @@ setup(
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
     include_package_data=True,
-    keywords='coronawhy', 'task_geo',
+    keywords='coronawhy',
     name='task_geo',
     packages=find_packages(include=['task_geo', 'task_geo.*']),
     python_requires='>=3.4',

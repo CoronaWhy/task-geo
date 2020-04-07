@@ -1,17 +1,25 @@
 """Extract and prepare meteorological data from https://www.ncdc.noaa.gov/
 the National Centers for Environmental Information
+
+Credits for the data:
+
+Menne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray,
+R.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network -
+Daily (GHCN-Daily), Version 3. [indicate subset used following decimal,
+e.g. Version 3.12].
+NOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [2020].
 """
 
-from datetime import datetime
 import logging
 import os
 import re
 import tarfile as tar
+from datetime import datetime
 from ftplib import FTP
 
 import pandas as pd
 
-from references import load_dataset, DATA_DIRECTORY
+from task_geo.data_sources.noaa.references import DATA_DIRECTORY, load_dataset
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -30,12 +38,12 @@ INDEX_COLUMNS = [
     'MONTH',
     'ELEMENT'
 ]
-REGEX = re.compile('^(\w*?)(\d+)$')
+REGEX = re.compile(r'^(\w*?)(\d+)$')
 
 
 def download_noaa_files(large_files=True, skip_downloaded=False):
     """Download files from the NOAA FTP server.
-    
+
     Arguments:
         large_files(bool):
             Wheter or not to download the 3Gb daily reports, only download reference data.
@@ -58,8 +66,10 @@ def download_noaa_files(large_files=True, skip_downloaded=False):
             if not large_files:
                 continue
 
-        logging.debug('Downloading %s', filename)
             logging.debug('This is file is more than 3Gb+, it may take a long time.')
+
+        logging.debug('Downloading %s', filename)
+
         path = os.path.join(DATA_DIRECTORY, filename)
 
         if not os.path.exists(path) and not os.path.isdir(DATA_DIRECTORY):
@@ -121,8 +131,15 @@ def load_stations_data(station_ids):
     return unstacked.dropna(subset=['DATE'])
 
 
-def process_noaa_data(countries):
-    """Returns a dataset for the given countries."""
+def process_noaa_files(countries):
+    """Returns a dataset for the given countries.
+
+    Arguments:
+        countries(list[str]): List of countries in ISO-2 format.
+
+    Returns:
+        pandas.DataFrame
+    """
 
     df_stations = load_dataset('stations')
     df_countries = load_dataset('countries')
@@ -136,3 +153,19 @@ def process_noaa_data(countries):
     df_daily_information = load_stations_data(df_stations['ID'])
 
     return df_daily_information.merge(df_stations, how='left', on=['ID'])
+
+
+def noaa_ftp_connector(countries, download=True):
+    """Retrieves data from the NOAA FTP server.
+
+    Arguments:
+        countries(list[str]):
+            List of countries in ISO-2 format.
+
+        download(bool):
+            Wheter or not to download the data, and just process previously downloaded data.
+    """
+    if download:
+        download_noaa_files()
+
+    return process_noaa_files(countries)

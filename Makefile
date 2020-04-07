@@ -46,6 +46,10 @@ lint: ## check style with flake8 and isort
 	flake8 task_geo tests
 	isort -c --recursive task_geo tests
 
+lint-docs: ## check docs formatting with doc8 and pydocstyle
+	doc8 . docs/
+	pydocstyle copulas/
+
 .PHONY: install-develop
 install-develop: clean-build clean-pyc ## install the package in editable mode and dependencies for development
 	pip install -e .[dev]
@@ -69,6 +73,7 @@ coverage: ## check code coverage quickly with the default Python
 
 .PHONY: docs
 docs: clean-docs ## generate Sphinx HTML documentation, including API docs
+	cp -r notebooks docs
 	sphinx-apidoc --separate --no-toc -o docs/api/ task_geo
 	$(MAKE) -C docs html
 
@@ -119,5 +124,6 @@ clean-test: ## remove test artifacts
 
 .PHONY: clean-docs
 clean-docs: ## remove previously built docs
+	rm -rf docs/notebooks
 	rm -f docs/api/*.rst
 	-$(MAKE) -C docs clean 2>/dev/null  # this fails if sphinx is not yet installed
