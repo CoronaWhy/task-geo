@@ -19,9 +19,9 @@ Configuration.create(hdx_site='prod', user_agent='CoronaWhy', hdx_read_only=True
 
 def hdx_acap_connector():
     """Connects to HDX, and fetches acaps covid 19 government measures dataset
-    Args: None
+    Arguments: None
 
-    Returns: Acap dataset formatted as DataFrame
+    Returns: pandas.DataFrame
 
     """
     dataset = Dataset.read_from_hdx('acaps-covid19-government-measures-dataset')
