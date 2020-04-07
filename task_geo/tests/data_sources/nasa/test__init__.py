@@ -1,12 +1,12 @@
 """Test for NASA API."""
 
-from unittest import TestCase
-
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 from task_geo.data_sources.nasa import nasa
 from task_geo.testing import check_dataset_format
+
+from unittest import TestCase
 
 
 class TestNasaAPI(TestCase):

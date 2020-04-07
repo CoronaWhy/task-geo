@@ -4,9 +4,9 @@ Extract meteorological data from NASA.
 Source:
 https://power.larc.nasa.gov/
 """
+import itertools
 import pandas as pd
 import requests
-import itertools
 
 
 base_url = "https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py"

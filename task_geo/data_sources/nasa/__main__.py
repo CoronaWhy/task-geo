@@ -1,8 +1,8 @@
 """Example utilization of the NASA data sourcing."""
 
+from nasa import nasa_meteo_data
 import numpy as np
 import pandas as pd
-from nasa import nasa_meteo_data
 
 
 def main():
