@@ -33,6 +33,8 @@ jobs:
     - name: Test with pytest
       run: |
         make test
+    - name: Install pandoc
+      run: sudo apt install pandoc
     - name: Build docs
       run: |
         make docs
