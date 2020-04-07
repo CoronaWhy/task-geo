@@ -101,7 +101,7 @@ def nasa_connector(df_locations, start_date, end_date=None,
     """
     df_locations = df_locations[
         ~pd.isna(df_locations[[level, 'lon', 'lat']]).all(axis=1)
-        ]
+    ]
     location_data = ['country', 'region', 'sub_region', 'lon', 'lat']
     locations = df_locations[location_data].drop_duplicates()
 
