@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 Configuration.create(hdx_site='prod', user_agent='CoronaWhy', hdx_read_only=True)
 
 
-def acap_connector():
+def hdx_acap_connector():
     """Connects to HDX, and fetches acaps covid 19 government measures dataset
     Args: None
 

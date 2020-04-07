@@ -1,12 +1,12 @@
-from task_geo.data_sources.hdx.hdx_connector import acap_connector
-from task_geo.data_sources.hdx.hdx_formatter import acap_formatter
+from task_geo.data_sources.hdx.hdx_connector import hdx_acap_connector
+from task_geo.data_sources.hdx.hdx_formatter import hdx_acap_formatter
 
 
-def hdx_api():
+def hdx_acap_api():
     """HDX Data Source
 
     Example:
-    >>> hdx_api()
+    >>> hdx_acap_api()
     """
-    raw = acap_connector()
-    return acap_formatter(raw)
+    raw = hdx_acap_connector()
+    return hdx_acap_formatter(raw)
