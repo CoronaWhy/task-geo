@@ -2,7 +2,7 @@
     "title": "NASA meteorological data",
     "subtitle": "Source: https://power.larc.nasa.gov/",
     "description": "Source meteorological data time series from given locations",
-    "licenses": [{'name': "copyright-authors"}],
+    "licenses": [{"name": "copyright-authors"}],
     "fields": [
         {
             "name": "country",
@@ -64,7 +64,7 @@
             "description": "Atmospheric pressure, kPa",
             "type": "float"
         }
-        ]
+    ],
     "keywords": [
         "coronawhy",
         "meteorological-data",
