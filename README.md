@@ -6,9 +6,8 @@
 <i>A worldwide effort by volunteers to fight Coronavirus (COVID-19)</i>
 </p>
 
-
-![CI](https://github.com/CoronaWhy/task-geo/workflows/CI/badge.svg)
-![docs](https://github.com/CoronaWhy/task-geo/workflows/Docs/badge.svg)
+[![CI](https://github.com/CoronaWhy/task-geo/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/CoronaWhy/task-geo/actions?query=workflow%3ACI)
+[![Docs](https://github.com/CoronaWhy/task-geo/workflows/Docs/badge.svg?branch=master)](https://github.com/CoronaWhy/task-geo/actions?query=workflow%3ADocs)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/CoronaWhy/task-geo/master?filepath=notebooks)
 
 
