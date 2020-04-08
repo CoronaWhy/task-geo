@@ -12,13 +12,14 @@ def cds_formatter(df):
 
     assert df[pd.isnull(df.country)].empty
 
+    del df['population']
     df = df.rename(columns={
         'growthFactor': 'growth_factor',
         'state': 'region',
         'county': 'sub_region'
     })
     df = df.reindex(columns=[
-        'country', 'region', 'sub_region', 'city', 'lat', 'long', 'population',
+        'country', 'region', 'sub_region', 'city', 'lat', 'long',
         'date', 'url', 'aggregate', 'tz', 'cases', 'deaths', 'recovered',
         'active', 'tested', 'growth_factor'
     ])
