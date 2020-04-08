@@ -80,7 +80,7 @@ class TestCheckDatasetFormat(TestCase):
         # Run / Check
         check_dataset_format(data)
 
-    def test_geopolitical_divisions(self):
+    def test_ordered_geopolitical_divisions(self):
         """If all 4 levels of geopolitical divisions are present and ordered, this test passes."""
         # Setup
         data = pd.DataFrame([{
@@ -92,3 +92,54 @@ class TestCheckDatasetFormat(TestCase):
 
         # Run / Check
         check_dataset_format(data)
+
+    def test_unordered_geopolitical_divisions(self):
+        # Setup
+        data = pd.DataFrame([{
+            'city': 'ttt',
+            'country': 'xxx',
+            'region': 'yyy',
+            'sub_region': 'zzzz',
+        }])
+
+        expected_exception_message = (
+            'The correct ordening of the columns is "country, region, sub_region, city"'
+        )
+
+        # Run
+        with self.assertRaises(AssertionError) as error:
+            check_dataset_format(data)
+
+        # Check
+        assert error.exception.args[0] == expected_exception_message
+
+    def test_missing_ordered_geopolitical_divisions(self):
+        """If lower geopolitical levels are missing, but well ordered, no exeption is raised."""
+        # Setup
+        data = pd.DataFrame([{
+            'country': 'xxx',
+            'region': 'yyy',
+        }])
+
+        # Run / Check
+        check_dataset_format(data)
+
+    def test_missing_unordered_geopolitical_divisions(self):
+        """If lower geopolitical levels are missing, and unordered, and exception is raised."""
+        # Setup
+        data = pd.DataFrame([{
+            'region': 'yyy',
+            'country': 'xxx',
+
+        }])
+
+        expected_exception_message = (
+            'The correct ordening of the columns is "country, region, sub_region, city"'
+        )
+
+        # Run
+        with self.assertRaises(AssertionError) as error:
+            check_dataset_format(data)
+
+        # Check
+        assert error.exception.args[0] == expected_exception_message
