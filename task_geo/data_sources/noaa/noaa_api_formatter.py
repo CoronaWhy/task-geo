@@ -1,7 +1,7 @@
 import pandas as pd
 
 from task_geo.common.country_codes import fips_to_name
-from task_geo.data_sources.noaa.api_connector import DEFAULT_METRICS
+from task_geo.data_sources.noaa.noaa_api_connector import DEFAULT_METRICS
 
 
 def noaa_api_formatter(raw, metrics=None, country_avg=False):
