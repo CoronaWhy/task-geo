@@ -1,4 +1,4 @@
-from unittest import TestCase, skip
+from unittest import TestCase
 
 import pandas as pd
 
@@ -19,7 +19,6 @@ class TestNoaaApi(TestCase):
         # Check
         check_dataset_format(data)
 
-    @skip
     def test_validate_formatter_country_avg(self):
         """Validate formatter result when country_avg is present."""
         # Setup
