@@ -2,7 +2,7 @@ from task_geo.data_sources.noaa.api_connector import noaa_api_connector
 from task_geo.data_sources.noaa.api_formatter import noaa_api_formatter
 
 
-def noaa_api(countries, start_date, end_date, metrics=None):
+def noaa_api(countries, start_date, end_date, metrics=None, country_avg=False):
     """NOAA API Data Source.
 
     Arguments:
@@ -18,6 +18,7 @@ def noaa_api(countries, start_date, end_date, metrics=None):
             TAVG: Average of temperature.
             SNOW: Snowfall (mm).
             SNWD: Snow depth (mm).
+        country_avg(bool): When True, only an average for each date/country will be returned.
 
     Example:
     >>> from datetime import datetime
@@ -27,4 +28,4 @@ def noaa_api(countries, start_date, end_date, metrics=None):
     >>> noaa_api(countries, start_date, end_date)
     """
     raw = noaa_api_connector(countries, start_date, end_date, metrics)
-    return noaa_api_formatter(raw, metrics)
+    return noaa_api_formatter(raw, metrics, country_avg)
