@@ -1,10 +1,10 @@
 from task_geo.data_sources.covid.spain.es_covid_connector import es_covid_connector
 from task_geo.data_sources.covid.spain.es_covid_formatter import es_covid_formatter
 
-"""
-This module provides importing daily updates for cases, mixed with static demographic data.
 
-Overview:
+def es_covid():
+    """
+    Daily updates for cases for Spain, joined with static demographic data.
 
     Discovery
         Dynamic
@@ -26,12 +26,7 @@ Overview:
               - population
               - density
               - gdp_per_capita_euros
-    """
 
-
-def es_covid():
-    """
-    Data Source for Spain
 
     Arguments:
         N/A

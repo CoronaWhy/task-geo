@@ -10,13 +10,10 @@ def es_covid_formatter(df):
     Returns:
         pandas.DataFrame
     """
-
-    assert df[pd.isnull(df['CCAA Codigo ISO'])].empty
-
-    df.rename(columns={'CCAA Codigo ISO': 'autonomous_community_iso', 'Fecha': 'date',
-                       'Casos ': 'cases', 'Hospitalizados': 'hospitalized', 'UCI': 'icu',
-                       'Fallecidos': 'deceased', 'Recuperados': 'recovered'}, inplace=True)
-    print(df.head())
+    df.columns = df.columns.str.lower()
+    df.rename(columns={'ccaa': 'autonomous_community_iso', 'fecha': 'date',
+                       'casos': 'cases', 'hospitalizados': 'hospitalized', 'uci': 'icu',
+                       'fallecidos': 'deceased', 'recuperados': 'recovered'}, inplace=True)
 
     # ### Replace NaN with 0
     df['cases'].fillna(value=0, inplace=True)
@@ -25,8 +22,6 @@ def es_covid_formatter(df):
     df['deceased'].fillna(value=0, inplace=True)
     df['recovered'].fillna(value=0, inplace=True)
 
-    # Update date
-    # Transform to compliance with https://coronawhy.github.io/task-geo/data_model.html
     df['date'] = pd.to_datetime(df['date'])
 
     # Undo cumulative sums
