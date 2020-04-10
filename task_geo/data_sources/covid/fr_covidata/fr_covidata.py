@@ -67,31 +67,26 @@ def fr_covidata_formatter(dataset):
         frcovidata(pandas.DataFrame)
     """
 
-    dataset = dataset[dataset.granularite != 'region']
-    dataset = dataset[dataset.granularite != 'monde']
-    dataset = dataset[dataset.granularite != 'pays']
-    dataset = dataset[dataset.granularite != 'collectivite-outremer']
-    dataset = dataset[dataset.maille_code != 'DEP-971']
-    dataset = dataset[dataset.maille_code != 'DEP-972']
-    dataset = dataset[dataset.maille_code != 'DEP-973']
-    dataset = dataset[dataset.maille_code != 'DEP-974']
-    dataset = dataset[dataset.maille_code != 'DEP-976']
-    dataset = dataset.drop(['depistes'], axis=1)
-    dataset = dataset.drop(['granularite'], axis=1)
+    no_granularites = ['region', 'monde', 'pays', 'collectivite-outremer']
+    no_maille_codes = ['DEP-971', 'DEP-972', 'DEP-973', 'DEP-974', 'DEP-976']
+    dataset = dataset[
+        (~dataset.granularite.isin(no_granularites)) &
+        (~dataset.maille_code.isin(no_maille_codes))
+    ]
+    dataset = dataset.drop(['depistes', 'granularite'], axis=1)
     dataset = dataset.drop_duplicates(
         subset=['date', 'maille_code', 'cas_confirmes', 'deces',
                 'reanimation',
                 'hospitalises', 'gueris'], keep=False)
+    dataset['date'] = pd.to_datetime(dataset['date'].astype(str)).dt.date
 
     # Reset indices:
-    dataset = dataset.reset_index()
-    dataset = dataset.drop(['index'], axis=1)
+    dataset = dataset.reset_index(drop=True)
 
     # Turn source columns' values type to string:
-    dataset['source_nom'] = dataset['source_nom'].astype(str)
-    dataset['source_url'] = dataset['source_url'].astype(str)
-    dataset['source_archive'] = dataset['source_archive'].astype(str)
-    dataset['source_type'] = dataset['source_type'].astype(str)
+    str_columns = ['source_nom', 'source_url',
+                   'source_archive', 'source_type']
+    dataset[str_columns] = dataset[str_columns].astype(str)
 
     for i in range(len(dataset) - 1):
         if dataset.loc[i, 'maille_code'] == dataset.loc[
@@ -101,15 +96,15 @@ def fr_covidata_formatter(dataset):
             # Combine Source names, url, archive and type for repetitive
             # subregions at the same date:
             dataset.loc[i, 'source_nom'] = dataset.loc[i, 'source_nom'] + \
-                dataset.loc[i + 1, 'source_nom']
+                " " + dataset.loc[i + 1, 'source_nom']
             dataset.loc[i, 'source_url'] = dataset.loc[i, 'source_url'] + \
-                dataset.loc[i + 1, 'source_url']
+                " " + dataset.loc[i + 1, 'source_url']
             dataset.loc[i, 'source_archive'] = dataset.loc[
-                i, 'source_archive'] + \
+                i, 'source_archive'] + " " + \
                 dataset.loc[
                     i + 1, 'source_archive']
             dataset.loc[i, 'source_type'] = dataset.loc[i, 'source_type'] + \
-                dataset.loc[i + 1, 'source_type']
+                " " + dataset.loc[i + 1, 'source_type']
             if pd.isnull(
                 dataset.loc[i, 'cas_confirmes']) is True and pd.isnull(
                     dataset.loc[i + 1, 'cas_confirmes']) is False:
@@ -237,8 +232,7 @@ def fr_covidata_formatter(dataset):
 
     # Delete the redundant resulting rows and reset the indices:
     dataset = dataset[dataset.cas_confirmes != 'inv']
-    dataset = dataset.reset_index()
-    dataset = dataset.drop(['index'], axis=1)
+    dataset = dataset.reset_index(drop=True)
 
     # Rename/Translate the column titles:
     dataset = dataset.rename(
