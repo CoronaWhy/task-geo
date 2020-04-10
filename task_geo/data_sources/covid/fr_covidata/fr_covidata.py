@@ -67,11 +67,10 @@ def fr_covidata_formatter(dataset):
         frcovidata(pandas.DataFrame)
     """
 
-    no_granularites = ['region', 'monde', 'pays', 'collectivite-outremer']
-    no_maille_codes = ['DEP-971', 'DEP-972', 'DEP-973', 'DEP-974', 'DEP-976']
+    no_gr = ['region', 'monde', 'pays', 'collectivite-outremer']
+    no_mc = ['DEP-971', 'DEP-972', 'DEP-973', 'DEP-974', 'DEP-976']
     dataset = dataset[
-        (~dataset.granularite.isin(no_granularites)) &
-        (~dataset.maille_code.isin(no_maille_codes))
+        (~dataset.granularite.isin(no_gr)) & (~dataset.maille_code.isin(no_mc))
     ]
     dataset = dataset.drop(['depistes', 'granularite'], axis=1)
     dataset = dataset.drop_duplicates(
