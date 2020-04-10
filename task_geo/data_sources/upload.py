@@ -5,59 +5,8 @@ import shutil
 from datetime import datetime
 
 from task_geo.common.packaging import get_module_path
-from task_geo.data_sources import get_data_source
-
-COUNTRIES = ['FR']
-START_DATE = datetime(2019, 11, 15)
-
-
-DATA_SOURCE_DEFAULT_PARAMETERS = {
-    'noaa_api': {
-        'args': [COUNTRIES, START_DATE],
-        'kwargs': {},
-    },
-    'cds': {
-        'args': [],
-        'kwargs': {}
-    },
-    'us_census': {
-        'args': [],
-        'kwargs': {}
-    },
-    'nyt': {
-        'args': [],
-        'kwargs': {}
-    },
-    'hdx_acap': {
-        'args': [],
-        'kwargs': {}
-    },
-}
-
-
-def get_default_parameters(name):
-    """Return the default parameters for a data source.
-
-    Arguments:
-        name(str): Name of the data source.
-
-    Returns:
-        tuple[list, dict]
-    """
-    node = DATA_SOURCE_DEFAULT_PARAMETERS[name]
-    return node['args'], node['kwargs']
-
-
-def execute_data_source(name):
-    """Finds a datasource by it's name and executes it with their default parameters.
-
-    Arguments:
-        name(str): Name of the data source.
-    """
-    data_source = get_data_source(name)
-    args, kwargs = get_default_parameters(name)
-
-    return data_source(*args, **kwargs)
+from task_geo.data_sources import execute_data_source, get_data_source
+from task_geo.testing import check_data_source_package
 
 
 def update_datapackage_json(json_path, dataset_name, timestamp):
@@ -106,17 +55,19 @@ def prepare_data_package(name, path=None):
         str: Path to the generated folder.
 
     """
+    check_data_source_package(name)
+
     if path is None:
         path = os.getcwd()
+
+    dataset = execute_data_source(name)
+    timestamp = datetime.now()
 
     folder_path = os.path.join(path, name)
     if os.path.exists(folder_path):
         shutil.rmtree(folder_path)
 
-    os.mkdirs(folder_path)
-
-    dataset = execute_data_source(name)
-    timestamp = datetime.now()
+    os.makedirs(folder_path)
 
     dataset_name = f'{name}_{timestamp.strftime("%Y%m%d%H%M%S%f")}.csv'
     dataset_path = os.path.join(folder_path, dataset_name)

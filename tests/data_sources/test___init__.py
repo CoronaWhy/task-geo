@@ -1,13 +1,13 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from task_geo.data_sources.upload import execute_data_source, get_default_parameters
+from task_geo.data_sources import execute_data_source, get_default_parameters
 
 
 class TestGetDefaultParameters(TestCase):
 
     @patch.dict(
-        'task_geo.data_sources.upload.DATA_SOURCE_DEFAULT_PARAMETERS',
+        'task_geo.data_sources.DATA_SOURCE_DEFAULT_PARAMETERS',
         {'data_source_name': {'args': 'xxx', 'kwargs': 'yyy'}}
     )
     def test_simple_case(self):
@@ -25,8 +25,8 @@ class TestGetDefaultParameters(TestCase):
 
 class TestExecuteDataSource(TestCase):
 
-    @patch('task_geo.data_sources.upload.get_data_source')
-    @patch('task_geo.data_sources.upload.get_default_parameters')
+    @patch('task_geo.data_sources.get_data_source')
+    @patch('task_geo.data_sources.get_default_parameters')
     def test_simple_case(self, parameters_mock, get_data_source_mock):
         """execute_data_source retrieves the data_source, arguments, and make the call."""
         # Setup
