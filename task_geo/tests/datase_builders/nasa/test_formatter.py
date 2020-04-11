@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 
-from task_geo.data_sources.nasa import nasa
+from task_geo.dataset_builders.nasa import nasa
 from task_geo.testing import check_dataset_format
 
 from unittest import TestCase
@@ -26,7 +26,7 @@ class TestNasaAPI(TestCase):
 
         start_date = pd.to_datetime('01nov2019')
 
-        df = nasa.nasa_meteo_data(data, start_date).iloc[:10]
+        df = nasa.nasa_connector(data, start_date).iloc[:10]
 
         # Check.
         check_dataset_format(df)
