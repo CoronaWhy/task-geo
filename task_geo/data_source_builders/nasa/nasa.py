@@ -1,5 +1,4 @@
-"""
-Extract meteorological data from NASA.
+"""Extract meteorological data from NASA.
 
 Source:
 https://power.larc.nasa.gov/
@@ -8,14 +7,6 @@ import itertools
 import pandas as pd
 import requests
 
-
-base_url = "https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py"
-
-identifier = "identifier=SinglePoint"
-user_community = "userCommunity=SSE"
-temporal_average = "tempAverage=DAILY"
-output_format = "outputList=JSON,ASCII"
-user = "user=anonymous"
 
 PARAMETERS = {
     "temperature": ["T2M", "T2M_MIN", "T2M_MAX"],
@@ -33,16 +24,12 @@ COL_NAMES = {
 }
 
 
-def nasa_data_loc(country, region, sub_region, lat, lon, str_start_date,
-                  str_end_date, parms_str):
+def nasa_data_loc(lat, lon, str_start_date, str_end_date, parms_str):
     """
     Extract data for a single location.
 
     Parameters
     ----------
-    country : string
-    region : string
-    sub_region : string
     lat : string
     lon : string
     str_start_date : string
@@ -54,6 +41,14 @@ def nasa_data_loc(country, region, sub_region, lat, lon, str_start_date,
     df : pandas.DataFrame
 
     """
+    base_url = "https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py"
+
+    identifier = "identifier=SinglePoint"
+    user_community = "userCommunity=SSE"
+    temporal_average = "tempAverage=DAILY"
+    output_format = "outputList=JSON,ASCII"
+    user = "user=anonymous"
+
     url = f"{base_url}?request=execute&{identifier}&{parms_str}&" \
           f"startDate={str_start_date}&endDate={str_end_date}&" \
           f"lat={lat}&lon={lon}&{temporal_average}&{output_format}&" \
@@ -61,17 +56,13 @@ def nasa_data_loc(country, region, sub_region, lat, lon, str_start_date,
     response = requests.get(url)
     data_json = response.json()
     df = pd.DataFrame(data_json['features'][0]['properties']['parameter'])
-    df['country'] = country
-    df['region'] = region
-    df['sub_region'] = sub_region
     df['lon'] = lon
     df['lat'] = lat
     return df
 
 
 def nasa_connector(df_locations, start_date, end_date=None,
-                   parms=["temperature", "humidity", "pressure"],
-                   level="region"):
+                   parms=None):
     """
     Retrieve meteorologic data from NASA.
 
@@ -82,25 +73,22 @@ def nasa_connector(df_locations, start_date, end_date=None,
 
     Arguments:
     ---------
-        df_locations(pandas.DataFrame): Dataset with columns country, region,
-                                        sub_region, lon, and lat
-        start_date(datetime64): Start date for the time series
-        end_date(pandas.Timestamp): End date fo rthe time series (optional)
+        df_locations(pandas.DataFrame): Dataset with columns lon, and lat
+        start_date(datetime): Start date for the time series
+        end_date(datetime): End date for the time series (optional)
         parms(list of strings): Desired data, accepted are 'temperature',
                                 'humidity', and 'pressure' (optional)
-        level(string):  country, region, or sub_region, tells us at what
-                        granularity we want the data (eg for US sub_region, ie
-                        county, might make more sense than region, ie states,
-                        but in France region could be better, while for
-                        Luxembourg we probably want country) (optional)
 
     Return:
     ------
         pandas.DataFrame:   Columns are country, region, sub_region (non-null),
                             lon, lat, date, and the desired data.
     """
+    if parms is None:
+        parms = list(PARAMETERS.keys())
+
     df_locations = df_locations[
-        ~pd.isna(df_locations[[level, 'lon', 'lat']]).all(axis=1)
+        ~pd.isna(df_locations[['lon', 'lat']]).all(axis=1)
     ]
     location_data = ['country', 'region', 'sub_region', 'lon', 'lat']
     locations = df_locations[location_data].drop_duplicates()
@@ -117,8 +105,8 @@ def nasa_connector(df_locations, start_date, end_date=None,
     parms_str = f"parameters={','.join(all_parms)}"
 
     return pd.concat([
-        nasa_data_loc(row.country, row.region, row.sub_region, row.lat,
-                      row.lon, str_start_date, str_end_date, parms_str)
+        nasa_data_loc(row.lat, row.lon, str_start_date, str_end_date,
+                      parms_str)
         for row in locations.itertuples()
     ])
 
@@ -140,13 +128,10 @@ def nasa_formatter(df_nasa, parms):
     # date column
     df_nasa.reset_index(inplace=True, drop=False)
     df_nasa.rename(columns={'index': 'date'}, inplace=True)
-    df_nasa['date'] = df_nasa['date'].apply(lambda dt:
-                                            pd.to_datetime(
-                                                f"{dt[:4]}-{dt[4:6]}-{dt[6:]}"
-                                            ).date())
+    df_nasa['date'] = pd.to_datetime(df_nasa['date'], format='%Y%m%d')
 
     # reorder columns
-    base_parms = ['country', 'region', 'sub_region', 'lon', 'lat', 'date']
+    base_parms = ['lon', 'lat', 'date']
     all_parms = list(itertools.chain.from_iterable([PARAMETERS[p]
                                                     for p in parms]))
     df_nasa = df_nasa[base_parms + all_parms]
@@ -158,8 +143,7 @@ def nasa_formatter(df_nasa, parms):
 
 
 def nasa_meteo_data(df, start_date, end_date=None,
-                    parms=["temperature", "humidity", "pressure"],
-                    level="region", join=False):
+                    parms=None, join=True):
     """
     Retrieve meteorologic data from NASA.
 
@@ -170,45 +154,31 @@ def nasa_meteo_data(df, start_date, end_date=None,
 
     Arguments:
     ---------
-        df(pandas.DataFrame): Dataset with columns country, region, sub_region,
-                              lon, and lat
-        start_date(datetime64): Start date for the time series
-        end_date(pandas.Timestamp): End date fo rthe time series (optional)
+        df(pandas.DataFrame): Dataset with columns lon, and lat
+        start_date(datetime): Start date for the time series
+        end_date(datetime): End date fo rthe time series (optional)
         parms(list of strings): Desired data, accepted are 'temperature',
                                 'humidity', and 'pressure' (optional)
-        level(string):  country, region, or sub_region, tells us at what
-                        granularity we want the data (eg for US sub_region, ie
-                        county, might make more sense than region, ie states,
-                        but in France region could be better, while for
-                        Luxembourg we probably want country) (optional)
+                                Defaults to all.
         join(bool): Determine if the meteorologic data has to be joined to the
                     original dataset
 
     Return:
     ------
-        pandas.DataFrame:   Columns are country, region, sub_region (non-null),
-                            lon, lat, date, and the desired data.
+        pandas.DataFrame:   Columns are lon, lat, date, and the desired data,
+                            plus the columns of the original dataframe if
+                            join=True.
 
     """
-    # checks on the arguments
-    assert type(df) is pd.DataFrame, "Invalid input dataframe"
-    for col in ['country', 'region', 'sub_region', 'lon', 'lat']:
-        assert col in df.columns, f"Missing {col} column"
-    assert type(start_date) is pd.Timestamp, "Invalid start date"
-    if end_date:
-        assert type(end_date) is pd.Timestamp, "Invalid end date"
-    for p in parms:
-        assert p in PARAMETERS, f"Invalid parameter '{p}'"
-    assert level in ['country', 'region', 'sub_region'], \
-        "Invalid level {level}"
+    if parms is None:
+        parms = list(PARAMETERS.keys())
 
-    df_nasa = nasa_connector(df, start_date, end_date=None,
-                             parms=["temperature", "humidity", "pressure"],
-                             level="region")
+    df_nasa = nasa_connector(df, start_date, end_date=end_date,
+                             parms=parms)
     if not join:
         return nasa_formatter(df_nasa, parms)
     else:
         return df.merge(
             nasa_formatter(df_nasa, parms),
-            how='left', on=['country', 'region', 'sub_region', 'lon', 'lat']
+            how='left', on=['lon', 'lat']
         )
