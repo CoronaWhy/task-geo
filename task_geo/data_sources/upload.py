@@ -1,5 +1,6 @@
 """Functions and helpers to automate the execution and uploading of datasources."""
 import json
+import logging
 import os
 import shutil
 from datetime import datetime
@@ -9,7 +10,7 @@ from task_geo.data_sources import execute_data_source, get_data_source
 from task_geo.testing import check_data_source_package
 
 
-def update_datapackage_json(json_path, dataset_name, timestamp):
+def update_datapackage(json_path, dataset_name, timestamp):
     """Updates the metapackage.json with timestamp.
 
     Arguments:
@@ -21,21 +22,18 @@ def update_datapackage_json(json_path, dataset_name, timestamp):
         None
 
     """
-    with open(json_path) as f:
+    with open(json_path, 'r+') as f:
         metadata = json.load(f)
+        metadata['id'] = f'coronawhy/task-geo/{dataset_name[:-4]}'
+        metadata['timestamp'] = timestamp.isoformat()
+        metadata['resources'][0]['path'] = dataset_name
+        metadata['resources'].append({
+            'path': 'audit.md',
+            'description': 'Contains detailed information about the dataset.'
+        })
 
-    metadata['id'] = f'coronawhy/task-geo/{dataset_name[:-4]}'
-    metadata['timestamp'] = timestamp.isoformat()
-    metadata['resources'][0]['path'] = dataset_name
-    metadata['resources'].append({
-        'path': 'audit.md',
-        'description': 'Contains detailed information about the dataset.'
-    })
-
-    with open(json_path, 'w') as f:
-        json.dump(metadata, f)
-
-    return
+        f.seek(0)
+        json.dump(metadata, f, indent=4)
 
 
 def prepare_data_package(name, path=None):
@@ -75,10 +73,10 @@ def prepare_data_package(name, path=None):
 
     module_path = get_module_path(get_data_source(name))
 
-    json_path = os.path.join(module_path, 'datapackage.json')
-    shutil.copy(json_path, folder_path)
+    shutil.copy(os.path.join(module_path, 'datapackage.json'), folder_path)
     shutil.copy(os.path.join(module_path, 'audit.md'), folder_path)
 
-    update_datapackage_json(json_path, dataset_name, timestamp)
+    json_path = os.path.join(folder_path, 'datapackage.json')
+    update_datapackage(json_path, dataset_name, timestamp)
 
     return folder_path
