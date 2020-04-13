@@ -1,0 +1,73 @@
+{
+    "title": "NASA meteorological data",
+    "subtitle": "Source: https://power.larc.nasa.gov/",
+    "description": "Source meteorological data time series from given locations",
+    "licenses": [{"name": "copyright-authors"}],
+    "fields": [
+        {
+            "name": "country",
+            "description": "",
+            "type": "str"
+        },
+        {
+            "name": "region",
+            "description": "",
+            "type": "str"
+        },
+        {
+            "name": "sub_region",
+            "description": "",
+            "type": "str"
+        },
+        {
+            "name": "lon",
+            "description": "Longitude",
+            "type": "float"
+        },
+        {
+            "name": "lat",
+            "description": "Latitude",
+            "type": "float"
+        },
+        {
+            "name": "date",
+            "description": "",
+            "type": "pandas.Timestamp"
+        },
+        {
+            "name": "avg_temperature",
+            "description": "Daily average temperature in degrees Celsius",
+            "type": "float"
+        },
+        {
+            "name": "min_temperature",
+            "description": "Daily minimal temperature in degrees Celsius",
+            "type": "float"
+        },
+        {
+            "name": "max_temperature",
+            "description": "Daily maximal temperature in degrees Celsius",
+            "type": "float"
+        },
+        {
+            "name": "relative_humidity",
+            "description": "Relative humidity, %",
+            "type": "float"
+        },
+        {
+            "name": "specific_humidity",
+            "description": "Specific humidity, kg kg-1",
+            "type": "float"
+        },
+        {
+            "name": "pressure",
+            "description": "Atmospheric pressure, kPa",
+            "type": "float"
+        }
+    ],
+    "keywords": [
+        "coronawhy",
+        "meteorological-data",
+        "NASA"
+    ]
+}

@@ -46,14 +46,15 @@ def check_dataset_format(data):
         assert 'longitude' in data.columns, message
 
     granularity = get_geographical_granularity(data)
-    min_granularity_term = LOCATION_TERMS[granularity]
+    if granularity is not None:
+        min_granularity_term = LOCATION_TERMS[granularity]
 
-    locations = [data.columns.get_loc(LOCATION_TERMS[granularity])]
-    for term in LOCATION_TERMS[granularity + 1:]:
-        locations.append(check_column_and_get_index(term, data, min_granularity_term))
+        locations = [data.columns.get_loc(LOCATION_TERMS[granularity])]
+        for term in LOCATION_TERMS[granularity + 1:]:
+            locations.append(check_column_and_get_index(term, data, min_granularity_term))
 
-    message = 'The correct ordening of the columns is "country, region, sub_region, city"'
-    assert (locations[::-1] == sorted(locations)), message
+        message = 'The correct ordening of the columns is "country, region, sub_region, city"'
+        assert (locations[::-1] == sorted(locations)), message
 
     message = 'date and timestamp columns should be of datetime dtype'
     time_index = None
@@ -65,7 +66,7 @@ def check_dataset_format(data):
         assert data.timestamp.dtype == 'datetime64[ns]', message
         time_index = data.columns.get_loc('timestamp')
 
-    if time_index is not None:
+    if time_index is not None and granularity is not None:
         message = 'geographical columns should be before time columns.'
         assert all(time_index > location for location in locations), message
 
