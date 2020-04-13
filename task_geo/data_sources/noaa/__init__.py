@@ -2,7 +2,7 @@ from task_geo.data_sources.noaa.noaa_api_connector import noaa_api_connector
 from task_geo.data_sources.noaa.noaa_api_formatter import noaa_api_formatter
 
 
-def noaa_api(countries, start_date, end_date, metrics=None, country_aggr=False):
+def noaa_api(countries, start_date, end_date=None, metrics=None, country_aggr=False):
     """NOAA API Data Source.
 
     Please, note the following:
