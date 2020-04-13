@@ -1,22 +1,5 @@
-import io
-
 import numpy as np
 import pandas as pd
-import requests
-
-
-def nyt_connector():
-    """Retrieves data from The New York Time.
-
-    Arguments:
-        None
-
-    Returns:
-        pandas.DataFrame
-    """
-    url = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv'
-    urlData = requests.get(url).content
-    return pd.read_csv(io.StringIO(urlData.decode('utf-8')))
 
 
 def nyt_formatter(raw):
@@ -50,18 +33,4 @@ def nyt_formatter(raw):
     }
     raw.rename(columns=rename, inplace=True)
 
-    return raw[['country', 'state', 'county', 'fips', 'date', 'cum_cases',
-                'cum_deaths']]
-
-
-def us_covid_nyt():
-    """Data source for US COVID-19 cases (per county), coming from The New York Times.
-
-    Arguments:
-        None
-
-    Returns:
-        pandas.DataFrame
-    """
-    data = nyt_connector()
-    return nyt_formatter(data)
+    return raw[['country', 'state', 'county', 'fips', 'date', 'cum_cases', 'cum_deaths']]
