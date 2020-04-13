@@ -1,7 +1,9 @@
-import requests
-import pandas as pd
-from nasa import PARAMETERS
 import itertools
+
+import pandas as pd
+import requests
+
+from task_geo.dataset_builders.nasa.references import PARAMETERS
 
 
 def nasa_data_loc(lat, lon, str_start_date, str_end_date, parms_str):
@@ -29,10 +31,12 @@ def nasa_data_loc(lat, lon, str_start_date, str_end_date, parms_str):
     output_format = "outputList=JSON,ASCII"
     user = "user=anonymous"
 
-    url = f"{base_url}?request=execute&{identifier}&{parms_str}&" \
-          f"startDate={str_start_date}&endDate={str_end_date}&" \
-          f"lat={lat}&lon={lon}&{temporal_average}&{output_format}&" \
-          f"{user_community}&{user}"
+    url = (
+        f"{base_url}?request=execute&{identifier}&{parms_str}&"
+        f"startDate={str_start_date}&endDate={str_end_date}&"
+        f"lat={lat}&lon={lon}&{temporal_average}&{output_format}&"
+        f"{user_community}&{user}"
+    )
     response = requests.get(url)
     data_json = response.json()
     df = pd.DataFrame(data_json['features'][0]['properties']['parameter'])
@@ -41,10 +45,8 @@ def nasa_data_loc(lat, lon, str_start_date, str_end_date, parms_str):
     return df
 
 
-def nasa_connector(df_locations, start_date, end_date=None,
-                   parms=None):
-    """
-    Retrieve meteorologic data from NASA.
+def nasa_connector(df_locations, start_date, end_date=None, parms=None):
+    """Retrieve meteorologic data from NASA.
 
     Given a dataset with columns country, region, sub_region, lon, and lat, for
     each geographic coordinate (lon, lat) corresponding to a place (specified
@@ -80,12 +82,10 @@ def nasa_connector(df_locations, start_date, end_date=None,
     else:
         str_end_date = str(end_date.date()).replace('-', '')
 
-    all_parms = list(itertools.chain.from_iterable([PARAMETERS[p]
-                                                    for p in parms]))
+    all_parms = list(itertools.chain.from_iterable([PARAMETERS[p] for p in parms]))
     parms_str = f"parameters={','.join(all_parms)}"
 
     return pd.concat([
-        nasa_data_loc(row.lat, row.lon, str_start_date, str_end_date,
-                      parms_str)
+        nasa_data_loc(row.lat, row.lon, str_start_date, str_end_date, parms_str)
         for row in locations.itertuples()
     ])
