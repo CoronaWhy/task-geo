@@ -11,19 +11,23 @@ from hdx.data.resource import Resource
 from hdx.hdx_configuration import Configuration
 from hdx.utilities.easy_logging import setup_logging
 
-setup_logging()
 logger = logging.getLogger(__name__)
-
-Configuration.create(hdx_site='prod', user_agent='CoronaWhy', hdx_read_only=True)
 
 
 def hdx_acap_connector():
     """Connects to HDX, and fetches acaps covid 19 government measures dataset
-    Arguments: None
 
-    Returns: pandas.DataFrame
+    Arguments:
+        None
+
+    Returns:
+        pandas.DataFrame
 
     """
+    setup_logging()
+
+    Configuration.create(hdx_site='prod', user_agent='CoronaWhy', hdx_read_only=True)
+
     dataset = Dataset.read_from_hdx('acaps-covid19-government-measures-dataset')
     logger.info("Dataset Fetched from: %s", dataset.get_hdx_url())
     logger.info('Expected Update Frequency: %s', dataset.get_expected_update_frequency())

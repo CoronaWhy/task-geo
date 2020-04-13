@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-DEFAULT_METRICS = ['TMAX', 'TMIN', 'PCRP']
+DEFAULT_METRICS = ['TMAX', 'TMIN', 'TAVG', 'PCRP', 'SNOW', 'SNWD']
 
 
 def get_stations_by_country(country):
@@ -69,12 +69,14 @@ def get_request_urls(country, start_date, end_date=None, metrics=None):
             TAVG: Average of temperature.
             SNOW: Snowfall (mm).
             SNWD: Snow depth (mm).
+            PRCP: Precipitation.
 
     Returns:
         str
     """
 
     base_url = 'https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries'
+    max_stations_req = 50
 
     if metrics is None:
         metrics = DEFAULT_METRICS
@@ -92,13 +94,17 @@ def get_request_urls(country, start_date, end_date=None, metrics=None):
     end = end_date.date().isoformat()
 
     stations_list = get_stations_by_country(country)
-    if len(stations_list) < 10:
+    if len(stations_list) < max_stations_req:
         stations = ','.join(stations_list)
         return [
             f'{base_url}&stations={stations}&startDate={start}&endDate={end}{request_common_args}']
 
     else:
-        chunked_station_list = [stations_list[i:i + 15] for i in range(0, len(stations_list), 15)]
+        chunked_station_list = [
+            stations_list[i:i + max_stations_req]
+            for i in range(0, len(stations_list), max_stations_req)
+        ]
+
         return [
             (
                 f'{base_url}&stations={",".join(chunk)}&startDate={start}'
@@ -129,10 +135,10 @@ def get_parse_response(urls):
         response = requests.get(url)
         try:
             response.raise_for_status()
-        except requests.exceptions.HTTPError as e:
+        except requests.exceptions.HTTPError:
             errors.append({
                 'url': url,
-                'error': e
+                'error': response.json(),
             })
             continue
 
@@ -168,9 +174,9 @@ def noaa_api_connector(countries, start_date, end_date=None, metrics=None):
         country_results, errors = get_parse_response(urls)
 
         if errors:
-            logging.INFO('The following errors where found during the operation:')
+            logging.info('The following errors where found during the operation:')
             for error in errors:
-                logging.INFO(error)
+                logging.info(error)
 
         result.extend(country_results)
 
