@@ -5,7 +5,12 @@ from task_geo.data_sources.noaa.noaa_api_formatter import noaa_api_formatter
 def noaa_api(countries, start_date, end_date, metrics=None, country_aggr=False):
     """NOAA API Data Source.
 
+    Please, note the following:
+    - The metrics variable will only filter out available metrics, if the metric is not available,
+    requesting it will have no effect.
 
+    - Country_agg will only return the min for `TMIN`, that is the absolute minimum,
+    and the max for `TMAX`, the absolute maximum.
 
     Arguments:
         countries(list[str]):
