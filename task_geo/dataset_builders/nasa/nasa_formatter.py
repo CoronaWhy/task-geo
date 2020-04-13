@@ -4,11 +4,13 @@ Source:
 https://power.larc.nasa.gov/
 """
 import itertools
+
 import pandas as pd
-from nasa import PARAMETERS, COL_NAMES
+
+from task_geo.dataset_builders.nasa.references import COL_NAMES, PARAMETERS
 
 
-def nasa_formatter(df_nasa, parms):
+def nasa_formatter(df_nasa, parms=None):
     """
     Format the NASA data.
 
@@ -22,6 +24,9 @@ def nasa_formatter(df_nasa, parms):
     df_nasa : pandas.DataFrame
 
     """
+    if parms is None:
+        parms = list(PARAMETERS.keys())
+
     # date column
     df_nasa.reset_index(inplace=True, drop=False)
     df_nasa.rename(columns={'index': 'date'}, inplace=True)
