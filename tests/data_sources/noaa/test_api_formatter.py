@@ -19,13 +19,13 @@ class TestNoaaApi(TestCase):
         # Check
         check_dataset_format(data)
 
-    def test_validate_formatter_country_avg(self):
+    def test_validate_formatter_country_aggr(self):
         """Validate formatter result when country_avg is present."""
         # Setup
         raw = pd.read_csv('tests/fixtures/noaa_fixture.csv')
 
         # Run
-        data = noaa_api_formatter(raw, country_avg=True)
+        data = noaa_api_formatter(raw, country_aggr=True)
 
         # Check
         check_dataset_format(data)
