@@ -67,7 +67,7 @@ def check_dataset_format(data):
 
     if time_index is not None:
         message = 'geographical columns should be before time columns.'
-        assert all(time_index > location for location in locations)
+        assert all(time_index > location for location in locations), message
 
     object_columns = data.select_dtypes(include='object').columns
 

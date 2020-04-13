@@ -1,0 +1,72 @@
+{
+    "title": "Granular COVID-19 Data for Spain",
+    "description": "Granular data (Spanish Autonomous Communities) about the spread of COVID-19 in Spain. Sourced from https://covid19.isciii.es/resources/serie_historica_acumulados.csv",
+    "licenses": [],
+    "fields": [
+        {
+            "name": "country",
+            "description": "Geographical location - country",
+            "type": "str"
+        },
+        {
+            "name": "autonomous_community_iso",
+            "description": "Spanish Autonomous Communities",
+            "type": "str"
+        },
+        {
+            "name": "area_km_squared",
+            "description": "Area in square kilometers",
+            "type": "double"
+        },
+        {
+            "name": "population",
+            "description": "Population",
+            "type": "int"
+        },
+        {
+            "name": "gdp_per_capita_euros",
+            "description": "Gross domestic product per capita in Euros",
+            "type": "int"
+        },
+        {
+            "name": "density_pop_per_km_squared",
+            "description": "Density in population per square kilometer",
+            "type": "int"
+        },
+        {
+            "name": "date",
+            "description": "Date",
+            "type": "datetime"
+        },
+        {
+            "name": "cases",
+            "description": "Number of Covid-19 cases",
+            "type": "int"
+        },
+        {
+            "name": "hospitalized",
+            "description": "Number of Covid-19 patients hospitalized",
+            "type": "int"
+        },
+        {
+            "name": "icu",
+            "description": "Number of increased Covid-19 patients",
+            "type": "int"
+        },
+        {
+            "name": "deceased",
+            "description": "Number of increased Covid-19 patients deceased",
+            "type": "datetime"
+        },
+        {
+            "name": "recovered",
+            "description": "Number of increased Covid-19 patients recovered",
+            "type": "datetime"
+        }
+    ],
+    "keywords": [
+        "Spain",
+        "COVID-19",
+        "spread"
+    ]
+}
