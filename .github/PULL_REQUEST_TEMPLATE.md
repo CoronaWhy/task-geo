@@ -7,7 +7,7 @@ Before opening the Pull Request make sure that you:
 - Have read the **[CONTRIBUTING GUIDE](https://coronawhy.github.io/task-geo/contributing.html)**
 - Have read the **[DATA MODEL](https://coronawhy.github.io/task-geo/data_model.html)** and **[DATA SOURCES](https://coronawhy.github.io/task-geo/data_sources.html)** documentation.
 - Have check that your code is compliant with both.
-
+- Delete this notice, failing to do so will result in this PR being closed without prior review.
 
 #########
 

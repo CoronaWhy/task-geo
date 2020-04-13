@@ -20,7 +20,8 @@ except IOError:
 install_requires = [
     'pandas',
     'requests',
-    'jupyter'
+    'jupyter',
+    'hdx-python-api'
 ]
 
 setup_requires = [
@@ -41,7 +42,7 @@ development_requires = [
     # docs
     'm2r>=0.2.0',
     'nbsphinx>=0.5.0',
-    'Sphinx>=1.7.1',
+    'Sphinx>=1.7.1, <3',
     'sphinx_rtd_theme>=0.2.4',
     'autodocsumm>=0.1.10',
 

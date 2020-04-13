@@ -1,13 +1,15 @@
 from task_geo.data_sources.covid.cds import cds
 from task_geo.data_sources.covid.nyt import nyt
 from task_geo.data_sources.demographics.us_census import us_census
+from task_geo.data_sources.hdx_acap import hdx_acap
 from task_geo.data_sources.noaa import noaa_api
 
 AVAILABLE_DATA_SOURCES = {
     'noaa_api': noaa_api,
     'cds': cds,
     'us_census': us_census,
-    'nyt': nyt
+    'nyt': nyt,
+    'hdx_acap': hdx_acap
 }
 
 

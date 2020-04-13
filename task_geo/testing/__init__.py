@@ -1,4 +1,4 @@
-LOCATION_TERMS = ['city', 'subregion', 'region', 'country']
+LOCATION_TERMS = ['city', 'sub_region', 'region', 'country']
 
 
 def get_geographical_granularity(data):
@@ -27,12 +27,12 @@ def check_dataset_format(data):
     if granularity is not None:
         min_granularity_term = LOCATION_TERMS[granularity]
 
-        locations = [granularity]
-        for term in LOCATION_TERMS[granularity + 1:]:
-            locations.append(check_column_and_get_index(term, data, min_granularity_term))
+    locations = [data.columns.get_loc(LOCATION_TERMS[granularity])]
+    for term in LOCATION_TERMS[granularity + 1:]:
+        locations.append(check_column_and_get_index(term, data, min_granularity_term))
 
-        message = 'The correct ordening of the columns is "country, region, sub_region, city"'
-        assert (locations == sorted(locations)), message
+    message = 'The correct ordening of the columns is "country, region, sub_region, city"'
+    assert (locations[::-1] == sorted(locations)), message
 
     message = 'date and timestamp columns should be of datetime dtype'
     time_index = None
@@ -46,7 +46,7 @@ def check_dataset_format(data):
 
     if time_index is not None and granularity is not None:
         message = 'geographical columns should be before time columns.'
-        assert all(time_index > location for location in locations)
+        assert all(time_index > location for location in locations), message
 
     object_columns = data.select_dtypes(include='object').columns
 
