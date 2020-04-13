@@ -1,4 +1,4 @@
-from unittest import TestCase
+from unittest import TestCase, skip
 
 from task_geo.data_sources import list_data_sources
 from task_geo.testing import check_data_source_package
@@ -10,6 +10,7 @@ class TestDataSourceModules(TestCase):
     This is not a regular unittest, as it doesn't test the behavior of code,
     but rather checks that a data source is ready to be run and uploaded to cloud storage.
     """
+    @skip
     def test_data_sources(self):
         """Check data_source modules structure and outputs."""
         data_sources = list_data_sources()
