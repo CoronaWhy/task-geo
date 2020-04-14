@@ -15,6 +15,7 @@ Data Credits:
 import io
 
 import pandas as pd
+import numpy as np
 import requests
 
 url = (
@@ -115,9 +116,9 @@ def fr_covidata_formatter(dataset):
                  "source_nom": "source_name"})
     dataset['country'] = 'France'
     frcovidata = dataset[
-         'subregion_code', 'subregion_name', 'country', 'date', 'confirmed',
-         'hospitalized', 'recovering', 'recovered',
-         'deaths', 'source_name', 'source_url', 'source_archive',
-         'source_type']
+        'subregion_code', 'subregion_name', 'country', 'date', 'confirmed',
+        'hospitalized', 'recovering', 'recovered',
+        'deaths', 'source_name', 'source_url', 'source_archive',
+        'source_type']
 
     return frcovidata
