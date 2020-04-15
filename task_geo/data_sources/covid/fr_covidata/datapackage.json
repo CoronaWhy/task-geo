@@ -1,0 +1,77 @@
+{
+    "title": "COVID-19 Granular Data - France",
+    "description": "Sourcing of COVID-19 cases granular data in different subregions of France, aggregated by @opencovid19-fr, https://github.com/opencovid19-fr/",
+    "licenses": [{"name": "copyright-authors"}],
+    "fields": [
+        {
+            "name": "subregion_code",
+            "description": "Geographical location - maille code",
+            "type": "str"
+        },
+        {
+            "name": "subregion_name",
+            "description": "Geographical location - department",
+            "type": "str"
+        },
+        {
+            "name": "country",
+            "description": "Geographical location - country",
+            "type": "str"
+        },
+        {
+            "name": "date",
+            "description": "Date",
+            "type": "datetime.date"
+        },
+        {
+            "name": "confirmed",
+            "description": "Cumulative number of confirmed covid-19 cases at the given location until the given time",
+            "type": "float"
+        },
+        {
+            "name": "hospitalized",
+            "description": "Number of hospitalized people due to covid-19 at the given location at the given time",
+            "type": "float"
+        },
+        {
+            "name": "recovering",
+            "description": "Number of people recovering from covid-19 at the given location at the given time",
+            "type": "float"
+        },
+        {
+            "name": "recovered",
+            "description": "Cumulative number of people healed from covid-19 at the given location until the given time",
+            "type": "float"
+        },
+        {
+            "name": "deaths",
+            "description": "Cumulative number of people who passed away from covid-19 at the given location until the given time",
+            "type": "float"
+        },
+        {
+            "name": "source_name",
+            "description": "Name of the source of information relevant to the given location at the given time",
+            "type": "str"
+        },
+        {
+            "name": "source_url",
+            "description": "Uniform Resource Locator link of the source of information relevant to the given location at the given time",
+            "type": "str"
+        },
+        {
+            "name": "source_archive",
+            "description": "Uniform Resource Locator link of the archive of the source of information relevant to the given location at the given time",
+            "type": "str"
+        },
+        {
+            "name": "source_type",
+            "description": "Type of the source of information: National Health Ministry/Regional health agencies",
+            "type": "str"
+        }
+    ],
+    "keywords": [
+        "France",
+        "COVID-19",
+        "granular data"
+    ]
+}
