@@ -1,5 +1,5 @@
-from datetime import datetime, timedelta
 import os
+from datetime import datetime, timedelta
 
 import fitz
 import numpy as np
@@ -12,7 +12,8 @@ CATEGORIES = [
     "Grocery & pharmacy",
     "Parks",
     "Transit stations",
-    "Workplaces",
+    "Workplace",   # The repetition of workplace is intentional.
+    "Workplaces",  # As the first pdf were released with the final s, and the newer without.
     "Residential"
 ]
 
@@ -97,6 +98,10 @@ def parse_stream(stream):
     data = np.flip(data, axis=0)
     data[:, 1] = -(data[:, 1] - baseline)
 
+    # Fixing the issue when the first point is null
+    if np.equal(data[0, :], [[0, 0]]).all():
+        data = data[1:, :]
+
     # graph height
     max_y = baseline
     # length of a single day
@@ -129,15 +134,9 @@ def extract_graph(pdf, graph_name, region, xref, date):
 def get_region_indices(page_text):
     """Given the list of texts from a PDF page, return the region names."""
     indices = {}
-    first_index = 0  # This is because the region name is the title of the section
+    first_index = 0  # The region name is the title of the section, it's first element.
+    second_index = 13  # 1 title + 6(category+coment)
     indices[first_index] = page_text[first_index]
-    # Residential is the last section, we count also the summary line.
-    if 'Residential' in page_text:
-        term = 'Residential'
-    else:
-        term = 'Residential '  # Case when there is not ennoght data
-
-    second_index = page_text.index(term) + 2
     indices[second_index] = page_text[second_index]
     return indices
 
@@ -164,7 +163,6 @@ def extract_page(pdf, page_number, country_iso, date):
             info_in_page.append((line, region))
 
     xrefs = sorted(pdf.getPageXObjectList(page_number), key=lambda x: int(x[1].replace("X", "")))
-
     graph_columns = {}
     for (graph_name, region), xref in zip(info_in_page, xrefs):
         data_graph = extract_graph(pdf, graph_name, region, xref, date)
@@ -188,7 +186,27 @@ def structure_results(result):
     return structured
 
 
-def extract_country(path, country_iso, region, date):
+def extract_document(path, country_iso, region, date):
+    """Parse and extract the contents of the given document.
+
+    There are two types of documents:
+    - The country-wide reports, which are the larger majority.
+    - The region-wide reports, that are only for the UK and US subregions.
+
+    In the first case, the first two pages is a country summary and the next ones the detail
+    by region, in the second case the contents are region and sub-region based.
+
+    Arguments:
+        path(str): Path to the document.
+        country_iso(str): ISO-2 code for the country the document belongs to.
+        region(Union[str, np.nan]): Region name. Only used for US and UK reports.
+        date(datetime): Start date for the documents.
+
+    Returns:
+        pandas.DataFrame
+
+    """
+
     pdf = fitz.Document(path)
 
     results = []
@@ -201,40 +219,61 @@ def extract_country(path, country_iso, region, date):
     first_date = datetime(2020, 2, 23).date()
     last_date = date
     template = pd.DataFrame({
-        'country_iso2': country_iso,
+        'country_iso': country_iso,
         'date': [
             first_date + timedelta(days=d) for d in range((last_date - first_date).days + 1)]
     })
     template['date'] = pd.to_datetime(template['date'])
 
     merged = []
+
     for key in structured:
         main = template.copy()
         for column in structured[key]:
             main = main.merge(column, how='left', on='date')
-            main['region'] = key
 
+        main['region'] = key
         merged.append(main)
 
-    return pd.concat(merged)
+    result = pd.concat(merged)
+
+    if not pd.isna(region):
+        result['sub_region'] = result.region
+        result['region'] = region
+
+        # We delete the region-level results, we will get them from the country-level report
+        result = result[result.sub_region != result.country_iso]
+
+    return result
 
 
-def extract_pdfs(pdf_files):
+def extract_documents(documents):
+    """Extract the information of the given documents.
+
+    Arguments:
+        documents(list[dict]):
+            List of dictionaries where each item contains keys:
+            `path`, `country_iso`, `region` and `date`
+
+    Returns:
+        pandas.DataFrame
+
+    """
     result = []
 
-    for row in pdf_files:
+    for row in documents:
         del row['href']
-        result.append(extract_country(**row))
+        result.append(extract_document(**row))
 
     return pd.concat(result)
 
 
 def mobility_connector(download_folder, download=True, skip_downloaded=True):
-    pdf_files = find_pdf_files_list(download_folder)
+    documents = find_pdf_files_list(download_folder)
 
     if download:
         if not os.path.exists(download_folder):
             os.makedirs(download_folder)
 
-        download_pdf_files(pdf_files, skip_downloaded)
-    return extract_pdfs(pdf_files)
+        download_pdf_files(documents, skip_downloaded)
+    return extract_documents(documents)
