@@ -1,13 +1,23 @@
 import pandas as pd
 
-from task_geo.common.country_codes import iso_to_name
-
 
 def mobility_formatter(raw):
     # Put column names in lowercase alphanumerical
-    columns = ['_'.join(column.replace(' & ', '_').lower().split(' ')) for column in raw.columns]
-    raw.columns = columns
-    raw['country'] = raw.country_iso.apply(iso_to_name)
+    column_names = {
+        'country_region_code': 'country_iso',
+        'country_region': 'country',
+        'sub_region_1': 'region',
+        'sub_region_2': 'sub_region',
+        'date': 'date',
+        'retail_and_recreation_percent_change_from_baseline': 'retail_recreation',
+        'grocery_and_pharmacy_percent_change_from_baseline': 'grocery_pharmacy',
+        'parks_percent_change_from_baseline': 'parks',
+        'transit_stations_percent_change_from_baseline': 'transit_stations',
+        'workplaces_percent_change_from_baseline': 'workplaces',
+        'residential_percent_change_from_baseline': 'residential',
+    }
+
+    raw = raw.rename(columns=column_names)
 
     numeric_columns = [
         'retail_recreation', 'grocery_pharmacy', 'parks',

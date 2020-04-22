@@ -21,28 +21,28 @@
                     "type": "date"
                 },
                 {
-                    "name": "retai_recreation",
-                    "description": "Variance in the given category in relation to the baseline.",
+                    "name": "retail_recreation",
+                    "description": "Changes in movement for places classified as retail and recreation.",
                     "type": "float"
                 },
                 {
                     "name": "grocery_pharmacy",
-                    "description": "Variance in the given category in relation to the baseline.",
+                    "description": "Changes in movement for places classified as grocery and pharmacy.",
                     "type": "float"
                 },
                 {
                     "name": "parks",
-                    "description": "Variance in the given category in relation to the baseline.",
+                    "description": "Changes in movement for places classified as parks.",
                     "type": "float"
                 },
                 {
                     "name": "transit_stations",
-                    "description": "Variance in the given category in relation to the baseline.",
+                    "description": "Changes in movement for places classified as transit and stations.",
                     "type": "float"
                 },
                 {
                     "name": "workplaces",
-                    "description": "Variance in the given category in relation to the baseline.",
+                    "description": "Changes in movement for places classified as workplaces.",
                     "type": "float"
                 }
             ]
