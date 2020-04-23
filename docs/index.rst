@@ -22,6 +22,7 @@
    :hidden:
 
    contributing
+   mantainer_guide
    code_of_conduct
    style_guide
    data_model
