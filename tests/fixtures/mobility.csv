@@ -1,0 +1,26 @@
+country_region_code,country_region,sub_region_1,sub_region_2,date,retail_and_recreation_percent_change_from_baseline,grocery_and_pharmacy_percent_change_from_baseline,parks_percent_change_from_baseline,transit_stations_percent_change_from_baseline,workplaces_percent_change_from_baseline,residential_percent_change_from_baseline
+AE,United Arab Emirates,,,2020-02-15,0.0,4.0,5.0,0.0,2.0,1.0
+AE,United Arab Emirates,,,2020-02-16,1.0,4.0,4.0,1.0,2.0,1.0
+AE,United Arab Emirates,,,2020-02-17,-1.0,1.0,5.0,1.0,2.0,1.0
+AE,United Arab Emirates,,,2020-02-18,-2.0,1.0,5.0,0.0,2.0,1.0
+AE,United Arab Emirates,,,2020-02-19,-2.0,0.0,4.0,-1.0,2.0,1.0
+AE,United Arab Emirates,,,2020-02-20,-2.0,1.0,6.0,1.0,1.0,1.0
+AE,United Arab Emirates,,,2020-02-21,-3.0,2.0,6.0,0.0,-1.0,1.0
+AE,United Arab Emirates,,,2020-02-22,-2.0,2.0,4.0,-2.0,3.0,1.0
+AE,United Arab Emirates,,,2020-02-23,-1.0,3.0,3.0,-1.0,4.0,1.0
+AE,United Arab Emirates,,,2020-02-24,-3.0,0.0,5.0,-1.0,3.0,1.0
+AE,United Arab Emirates,,,2020-02-25,-3.0,2.0,3.0,-2.0,3.0,1.0
+AE,United Arab Emirates,,,2020-02-26,-2.0,1.0,-3.0,-2.0,3.0,1.0
+AE,United Arab Emirates,,,2020-02-27,1.0,5.0,-1.0,-1.0,3.0,1.0
+AE,United Arab Emirates,,,2020-02-28,1.0,5.0,-1.0,-1.0,1.0,1.0
+AE,United Arab Emirates,,,2020-02-29,2.0,7.0,-1.0,-1.0,5.0,0.0
+AE,United Arab Emirates,,,2020-03-01,3.0,10.0,2.0,-1.0,4.0,1.0
+AE,United Arab Emirates,,,2020-03-02,0.0,7.0,1.0,-2.0,4.0,1.0
+AE,United Arab Emirates,,,2020-03-03,0.0,6.0,0.0,-5.0,4.0,1.0
+AE,United Arab Emirates,,,2020-03-04,-1.0,7.0,-2.0,-5.0,3.0,2.0
+AE,United Arab Emirates,,,2020-03-05,-3.0,6.0,-2.0,-5.0,3.0,2.0
+AE,United Arab Emirates,,,2020-03-06,-7.0,5.0,-8.0,-9.0,0.0,3.0
+AE,United Arab Emirates,,,2020-03-07,-3.0,6.0,1.0,-8.0,4.0,2.0
+AE,United Arab Emirates,,,2020-03-08,1.0,8.0,6.0,-9.0,-1.0,3.0
+AE,United Arab Emirates,,,2020-03-09,-3.0,4.0,4.0,-10.0,-1.0,4.0
+AE,United Arab Emirates,,,2020-03-10,-4.0,6.0,3.0,-11.0,-2.0,4.0
