@@ -6,11 +6,12 @@ def noaa_api(countries, start_date, end_date=None, metrics=None, country_aggr=Fa
     """NOAA API Data Source.
 
     Please, note the following:
-    - The metrics variable will only filter out available metrics, if the metric is not available,
-    requesting it will have no effect.
+        - The metrics variable will only filter out available metrics, if the metric is not
+          available, requesting it will have no effect.
 
-    - Country_agg will only return the min for `TMIN`, that is the absolute minimum,
-    and the max for `TMAX`, the absolute maximum.
+        - Country_agg will only return the min for `TMIN`, that is the absolute minimum,
+          and the max for `TMAX`, the absolute maximum.
+
 
     Arguments:
         countries(list[str]):
@@ -26,6 +27,7 @@ def noaa_api(countries, start_date, end_date=None, metrics=None, country_aggr=Fa
             SNOW: Snowfall (mm).
             SNWD: Snow depth (mm).
             PRCP: Precipitation.
+
         country_aggr(bool): When True, only an aggregate for each date/country will be returned.
 
     Example:

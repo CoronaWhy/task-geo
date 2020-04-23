@@ -17,7 +17,7 @@ def nasa_formatter(df_nasa, parms=None):
     Parameters
     ----------
     df_nasa : pandas.DataFrame
-    parms : list of strings
+    parms : list[str]
 
     Returns
     -------

@@ -2,13 +2,14 @@ import pandas as pd
 
 
 def es_covid_formatter(df):
-    """Formats data retrieved from https://covid19.isciii.es
+    """Format data retrieved from https://covid19.isciii.es.
 
     Arguments:
         raw(pandas.DataFrame):
 
     Returns:
         pandas.DataFrame
+
     """
     df.columns = df.columns.str.lower()
     df.rename(columns={'ccaa': 'autonomous_community_iso', 'fecha': 'date',

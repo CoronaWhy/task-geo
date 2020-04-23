@@ -6,21 +6,18 @@ import requests
 from task_geo.dataset_builders.nasa.references import PARAMETERS
 
 
-def nasa_data_loc(lat, lon, str_start_date, str_end_date, parms_str):
-    """
-    Extract data for a single location.
+def nasa_data_loc(lat, lon, str_start_date, str_end_date, params_str):
+    """Extract data for a single location.
 
-    Parameters
-    ----------
-    lat : string
-    lon : string
-    str_start_date : string
-    str_end_date : string
-    parms_str : string
+    Parameters:
+        lat(string)
+        lon(string)
+        str_start_date(string)
+        str_end_date(string)
+        params_str(string)
 
-    Returns
-    -------
-    df : pandas.DataFrame
+    Returns:
+        pandas.DataFrame
 
     """
     base_url = "https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py"
@@ -32,7 +29,7 @@ def nasa_data_loc(lat, lon, str_start_date, str_end_date, parms_str):
     user = "user=anonymous"
 
     url = (
-        f"{base_url}?request=execute&{identifier}&{parms_str}&"
+        f"{base_url}?request=execute&{identifier}&{params_str}&"
         f"startDate={str_start_date}&endDate={str_end_date}&"
         f"lat={lat}&lon={lon}&{temporal_average}&{output_format}&"
         f"{user_community}&{user}"
@@ -54,17 +51,16 @@ def nasa_connector(df_locations, start_date, end_date=None, parms=None):
     data at the location.
 
     Arguments:
-    ---------
         df_locations(pandas.DataFrame): Dataset with columns lon, and lat
         start_date(datetime): Start date for the time series
         end_date(datetime): End date for the time series (optional)
         parms(list of strings): Desired data, accepted are 'temperature',
                                 'humidity', and 'pressure' (optional)
 
-    Return:
-    ------
+    Returns:
         pandas.DataFrame:   Columns are country, region, sub_region (non-null),
                             lon, lat, date, and the desired data.
+
     """
     if parms is None:
         parms = list(PARAMETERS.keys())

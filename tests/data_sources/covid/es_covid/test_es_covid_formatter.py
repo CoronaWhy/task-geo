@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import pandas as pd
 
-from task_geo.data_sources.covid.spain import es_covid_formatter
+from task_geo.data_sources.covid.es_covid import es_covid_formatter
 from task_geo.testing import check_dataset_format
 
 

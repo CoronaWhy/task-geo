@@ -12,7 +12,6 @@ def nasa(df, start_date, end_date=None, parms=None, join=True):
     data at the location.
 
     Arguments:
-    ---------
         df(pandas.DataFrame): Dataset with columns lon, and lat
         start_date(datetime): Start date for the time series
         end_date(datetime): End date fo rthe time series (optional)
@@ -22,8 +21,7 @@ def nasa(df, start_date, end_date=None, parms=None, join=True):
         join(bool): Determine if the meteorologic data has to be joined to the
                     original dataset
 
-    Return:
-    ------
+    Returns:
         pandas.DataFrame:
             Columns are lon, lat, date, and the desired data, plus the columns of the original
             dataframe if join=True.
