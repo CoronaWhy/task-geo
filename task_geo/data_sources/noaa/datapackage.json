@@ -1,0 +1,23 @@
+{
+    "title": "Metereological data from NOAA",
+    "subtitle": "Made by Coronawhy Task-geo",
+    "description": "",
+    "licenses": [{"name": "CC0-1.0"}],
+    "resources": [
+        {
+            "description": "Main daaset",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "",
+                        "description": "",
+                        "type": ""
+                    }
+                ]
+            }
+        }
+    ],
+    "keywords": [
+        "coronawhy"
+    ]
+}

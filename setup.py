@@ -21,7 +21,9 @@ install_requires = [
     'pandas',
     'requests',
     'jupyter',
-    'hdx-python-api'
+    'hdx-python-api',
+    'kaggle_storage_client @ git+https://github.com/ManuelAlvarezC/kaggle-storage-client/',
+    'google-cloud-storage'
 ]
 
 setup_requires = [

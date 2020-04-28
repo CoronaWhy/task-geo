@@ -22,22 +22,27 @@ DATA_SOURCE_DEFAULT_PARAMETERS = {
     'noaa_api': {
         'args': [COUNTRIES, START_DATE],
         'kwargs': {},
+        'update': True
     },
     'cds': {
         'args': [],
-        'kwargs': {}
+        'kwargs': {},
+        'update': True
     },
     'us_census': {
         'args': [],
-        'kwargs': {}
+        'kwargs': {},
+        'update': False
     },
     'nyt': {
         'args': [],
-        'kwargs': {}
+        'kwargs': {},
+        'update': True
     },
     'hdx_acap': {
         'args': [],
-        'kwargs': {}
+        'kwargs': {},
+        'update': True
     },
 }
 
@@ -68,6 +73,10 @@ def get_default_parameters(name):
     """
     node = DATA_SOURCE_DEFAULT_PARAMETERS[name]
     return node['args'], node['kwargs']
+
+
+def get_update_policy(name):
+    return DATA_SOURCE_DEFAULT_PARAMETERS[name]['update']
 
 
 def execute_data_source(name):

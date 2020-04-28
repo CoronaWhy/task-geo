@@ -92,6 +92,7 @@
             }
         }
     ],
+    "licenses": [{"name": "CC0-1.0"}],
     "id": "78cf9dfd-6f6e-468b-a003-329e18c3c9dd",
     "size": 1215079,
     "revision_last_updated": "2020-04-07T16:17:52.581301",

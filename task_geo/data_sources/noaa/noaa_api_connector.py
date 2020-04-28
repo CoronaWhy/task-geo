@@ -26,7 +26,7 @@ from task_geo.data_sources.noaa.ftp_connector import download_noaa_files
 from task_geo.data_sources.noaa.references import (
     COUNTRY_AND_TERRITORY_CODES, DATA_DIRECTORY, TERRITORY_ACTIVE_STATIONS_MAP, load_dataset)
 
-logging.basicConfig(level=logging.DEBUG)
+LOGGER = logging.getLogger(__name__)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
@@ -131,7 +131,7 @@ def get_parse_response(urls):
 
     total = len(urls) - 1
     for i, url in enumerate(urls):
-        logging.debug('Making request %s / %s', i + 1, total + 1)
+        LOGGER.debug('Making request %s / %s', i + 1, total + 1)
         response = requests.get(url)
         try:
             response.raise_for_status()
@@ -169,14 +169,14 @@ def noaa_api_connector(countries, start_date, end_date=None, metrics=None):
 
     result = list()
     for country in countries:
-        logging.info('Requesting data for %s', country)
+        LOGGER.info('Requesting data for %s', country)
         urls = get_request_urls(country, start_date, end_date, metrics)
         country_results, errors = get_parse_response(urls)
 
         if errors:
-            logging.info('The following errors where found during the operation:')
+            LOGGER.info('The following errors where found during the operation:')
             for error in errors:
-                logging.info(error)
+                LOGGER.info(error)
 
         result.extend(country_results)
 
