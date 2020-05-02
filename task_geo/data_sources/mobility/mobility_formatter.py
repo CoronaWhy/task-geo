@@ -26,7 +26,7 @@ def mobility_formatter(raw):
     raw[numeric_columns] = raw[numeric_columns].astype(float)
     raw['date'] = pd.to_datetime(raw.date)
     column_order = [
-        'country_iso', 'country', 'region', 'sub_region', 'date', 'retail_recreation', 'grocery_pharmacy',
-        'parks', 'transit_stations', 'workplaces', 'residential'
+        'country_iso', 'country', 'region', 'sub_region', 'date', 'retail_recreation',
+        'grocery_pharmacy', 'parks', 'transit_stations', 'workplaces', 'residential'
     ]
     return raw[column_order]
