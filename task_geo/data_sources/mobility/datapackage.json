@@ -12,7 +12,12 @@
                 },
                 {
                     "name": "region",
-                    "description": "Name of the region",
+                    "description": "Name of the region (e.g. a state within a country)",
+                    "type": "string"
+                },
+                {
+                    "name": "sub_region",
+                    "description": "Name of the sub_region (e.g. a county within a state)",
                     "type": "string"
                 },
                 {

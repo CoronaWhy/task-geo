@@ -15,7 +15,11 @@
 
 
 **region**
-- Description: Name of the region
+- Description: Name of the region (e.g. a state within a country)
+- Type: string
+
+**sub_region**
+- Description: Name of the sub_region (e.g. a county within a state)
 - Type: string
 
 **date**
