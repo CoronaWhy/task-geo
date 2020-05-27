@@ -5,9 +5,33 @@ Credits
 Contributors
 ------------
 
+This is a list of the contributors to the project (not only code).
+
 - Daniel Robert-Nicoud <daniel.robertnicoud@gmail.com>
 - Manuel Alvarez <manuel@pythiac.com>
 - Krishna Sheth <krishnamsheth31@gmail.com>
+- Alex Walther
+- Andy Gabel
+- Ansun Sujoe
+- Brian Vacha
+- Carles Sala
+- Carlos Gomez
+- Cassie Gabel
+- Hyberson Pereira
+- Igor Kiulian
+- Imran Ahmed
+- Ishan Sharma
+- Jane Razumovskaya
+- Juan Calvo
+- Kevin Li
+- Marie Bjerede
+- Mike Honey
+- Nicholas Webb
+- Oussama Naji
+- Roshan Grewal
+- Sammer Puran
+- Shashi Raj
+- Wendy Mak
 
 
 Data Sources
