@@ -1,0 +1,18 @@
+task\_geo.data\_sources.covid.spain package
+===========================================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.data_sources.covid.spain.es_covid_connector
+   task_geo.data_sources.covid.spain.es_covid_formatter
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.covid.spain
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,18 @@
+task\_geo.data\_sources.covid.cds package
+=========================================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.data_sources.covid.cds.cds_connector
+   task_geo.data_sources.covid.cds.cds_formatter
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.covid.cds
+   :members:
+   :undoc-members:
+   :show-inheritance:

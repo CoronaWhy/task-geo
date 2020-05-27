@@ -1,0 +1,20 @@
+task\_geo.data\_sources.noaa package
+====================================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.data_sources.noaa.ftp_connector
+   task_geo.data_sources.noaa.noaa_api_connector
+   task_geo.data_sources.noaa.noaa_api_formatter
+   task_geo.data_sources.noaa.references
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.noaa
+   :members:
+   :undoc-members:
+   :show-inheritance:

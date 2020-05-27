@@ -1,0 +1,7 @@
+task\_geo.common.country\_codes module
+======================================
+
+.. automodule:: task_geo.common.country_codes
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+task\_geo.data\_sources.covid.cds.cds\_connector module
+=======================================================
+
+.. automodule:: task_geo.data_sources.covid.cds.cds_connector
+   :members:
+   :undoc-members:
+   :show-inheritance:

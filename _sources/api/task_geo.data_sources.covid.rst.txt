@@ -1,0 +1,20 @@
+task\_geo.data\_sources.covid package
+=====================================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   task_geo.data_sources.covid.cds
+   task_geo.data_sources.covid.fr_covidata
+   task_geo.data_sources.covid.nyt
+   task_geo.data_sources.covid.spain
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.covid
+   :members:
+   :undoc-members:
+   :show-inheritance:

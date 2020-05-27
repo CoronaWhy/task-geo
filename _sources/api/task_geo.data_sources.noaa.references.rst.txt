@@ -1,0 +1,7 @@
+task\_geo.data\_sources.noaa.references module
+==============================================
+
+.. automodule:: task_geo.data_sources.noaa.references
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+task\_geo.data\_sources.hdx\_acap.hdx\_acap\_formatter module
+=============================================================
+
+.. automodule:: task_geo.data_sources.hdx_acap.hdx_acap_formatter
+   :members:
+   :undoc-members:
+   :show-inheritance:

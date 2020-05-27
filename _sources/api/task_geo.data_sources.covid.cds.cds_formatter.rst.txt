@@ -1,0 +1,7 @@
+task\_geo.data\_sources.covid.cds.cds\_formatter module
+=======================================================
+
+.. automodule:: task_geo.data_sources.covid.cds.cds_formatter
+   :members:
+   :undoc-members:
+   :show-inheritance:

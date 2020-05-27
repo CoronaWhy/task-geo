@@ -1,0 +1,17 @@
+task\_geo.data\_sources.covid.fr\_covidata package
+==================================================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.data_sources.covid.fr_covidata.fr_covidata
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.covid.fr_covidata
+   :members:
+   :undoc-members:
+   :show-inheritance:

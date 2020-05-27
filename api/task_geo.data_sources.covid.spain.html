@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>task_geo.data_sources.covid.spain package &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="task_geo.data_sources.covid.spain.es_covid_connector module" href="task_geo.data_sources.covid.spain.es_covid_connector.html" />
+    <link rel="prev" title="task_geo.data_sources.covid.nyt.nyt module" href="task_geo.data_sources.covid.nyt.nyt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="../_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_model.html">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_model.html#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_model.html#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_model.html#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data_sources.html#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_sources.html#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="task_geo.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="task_geo.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="task_geo.data_sources.html">task_geo.data_sources package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="task_geo.html">task_geo package</a> &raquo;</li>
+        
+          <li><a href="task_geo.data_sources.html">task_geo.data_sources package</a> &raquo;</li>
+        
+          <li><a href="task_geo.data_sources.covid.html">task_geo.data_sources.covid package</a> &raquo;</li>
+        
+      <li>task_geo.data_sources.covid.spain package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/CoronaWhy/task-geo/blob/master/docs/api/task_geo.data_sources.covid.spain.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="task-geo-data-sources-covid-spain-package">
+<h1>task_geo.data_sources.covid.spain package<a class="headerlink" href="#task-geo-data-sources-covid-spain-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="task_geo.data_sources.covid.spain.es_covid_connector.html">task_geo.data_sources.covid.spain.es_covid_connector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="task_geo.data_sources.covid.spain.es_covid_formatter.html">task_geo.data_sources.covid.spain.es_covid_formatter module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-task_geo.data_sources.covid.spain">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-task_geo.data_sources.covid.spain" title="Permalink to this headline">¶</a></h2>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#task_geo.data_sources.covid.spain.es_covid" title="task_geo.data_sources.covid.spain.es_covid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">es_covid</span></code></a>()</p></td>
+<td><p>Daily updates for cases for Spain, joined with static demographic data.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="task_geo.data_sources.covid.spain.es_covid">
+<code class="sig-prename descclassname">task_geo.data_sources.covid.spain.</code><code class="sig-name descname">es_covid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/task_geo/data_sources/covid/spain.html#es_covid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task_geo.data_sources.covid.spain.es_covid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Daily updates for cases for Spain, joined with static demographic data.</p>
+<dl>
+<dt>Discovery</dt><dd><dl>
+<dt>Dynamic</dt><dd><dl>
+<dt>The following sources are updated on each run:</dt><dd><ol class="arabic simple">
+<li><p><a class="reference external" href="https://covid19.isciii.es/">https://covid19.isciii.es/</a> provides the following</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>autonomous_community_iso</p></li>
+<li><p>date</p></li>
+<li><p>cases</p></li>
+<li><p>hospitalized</p></li>
+<li><p>intensive care unit (icu)</p></li>
+<li><p>deceased</p></li>
+<li><p>recovered</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt>Static</dt><dd><dl>
+<dt>The following sources were used for one time access:</dt><dd><ol class="arabic simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain">https://en.wikipedia.org/wiki/Autonomous_communities_of_Spain</a> provides the
+following 19 Spanish Autonomous Communities</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>area</p></li>
+<li><p>population</p></li>
+<li><p>density</p></li>
+<li><p>gdp_per_capita_euros</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>N/A</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="task_geo.data_sources.covid.spain.es_covid_connector.html" class="btn btn-neutral float-right" title="task_geo.data_sources.covid.spain.es_covid_connector module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="task_geo.data_sources.covid.nyt.nyt.html" class="btn btn-neutral float-left" title="task_geo.data_sources.covid.nyt.nyt module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

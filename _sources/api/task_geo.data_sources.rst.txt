@@ -1,0 +1,21 @@
+task\_geo.data\_sources package
+===============================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   task_geo.data_sources.covid
+   task_geo.data_sources.demographics
+   task_geo.data_sources.hdx_acap
+   task_geo.data_sources.mobility
+   task_geo.data_sources.noaa
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+task\_geo.data\_sources.covid.spain.es\_covid\_formatter module
+===============================================================
+
+.. automodule:: task_geo.data_sources.covid.spain.es_covid_formatter
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,17 @@
+task\_geo.data\_sources.covid.nyt package
+=========================================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.data_sources.covid.nyt.nyt
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.covid.nyt
+   :members:
+   :undoc-members:
+   :show-inheritance:

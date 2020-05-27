@@ -1,0 +1,7 @@
+task\_geo.data\_sources.covid.fr\_covidata.fr\_covidata module
+==============================================================
+
+.. automodule:: task_geo.data_sources.covid.fr_covidata.fr_covidata
+   :members:
+   :undoc-members:
+   :show-inheritance:

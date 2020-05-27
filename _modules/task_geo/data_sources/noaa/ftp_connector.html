@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>task_geo.data_sources.noaa.ftp_connector &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="../../../../_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data_model.html">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data_sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data_sources.html#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data_sources.html#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/task_geo.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/task_geo.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.data_sources.html">task_geo.data_sources package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../data_sources.html">task_geo.data_sources</a> &raquo;</li>
+        
+          <li><a href="../noaa.html">task_geo.data_sources.noaa</a> &raquo;</li>
+        
+      <li>task_geo.data_sources.noaa.ftp_connector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for task_geo.data_sources.noaa.ftp_connector</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Extract and prepare meteorological data from https://www.ncdc.noaa.gov/</span>
+<span class="sd">the National Centers for Environmental Information</span>
+
+<span class="sd">Credits for the data:</span>
+
+<span class="sd">Menne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray,</span>
+<span class="sd">R.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network -</span>
+<span class="sd">Daily (GHCN-Daily), Version 3. [indicate subset used following decimal,</span>
+<span class="sd">e.g. Version 3.12].</span>
+<span class="sd">NOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [2020].</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">tarfile</span> <span class="k">as</span> <span class="nn">tar</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">task_geo.data_sources.noaa.references</span> <span class="kn">import</span> <span class="n">DATA_DIRECTORY</span><span class="p">,</span> <span class="n">load_dataset</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+
+<span class="n">NOAA_FTP_FILES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;readme.txt&#39;</span><span class="p">:</span> <span class="s1">&#39;RETR readme.txt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stations_metadata.txt&#39;</span><span class="p">:</span> <span class="s1">&#39;RETR ghcnd-stations.txt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;country_codes.txt&#39;</span><span class="p">:</span> <span class="s1">&#39;RETR ghcnd-countries.txt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stations_inventory.txt&#39;</span><span class="p">:</span> <span class="s1">&#39;RETR ghcnd-inventory.txt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;all_daily_data.tar.gz&#39;</span><span class="p">:</span> <span class="s1">&#39;RETR ghcnd_all.tar.gz&#39;</span>
+<span class="p">}</span>
+
+<span class="n">INDEX_COLUMNS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;YEAR&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;MONTH&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ELEMENT&#39;</span>
+<span class="p">]</span>
+<span class="n">REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(\w*?)(\d+)$&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="download_noaa_files"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.ftp_connector.html#task_geo.data_sources.noaa.ftp_connector.download_noaa_files">[docs]</a><span class="k">def</span> <span class="nf">download_noaa_files</span><span class="p">(</span><span class="n">large_files</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skip_downloaded</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Download files from the NOAA FTP server.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        large_files(bool):</span>
+<span class="sd">            Wheter or not to download the 3Gb daily reports, only download reference data.</span>
+<span class="sd">        skip_downloaded(bool):</span>
+<span class="sd">            Check if the file exists on local and has the same size that in the server,</span>
+<span class="sd">            if True, will be skiped, if False will download it.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None. The files will be downloaded on DOWNLOADED_DIRECTORY.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Connecting to NOAA FTP server.&#39;</span><span class="p">)</span>
+    <span class="n">ftp</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span><span class="s1">&#39;ftp.ncdc.noaa.gov&#39;</span><span class="p">)</span>
+    <span class="n">ftp</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="n">ftp</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="s1">&#39;/pub/data/ghcn/daily/&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">filename</span><span class="p">,</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">NOAA_FTP_FILES</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+        <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;tar.gz&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">large_files</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;This is file is more than 3Gb+, it may take a long time.&#39;</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Downloading </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIRECTORY</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">DATA_DIRECTORY</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">DATA_DIRECTORY</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">skip_downloaded</span><span class="p">:</span>
+            <span class="n">server_file_name</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">ftp</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">server_file_name</span><span class="p">)</span> <span class="o">==</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">ftp</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">large_files</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Extracting daily data.&#39;</span><span class="p">)</span>
+        <span class="n">tar_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_DIRECTORY</span><span class="si">}</span><span class="s1">/all_daily_data.tar.gz&#39;</span>
+        <span class="k">with</span> <span class="n">tar</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">tar_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar_all</span><span class="p">:</span>
+            <span class="n">tar_all</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_DIRECTORY</span><span class="si">}</span><span class="s1">/all_daily/&#39;</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="to_date"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.ftp_connector.html#task_geo.data_sources.noaa.ftp_connector.to_date">[docs]</a><span class="k">def</span> <span class="nf">to_date</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;MONTH&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;DAY&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="load_and_filter_dataset"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.ftp_connector.html#task_geo.data_sources.noaa.ftp_connector.load_and_filter_dataset">[docs]</a><span class="k">def</span> <span class="nf">load_and_filter_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">):</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dataset</span><span class="p">[(</span><span class="n">dataset</span><span class="o">.</span><span class="n">YEAR</span> <span class="o">&gt;=</span> <span class="mi">2020</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="n">dataset</span><span class="o">.</span><span class="n">YEAR</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">MONTH</span> <span class="o">&gt;=</span> <span class="mi">11</span><span class="p">))]</span></div>
+
+
+<div class="viewcode-block" id="load_stations_data"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.ftp_connector.html#task_geo.data_sources.noaa.ftp_connector.load_stations_data">[docs]</a><span class="k">def</span> <span class="nf">load_stations_data</span><span class="p">(</span><span class="n">station_ids</span><span class="p">):</span>
+    <span class="n">stations_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">load_and_filter_dataset</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">station_id</span> <span class="ow">in</span> <span class="n">station_ids</span>
+    <span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">INDEX_COLUMNS</span><span class="p">)</span>
+
+    <span class="n">stacked</span> <span class="o">=</span> <span class="n">stations_data</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stacked</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]</span>
+
+    <span class="n">column_day</span> <span class="o">=</span> <span class="n">stacked</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">REGEX</span><span class="p">)</span>
+    <span class="n">stacked</span><span class="p">[</span><span class="s1">&#39;column&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_day</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">stacked</span><span class="p">[</span><span class="s1">&#39;DAY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_day</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">stacked</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+    <span class="n">values</span> <span class="o">=</span> <span class="n">stacked</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;DAY&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">],</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">unstacked</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">unstacked</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">unstacked</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">unstacked</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">unstacked</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">unstacked</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="n">unstacked</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unstacked</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">to_date</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">unstacked</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;MONTH&#39;</span><span class="p">,</span> <span class="s1">&#39;DAY&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">unstacked</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="process_noaa_files"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.ftp_connector.html#task_geo.data_sources.noaa.ftp_connector.process_noaa_files">[docs]</a><span class="k">def</span> <span class="nf">process_noaa_files</span><span class="p">(</span><span class="n">countries</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a dataset for the given countries.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        countries(list[str]): List of countries in ISO-2 format.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df_stations</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;stations&#39;</span><span class="p">)</span>
+    <span class="n">df_countries</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;countries&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Join country to df_stations</span>
+    <span class="n">df_stations</span><span class="p">[</span><span class="s1">&#39;COUNTRY_CODE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_stations</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">df_stations</span> <span class="o">=</span> <span class="n">df_stations</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_countries</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;COUNTRY_CODE&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">df_stations</span> <span class="o">=</span> <span class="n">df_stations</span><span class="p">[</span><span class="n">df_stations</span><span class="p">[</span><span class="s1">&#39;COUNTRY_CODE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">countries</span><span class="p">)]</span>
+
+    <span class="n">df_daily_information</span> <span class="o">=</span> <span class="n">load_stations_data</span><span class="p">(</span><span class="n">df_stations</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">df_daily_information</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_stations</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="noaa_ftp_connector"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.ftp_connector.html#task_geo.data_sources.noaa.ftp_connector.noaa_ftp_connector">[docs]</a><span class="k">def</span> <span class="nf">noaa_ftp_connector</span><span class="p">(</span><span class="n">countries</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retrieves data from the NOAA FTP server.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        countries(list[str]):</span>
+<span class="sd">            List of countries in ISO-2 format.</span>
+
+<span class="sd">        download(bool):</span>
+<span class="sd">            Wheter or not to download the data, and just process previously downloaded data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">download</span><span class="p">:</span>
+        <span class="n">download_noaa_files</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">process_noaa_files</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

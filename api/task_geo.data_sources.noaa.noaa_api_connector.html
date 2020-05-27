@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>task_geo.data_sources.noaa.noaa_api_connector module &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="task_geo.data_sources.noaa.noaa_api_formatter module" href="task_geo.data_sources.noaa.noaa_api_formatter.html" />
+    <link rel="prev" title="task_geo.data_sources.noaa.ftp_connector module" href="task_geo.data_sources.noaa.ftp_connector.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="../_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_model.html">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_model.html#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_model.html#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_model.html#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../data_sources.html#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../data_sources.html#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../data_sources.html#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="task_geo.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="task_geo.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="task_geo.data_sources.html">task_geo.data_sources package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="task_geo.html">task_geo package</a> &raquo;</li>
+        
+          <li><a href="task_geo.data_sources.html">task_geo.data_sources package</a> &raquo;</li>
+        
+          <li><a href="task_geo.data_sources.noaa.html">task_geo.data_sources.noaa package</a> &raquo;</li>
+        
+      <li>task_geo.data_sources.noaa.noaa_api_connector module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/CoronaWhy/task-geo/blob/master/docs/api/task_geo.data_sources.noaa.noaa_api_connector.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-task_geo.data_sources.noaa.noaa_api_connector">
+<span id="task-geo-data-sources-noaa-noaa-api-connector-module"></span><h1>task_geo.data_sources.noaa.noaa_api_connector module<a class="headerlink" href="#module-task_geo.data_sources.noaa.noaa_api_connector" title="Permalink to this headline">¶</a></h1>
+<p>Connector to the NOAA API.</p>
+<p>Contributors:</p>
+<p>The journal article describing GHCN-Daily is:
+Menne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview
+of the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric
+and Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.</p>
+<p>To acknowledge the specific version of the dataset used, please cite:
+Menne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray,
+R.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network -
+Daily (GHCN-Daily), Version 3.26
+NOAA National Climatic Data Center. <a class="reference external" href="http://doi.org/10.7289/V5D21VHZ">http://doi.org/10.7289/V5D21VHZ</a> [2020/03/30].</p>
+<p><strong>Functions</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#task_geo.data_sources.noaa.noaa_api_connector.get_parse_response" title="task_geo.data_sources.noaa.noaa_api_connector.get_parse_response"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_parse_response</span></code></a>(urls)</p></td>
+<td><p>Calls the urls in urls, return responses and errors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#task_geo.data_sources.noaa.noaa_api_connector.get_request_urls" title="task_geo.data_sources.noaa.noaa_api_connector.get_request_urls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_request_urls</span></code></a>(country, start_date[, …])</p></td>
+<td><p>Encodes the parameters the URL to make a GET request</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#task_geo.data_sources.noaa.noaa_api_connector.get_stations_by_country" title="task_geo.data_sources.noaa.noaa_api_connector.get_stations_by_country"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stations_by_country</span></code></a>(country)</p></td>
+<td><p>Get all stations for a given country code.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#task_geo.data_sources.noaa.noaa_api_connector.noaa_api_connector" title="task_geo.data_sources.noaa.noaa_api_connector.noaa_api_connector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noaa_api_connector</span></code></a>(countries, start_date[, …])</p></td>
+<td><p>Get data from NOAA API.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="task_geo.data_sources.noaa.noaa_api_connector.get_parse_response">
+<code class="sig-prename descclassname">task_geo.data_sources.noaa.noaa_api_connector.</code><code class="sig-name descname">get_parse_response</code><span class="sig-paren">(</span><em class="sig-param">urls</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/task_geo/data_sources/noaa/noaa_api_connector.html#get_parse_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task_geo.data_sources.noaa.noaa_api_connector.get_parse_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the urls in urls, return responses and errors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>urls</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Urls as generated by <cite>get_request_urls</cite>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The first element of the tuple is a list of dictionary with all the responses.
+The second element is a list with all the exceptions raised during the calls.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[list[dict], list[Exception]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="task_geo.data_sources.noaa.noaa_api_connector.get_request_urls">
+<code class="sig-prename descclassname">task_geo.data_sources.noaa.noaa_api_connector.</code><code class="sig-name descname">get_request_urls</code><span class="sig-paren">(</span><em class="sig-param">country</em>, <em class="sig-param">start_date</em>, <em class="sig-param">end_date=None</em>, <em class="sig-param">metrics=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/task_geo/data_sources/noaa/noaa_api_connector.html#get_request_urls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task_geo.data_sources.noaa.noaa_api_connector.get_request_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encodes the parameters the URL to make a GET request</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>country</strong> (<em>str</em>) – FIPS Country code</p></li>
+<li><p><strong>start_date</strong> (<em>datetime</em>) – </p></li>
+<li><p><strong>end_date</strong> (<em>datetime</em>) – Defaults to today</p></li>
+<li><p><strong>metrics</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Optional.List of metrics to retrieve,valid values are:
+TMIN: Minimum temperature.
+TMAX: Maximum temperature.
+TAVG: Average of temperature.
+SNOW: Snowfall (mm).
+SNWD: Snow depth (mm).
+PRCP: Precipitation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="task_geo.data_sources.noaa.noaa_api_connector.get_stations_by_country">
+<code class="sig-prename descclassname">task_geo.data_sources.noaa.noaa_api_connector.</code><code class="sig-name descname">get_stations_by_country</code><span class="sig-paren">(</span><em class="sig-param">country</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/task_geo/data_sources/noaa/noaa_api_connector.html#get_stations_by_country"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task_geo.data_sources.noaa.noaa_api_connector.get_stations_by_country" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all stations for a given country code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>country</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="task_geo.data_sources.noaa.noaa_api_connector.noaa_api_connector">
+<code class="sig-prename descclassname">task_geo.data_sources.noaa.noaa_api_connector.</code><code class="sig-name descname">noaa_api_connector</code><span class="sig-paren">(</span><em class="sig-param">countries</em>, <em class="sig-param">start_date</em>, <em class="sig-param">end_date=None</em>, <em class="sig-param">metrics=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/task_geo/data_sources/noaa/noaa_api_connector.html#noaa_api_connector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task_geo.data_sources.noaa.noaa_api_connector.noaa_api_connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get data from NOAA API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>countries</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of FIPS country codes to retrieve.</p></li>
+<li><p><strong>start_date</strong> (<em>datetime</em>) – </p></li>
+<li><p><strong>end_date</strong> (<em>datetime</em>) – </p></li>
+<li><p><strong>metrics</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Optional.List of metrics to retrieve,valid values are:
+TMIN: Minimum temperature.
+TMAX: Maximum temperature.
+TAVG: Average of temperature.
+SNOW: Snowfall (mm).
+SNWD: Snow depth (mm).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple[list[dict], list[Exception]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="task_geo.data_sources.noaa.noaa_api_formatter.html" class="btn btn-neutral float-right" title="task_geo.data_sources.noaa.noaa_api_formatter module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="task_geo.data_sources.noaa.ftp_connector.html" class="btn btn-neutral float-left" title="task_geo.data_sources.noaa.ftp_connector module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

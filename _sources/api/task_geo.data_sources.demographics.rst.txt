@@ -1,0 +1,17 @@
+task\_geo.data\_sources.demographics package
+============================================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   task_geo.data_sources.demographics.us_census
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.demographics
+   :members:
+   :undoc-members:
+   :show-inheritance:

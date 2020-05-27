@@ -1,0 +1,17 @@
+task\_geo.common package
+========================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.common.country_codes
+
+Module contents
+---------------
+
+.. automodule:: task_geo.common
+   :members:
+   :undoc-members:
+   :show-inheritance:

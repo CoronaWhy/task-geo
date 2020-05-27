@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>task_geo.dataset_builders.nasa.nasa_connector &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="../../../../_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data_model.html">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data_sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data_sources.html#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data_sources.html#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/task_geo.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/task_geo.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.data_sources.html">task_geo.data_sources package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../nasa.html">task_geo.dataset_builders.nasa</a> &raquo;</li>
+        
+      <li>task_geo.dataset_builders.nasa.nasa_connector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for task_geo.dataset_builders.nasa.nasa_connector</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="kn">from</span> <span class="nn">task_geo.dataset_builders.nasa.references</span> <span class="kn">import</span> <span class="n">PARAMETERS</span>
+
+
+<div class="viewcode-block" id="nasa_data_loc"><a class="viewcode-back" href="../../../../api/task_geo.dataset_builders.nasa.nasa_connector.html#task_geo.dataset_builders.nasa.nasa_connector.nasa_data_loc">[docs]</a><span class="k">def</span> <span class="nf">nasa_data_loc</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">str_start_date</span><span class="p">,</span> <span class="n">str_end_date</span><span class="p">,</span> <span class="n">parms_str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract data for a single location.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lat : string</span>
+<span class="sd">    lon : string</span>
+<span class="sd">    str_start_date : string</span>
+<span class="sd">    str_end_date : string</span>
+<span class="sd">    parms_str : string</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py&quot;</span>
+
+    <span class="n">identifier</span> <span class="o">=</span> <span class="s2">&quot;identifier=SinglePoint&quot;</span>
+    <span class="n">user_community</span> <span class="o">=</span> <span class="s2">&quot;userCommunity=SSE&quot;</span>
+    <span class="n">temporal_average</span> <span class="o">=</span> <span class="s2">&quot;tempAverage=DAILY&quot;</span>
+    <span class="n">output_format</span> <span class="o">=</span> <span class="s2">&quot;outputList=JSON,ASCII&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;user=anonymous&quot;</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">?request=execute&amp;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">parms_str</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;startDate=</span><span class="si">{</span><span class="n">str_start_date</span><span class="si">}</span><span class="s2">&amp;endDate=</span><span class="si">{</span><span class="n">str_end_date</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;lat=</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">&amp;lon=</span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">temporal_average</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">output_format</span><span class="si">}</span><span class="s2">&amp;&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user_community</span><span class="si">}</span><span class="s2">&amp;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">data_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;parameter&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lon</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lat</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="nasa_connector"><a class="viewcode-back" href="../../../../api/task_geo.dataset_builders.nasa.nasa_connector.html#task_geo.dataset_builders.nasa.nasa_connector.nasa_connector">[docs]</a><span class="k">def</span> <span class="nf">nasa_connector</span><span class="p">(</span><span class="n">df_locations</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parms</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retrieve meteorologic data from NASA.</span>
+
+<span class="sd">    Given a dataset with columns country, region, sub_region, lon, and lat, for</span>
+<span class="sd">    each geographic coordinate (lon, lat) corresponding to a place (specified</span>
+<span class="sd">    if country, region, or sub_region) extract the time series of the desired</span>
+<span class="sd">    data at the location.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    ---------</span>
+<span class="sd">        df_locations(pandas.DataFrame): Dataset with columns lon, and lat</span>
+<span class="sd">        start_date(datetime): Start date for the time series</span>
+<span class="sd">        end_date(datetime): End date for the time series (optional)</span>
+<span class="sd">        parms(list of strings): Desired data, accepted are &#39;temperature&#39;,</span>
+<span class="sd">                                &#39;humidity&#39;, and &#39;pressure&#39; (optional)</span>
+
+<span class="sd">    Return:</span>
+<span class="sd">    ------</span>
+<span class="sd">        pandas.DataFrame:   Columns are country, region, sub_region (non-null),</span>
+<span class="sd">                            lon, lat, date, and the desired data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">parms</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">parms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">PARAMETERS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="n">df_locations</span> <span class="o">=</span> <span class="n">df_locations</span><span class="p">[</span>
+        <span class="o">~</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">df_locations</span><span class="p">[[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="n">location_data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;sub_region&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+    <span class="n">locations</span> <span class="o">=</span> <span class="n">df_locations</span><span class="p">[</span><span class="n">location_data</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+    <span class="n">str_start_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">start_date</span><span class="o">.</span><span class="n">date</span><span class="p">())</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">end_date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">())</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">str_end_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_date</span><span class="o">.</span><span class="n">date</span><span class="p">())</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">all_parms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">([</span><span class="n">PARAMETERS</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parms</span><span class="p">]))</span>
+    <span class="n">parms_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;parameters=</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">all_parms</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">nasa_data_loc</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">str_start_date</span><span class="p">,</span> <span class="n">str_end_date</span><span class="p">,</span> <span class="n">parms_str</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">locations</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()</span>
+    <span class="p">])</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

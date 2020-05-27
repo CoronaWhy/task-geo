@@ -1,0 +1,18 @@
+task\_geo.data\_sources.hdx\_acap package
+=========================================
+
+Submodules
+----------
+
+.. toctree::
+
+   task_geo.data_sources.hdx_acap.hdx_acap_connector
+   task_geo.data_sources.hdx_acap.hdx_acap_formatter
+
+Module contents
+---------------
+
+.. automodule:: task_geo.data_sources.hdx_acap
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,559 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data model &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Sources" href="data_sources.html" />
+    <link rel="prev" title="Style Guide" href="style_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="data_sources.html#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_sources.html#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/task_geo.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/task_geo.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.data_sources.html">task_geo.data_sources package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/CoronaWhy/task-geo/blob/master/docs/data_model.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="data-model">
+<h1>Data model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h1>
+<p>This is a reference for the data model of the different data we are gathering:</p>
+<p>Altough there are no rules on which language or framework to use, I will write in the case of Python and Pandas, in case of somebody working with another language (like R or Java), most of this rules are easy to translate, in case of doubt, please feel free to discuss in #task-geo.</p>
+<div class="section" id="general-guidelines">
+<h2>General guidelines<a class="headerlink" href="#general-guidelines" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Cite the source of your data. ( In the docstring of your data_source file, and on the
+<code class="docutils literal notranslate"><span class="pre">AUTHORS.rst</span></code> Data Sources section and, of course, include yourself among the contributors).</p></li>
+<li><p>Units should be in metric system, codes like country codes, should be ISO.</p></li>
+<li><p>Column names should be lowercase (it might be uglier, but it’s easier when coding).</p></li>
+<li><p>Unless strictly necessary, we should try avoid having multiindices.</p></li>
+<li><p>Avoid making totalizations of data, the more granular data, the best, we can always aggregate,
+but we can’t disaggregate.</p></li>
+<li><p>Avoid unecessary stacking of data:</p>
+<p>Don’t do this:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 32%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>date</p></td>
+<td><p>measure</p></td>
+<td><p>value</p></td>
+</tr>
+<tr class="row-even"><td><p>2020-01-01</p></td>
+<td><p>A</p></td>
+<td><p>1.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>2020-01-01</p></td>
+<td><p>B</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-even"><td><p>2020-01-02</p></td>
+<td><p>A</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2020-01-02</p></td>
+<td><p>B</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Do this instead:</p>
+<blockquote>
+<div><blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 32%" />
+<col style="width: 23%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>date</p></td>
+<td><p>A</p></td>
+<td><p>B</p></td>
+</tr>
+<tr class="row-even"><td><p>2020-01-01</p></td>
+<td><p>1.5</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2020-01-02</p></td>
+<td><p>1.0</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>THIS DOESN’T APPLY TO TIME DATA!!!</strong></p>
+</div></blockquote>
+</li>
+<li><p>Avoid unnecesary flattening/unstacking of data: (Yes, it may seem contradictory with the last
+point but it’s not!)</p>
+<p>This may come in hand when working with one-hot encoded variables or unstructured or schemaless
+data using dataframes, for example, for the following JSON:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;feature_A&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s1">&#39;feature_B&#39;</span><span class="p">:</span> <span class="mf">1.4</span><span class="p">,</span>
+        <span class="s1">&#39;feature_C&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;feature_X&#39;</span><span class="p">:</span> <span class="mf">14.5</span><span class="p">,</span>
+        <span class="s1">&#39;feature_Y&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="s1">&#39;feature_Z&#39;</span><span class="p">:</span> <span class="mi">41</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Don’t do this:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>feature_A</p></td>
+<td><p>feature_B</p></td>
+<td><p>feature_C</p></td>
+<td><p>feature_X</p></td>
+<td><p>feature_Y</p></td>
+<td><p>feature_Z</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0.1</p></td>
+<td><p>1.4</p></td>
+<td><p>1.5</p></td>
+<td><p>nan</p></td>
+<td><p>nan</p></td>
+<td><p>nan</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>nan</p></td>
+<td><p>nan</p></td>
+<td><p>nan</p></td>
+<td><p>14.5</p></td>
+<td><p>2.0</p></td>
+<td><p>41</p></td>
+</tr>
+</tbody>
+</table>
+<p>Do this instead:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 45%" />
+<col style="width: 35%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>id</p></td>
+<td><p>feature</p></td>
+<td><p>value</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>A</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>B</p></td>
+<td><p>1.4</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>C</p></td>
+<td><p>1.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>X</p></td>
+<td><p>14.5</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Y</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Z</p></td>
+<td><p>41</p></td>
+</tr>
+</tbody>
+</table>
+<p>It’s hard to define an explicit set of rules, but I’ll say:</p>
+<ol class="arabic simple">
+<li><p>Try to avoid adding NaN to your data because of the shaping.</p></li>
+<li><p>Try to make your date the most compact possible</p></li>
+<li><p>In case of doubt, please, don’t hesistate to ask on Slack #team-geo!</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="geographical-data">
+<h2>Geographical data<a class="headerlink" href="#geographical-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Columns with geographical-related information should be at the beginning of the dataset.</p></li>
+<li><p>Latitude and longitude should be in decimal values, not in degrees.</p></li>
+<li><p>Enrich your location (lat, long) data with the geopolitical information(city, country) when possible.
+You can use something like <a class="reference external" href="https://opencagedata.com/">https://opencagedata.com/</a></p></li>
+<li><p>Columns containing ISO codes instead of names, should append <cite>_iso</cite> at the end of the name.</p></li>
+<li><p>In case political subdivisions are available, each subdivision should be in its own column,
+those columns should be: <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">region</span></code>, <code class="docutils literal notranslate"><span class="pre">subregion</span></code> <code class="docutils literal notranslate"><span class="pre">city</span></code>. If information after some
+level is not available the column is not required.</p></li>
+</ul>
+</div>
+<div class="section" id="time-related-data">
+<h2>Time-related data<a class="headerlink" href="#time-related-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If we have have columns for time-related data, they should be after the geographical columns
+of the dataframe.</p></li>
+<li><p>The column containing the date should be of <cite>dtype</cite> <cite>datetime</cite>, that is: no date as string or
+int(something like <code class="docutils literal notranslate"><span class="pre">20200328</span></code> instead of <code class="docutils literal notranslate"><span class="pre">2020/03/28</span></code>).</p></li>
+<li><p>Avoid using full timestamps (date + time) if your data doesn’t provide time information, will
+avoid unnecessary noise. ( don’t use <code class="docutils literal notranslate"><span class="pre">2020-03-28T00:00:00</span></code>, instead use <code class="docutils literal notranslate"><span class="pre">2020/03/28</span></code>, altough
+pandas does that for you automatically most of the time)</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_sources.html" class="btn btn-neutral float-right" title="Data Sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="style_guide.html" class="btn btn-neutral float-left" title="Style Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

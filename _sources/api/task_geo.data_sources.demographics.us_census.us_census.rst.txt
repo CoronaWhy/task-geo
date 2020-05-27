@@ -1,0 +1,7 @@
+task\_geo.data\_sources.demographics.us\_census.us\_census module
+=================================================================
+
+.. automodule:: task_geo.data_sources.demographics.us_census.us_census
+   :members:
+   :undoc-members:
+   :show-inheritance:

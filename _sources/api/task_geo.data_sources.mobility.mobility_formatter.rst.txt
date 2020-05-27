@@ -1,0 +1,7 @@
+task\_geo.data\_sources.mobility.mobility\_formatter module
+===========================================================
+
+.. automodule:: task_geo.data_sources.mobility.mobility_formatter
+   :members:
+   :undoc-members:
+   :show-inheritance:

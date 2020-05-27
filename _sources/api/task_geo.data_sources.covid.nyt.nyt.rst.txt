@@ -1,0 +1,7 @@
+task\_geo.data\_sources.covid.nyt.nyt module
+============================================
+
+.. automodule:: task_geo.data_sources.covid.nyt.nyt
+   :members:
+   :undoc-members:
+   :show-inheritance:

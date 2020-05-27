@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>task_geo.data_sources.noaa.references &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="../../../../_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data_model.html">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_model.html#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data_sources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data_sources.html#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data_sources.html#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../data_sources.html#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/task_geo.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/task_geo.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.data_sources.html">task_geo.data_sources package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../api/task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../api/task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../data_sources.html">task_geo.data_sources</a> &raquo;</li>
+        
+          <li><a href="../noaa.html">task_geo.data_sources.noaa</a> &raquo;</li>
+        
+      <li>task_geo.data_sources.noaa.references</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for task_geo.data_sources.noaa.references</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">DATA_DIRECTORY</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span>
+
+
+<div class="viewcode-block" id="generate_daily_reports_column_info"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.references.html#task_geo.data_sources.noaa.references.generate_daily_reports_column_info">[docs]</a><span class="k">def</span> <span class="nf">generate_daily_reports_column_info</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;This function was used to generate the colnames and colspecs of DATASETS[&#39;daily_report&#39;].&quot;&quot;&quot;</span>
+    <span class="n">colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;MONTH&#39;</span><span class="p">,</span> <span class="s1">&#39;ELEMENT&#39;</span><span class="p">]</span>
+    <span class="n">colspecs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">21</span><span class="p">)]</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="mi">21</span>
+    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">):</span>
+        <span class="n">colnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;VALUE</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">colspecs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">last</span><span class="p">,</span> <span class="n">last</span> <span class="o">+</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="n">last</span> <span class="o">+=</span> <span class="mi">5</span>
+
+        <span class="n">colnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;MFLAG</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">colspecs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">last</span><span class="p">,</span> <span class="n">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">last</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">colnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;QFLAG</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">colspecs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">last</span><span class="p">,</span> <span class="n">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">last</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">colnames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SFLAG</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">colspecs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">last</span><span class="p">,</span> <span class="n">last</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">last</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">colspecs</span><span class="p">,</span> <span class="n">colnames</span></div>
+
+
+<span class="n">DATASETS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;countries&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;country_codes.txt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">colspecs</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">)],</span>
+            <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;COUNTRY_CODE&#39;</span><span class="p">,</span> <span class="s1">&#39;COUNTRY&#39;</span><span class="p">]</span>
+        <span class="p">),</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;stations&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;stations_metadata.txt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">colspecs</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">),</span> <span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="mi">71</span><span class="p">),</span> <span class="p">(</span><span class="mi">72</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="p">(</span><span class="mi">76</span><span class="p">,</span> <span class="mi">79</span><span class="p">),</span> <span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">)</span>
+            <span class="p">],</span>
+            <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">names</span><span class="o">=</span><span class="p">[</span>
+                <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;LATITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">,</span> <span class="s1">&#39;ELEVATION&#39;</span><span class="p">,</span> <span class="s1">&#39;STATE&#39;</span><span class="p">,</span> <span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;GSN FLAG&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;HCN/CRN FLAG&#39;</span><span class="p">,</span> <span class="s1">&#39;WMO ID&#39;</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;inventory&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;stations_inventory.txt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">colspecs</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span>
+            <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">,</span> <span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;end_date&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;daily_report&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">colspecs</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">),</span> <span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">26</span><span class="p">),</span> <span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">27</span><span class="p">),</span> <span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">36</span><span class="p">),</span> <span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">37</span><span class="p">),</span> <span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">),</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">),</span> <span class="p">(</span><span class="mi">43</span><span class="p">,</span> <span class="mi">44</span><span class="p">),</span> <span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">51</span><span class="p">),</span> <span class="p">(</span><span class="mi">51</span><span class="p">,</span> <span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">53</span><span class="p">),</span> <span class="p">(</span><span class="mi">53</span><span class="p">,</span> <span class="mi">58</span><span class="p">),</span> <span class="p">(</span><span class="mi">58</span><span class="p">,</span> <span class="mi">59</span><span class="p">),</span> <span class="p">(</span><span class="mi">59</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">61</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">61</span><span class="p">,</span> <span class="mi">66</span><span class="p">),</span> <span class="p">(</span><span class="mi">66</span><span class="p">,</span> <span class="mi">67</span><span class="p">),</span> <span class="p">(</span><span class="mi">67</span><span class="p">,</span> <span class="mi">68</span><span class="p">),</span> <span class="p">(</span><span class="mi">68</span><span class="p">,</span> <span class="mi">69</span><span class="p">),</span> <span class="p">(</span><span class="mi">69</span><span class="p">,</span> <span class="mi">74</span><span class="p">),</span> <span class="p">(</span><span class="mi">74</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">76</span><span class="p">),</span> <span class="p">(</span><span class="mi">76</span><span class="p">,</span> <span class="mi">77</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">77</span><span class="p">,</span> <span class="mi">82</span><span class="p">),</span> <span class="p">(</span><span class="mi">82</span><span class="p">,</span> <span class="mi">83</span><span class="p">),</span> <span class="p">(</span><span class="mi">83</span><span class="p">,</span> <span class="mi">84</span><span class="p">),</span> <span class="p">(</span><span class="mi">84</span><span class="p">,</span> <span class="mi">85</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mi">91</span><span class="p">,</span> <span class="mi">92</span><span class="p">),</span> <span class="p">(</span><span class="mi">92</span><span class="p">,</span> <span class="mi">93</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">93</span><span class="p">,</span> <span class="mi">98</span><span class="p">),</span> <span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="p">(</span><span class="mi">99</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="mi">106</span><span class="p">),</span> <span class="p">(</span><span class="mi">106</span><span class="p">,</span> <span class="mi">107</span><span class="p">),</span> <span class="p">(</span><span class="mi">107</span><span class="p">,</span> <span class="mi">108</span><span class="p">),</span> <span class="p">(</span><span class="mi">108</span><span class="p">,</span> <span class="mi">109</span><span class="p">),</span> <span class="p">(</span><span class="mi">109</span><span class="p">,</span> <span class="mi">114</span><span class="p">),</span> <span class="p">(</span><span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">),</span> <span class="p">(</span><span class="mi">115</span><span class="p">,</span> <span class="mi">116</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">116</span><span class="p">,</span> <span class="mi">117</span><span class="p">),</span> <span class="p">(</span><span class="mi">117</span><span class="p">,</span> <span class="mi">122</span><span class="p">),</span> <span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="mi">123</span><span class="p">),</span> <span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="mi">124</span><span class="p">),</span> <span class="p">(</span><span class="mi">124</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span> <span class="p">(</span><span class="mi">125</span><span class="p">,</span> <span class="mi">130</span><span class="p">),</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">131</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">131</span><span class="p">,</span> <span class="mi">132</span><span class="p">),</span> <span class="p">(</span><span class="mi">132</span><span class="p">,</span> <span class="mi">133</span><span class="p">),</span> <span class="p">(</span><span class="mi">133</span><span class="p">,</span> <span class="mi">138</span><span class="p">),</span> <span class="p">(</span><span class="mi">138</span><span class="p">,</span> <span class="mi">139</span><span class="p">),</span> <span class="p">(</span><span class="mi">139</span><span class="p">,</span> <span class="mi">140</span><span class="p">),</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">141</span><span class="p">),</span> <span class="p">(</span><span class="mi">141</span><span class="p">,</span> <span class="mi">146</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">146</span><span class="p">,</span> <span class="mi">147</span><span class="p">),</span> <span class="p">(</span><span class="mi">147</span><span class="p">,</span> <span class="mi">148</span><span class="p">),</span> <span class="p">(</span><span class="mi">148</span><span class="p">,</span> <span class="mi">149</span><span class="p">),</span> <span class="p">(</span><span class="mi">149</span><span class="p">,</span> <span class="mi">154</span><span class="p">),</span> <span class="p">(</span><span class="mi">154</span><span class="p">,</span> <span class="mi">155</span><span class="p">),</span> <span class="p">(</span><span class="mi">155</span><span class="p">,</span> <span class="mi">156</span><span class="p">),</span> <span class="p">(</span><span class="mi">156</span><span class="p">,</span> <span class="mi">157</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">157</span><span class="p">,</span> <span class="mi">162</span><span class="p">),</span> <span class="p">(</span><span class="mi">162</span><span class="p">,</span> <span class="mi">163</span><span class="p">),</span> <span class="p">(</span><span class="mi">163</span><span class="p">,</span> <span class="mi">164</span><span class="p">),</span> <span class="p">(</span><span class="mi">164</span><span class="p">,</span> <span class="mi">165</span><span class="p">),</span> <span class="p">(</span><span class="mi">165</span><span class="p">,</span> <span class="mi">170</span><span class="p">),</span> <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">171</span><span class="p">),</span> <span class="p">(</span><span class="mi">171</span><span class="p">,</span> <span class="mi">172</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">172</span><span class="p">,</span> <span class="mi">173</span><span class="p">),</span> <span class="p">(</span><span class="mi">173</span><span class="p">,</span> <span class="mi">178</span><span class="p">),</span> <span class="p">(</span><span class="mi">178</span><span class="p">,</span> <span class="mi">179</span><span class="p">),</span> <span class="p">(</span><span class="mi">179</span><span class="p">,</span> <span class="mi">180</span><span class="p">),</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">181</span><span class="p">),</span> <span class="p">(</span><span class="mi">181</span><span class="p">,</span> <span class="mi">186</span><span class="p">),</span> <span class="p">(</span><span class="mi">186</span><span class="p">,</span> <span class="mi">187</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">187</span><span class="p">,</span> <span class="mi">188</span><span class="p">),</span> <span class="p">(</span><span class="mi">188</span><span class="p">,</span> <span class="mi">189</span><span class="p">),</span> <span class="p">(</span><span class="mi">189</span><span class="p">,</span> <span class="mi">194</span><span class="p">),</span> <span class="p">(</span><span class="mi">194</span><span class="p">,</span> <span class="mi">195</span><span class="p">),</span> <span class="p">(</span><span class="mi">195</span><span class="p">,</span> <span class="mi">196</span><span class="p">),</span> <span class="p">(</span><span class="mi">196</span><span class="p">,</span> <span class="mi">197</span><span class="p">),</span> <span class="p">(</span><span class="mi">197</span><span class="p">,</span> <span class="mi">202</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">202</span><span class="p">,</span> <span class="mi">203</span><span class="p">),</span> <span class="p">(</span><span class="mi">203</span><span class="p">,</span> <span class="mi">204</span><span class="p">),</span> <span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="mi">205</span><span class="p">),</span> <span class="p">(</span><span class="mi">205</span><span class="p">,</span> <span class="mi">210</span><span class="p">),</span> <span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">211</span><span class="p">),</span> <span class="p">(</span><span class="mi">211</span><span class="p">,</span> <span class="mi">212</span><span class="p">),</span> <span class="p">(</span><span class="mi">212</span><span class="p">,</span> <span class="mi">213</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">213</span><span class="p">,</span> <span class="mi">218</span><span class="p">),</span> <span class="p">(</span><span class="mi">218</span><span class="p">,</span> <span class="mi">219</span><span class="p">),</span> <span class="p">(</span><span class="mi">219</span><span class="p">,</span> <span class="mi">220</span><span class="p">),</span> <span class="p">(</span><span class="mi">220</span><span class="p">,</span> <span class="mi">221</span><span class="p">),</span> <span class="p">(</span><span class="mi">221</span><span class="p">,</span> <span class="mi">226</span><span class="p">),</span> <span class="p">(</span><span class="mi">226</span><span class="p">,</span> <span class="mi">227</span><span class="p">),</span> <span class="p">(</span><span class="mi">227</span><span class="p">,</span> <span class="mi">228</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">228</span><span class="p">,</span> <span class="mi">229</span><span class="p">),</span> <span class="p">(</span><span class="mi">229</span><span class="p">,</span> <span class="mi">234</span><span class="p">),</span> <span class="p">(</span><span class="mi">234</span><span class="p">,</span> <span class="mi">235</span><span class="p">),</span> <span class="p">(</span><span class="mi">235</span><span class="p">,</span> <span class="mi">236</span><span class="p">),</span> <span class="p">(</span><span class="mi">236</span><span class="p">,</span> <span class="mi">237</span><span class="p">),</span> <span class="p">(</span><span class="mi">237</span><span class="p">,</span> <span class="mi">242</span><span class="p">),</span> <span class="p">(</span><span class="mi">242</span><span class="p">,</span> <span class="mi">243</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">243</span><span class="p">,</span> <span class="mi">244</span><span class="p">),</span> <span class="p">(</span><span class="mi">244</span><span class="p">,</span> <span class="mi">245</span><span class="p">),</span> <span class="p">(</span><span class="mi">245</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">251</span><span class="p">),</span> <span class="p">(</span><span class="mi">251</span><span class="p">,</span> <span class="mi">252</span><span class="p">),</span> <span class="p">(</span><span class="mi">252</span><span class="p">,</span> <span class="mi">253</span><span class="p">),</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="mi">258</span><span class="p">),</span>
+                <span class="p">(</span><span class="mi">258</span><span class="p">,</span> <span class="mi">259</span><span class="p">),</span> <span class="p">(</span><span class="mi">259</span><span class="p">,</span> <span class="mi">260</span><span class="p">),</span> <span class="p">(</span><span class="mi">260</span><span class="p">,</span> <span class="mi">261</span><span class="p">),</span> <span class="p">(</span><span class="mi">261</span><span class="p">,</span> <span class="mi">266</span><span class="p">),</span> <span class="p">(</span><span class="mi">266</span><span class="p">,</span> <span class="mi">267</span><span class="p">),</span> <span class="p">(</span><span class="mi">267</span><span class="p">,</span> <span class="mi">268</span><span class="p">),</span> <span class="p">(</span><span class="mi">268</span><span class="p">,</span> <span class="mi">269</span><span class="p">)</span>
+            <span class="p">],</span>
+            <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">names</span><span class="o">=</span><span class="p">[</span>
+                <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;MONTH&#39;</span><span class="p">,</span> <span class="s1">&#39;ELEMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE1&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG1&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG1&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG1&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG2&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG2&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG2&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE3&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG3&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG3&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG3&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE4&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG4&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG4&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG4&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE5&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG5&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG5&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG5&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE6&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG6&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG6&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG6&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE7&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG7&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG7&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG7&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE8&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG8&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG8&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG8&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE9&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG9&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG9&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG9&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE10&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG10&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG10&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG10&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE11&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG11&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG11&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG11&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;VALUE12&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG12&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG12&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG12&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE13&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG13&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG13&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;SFLAG13&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE14&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG14&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG14&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG14&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE15&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG15&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;QFLAG15&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG15&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE16&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG16&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG16&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG16&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE17&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG17&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG17&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG17&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE18&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG18&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG18&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG18&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;VALUE19&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG19&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG19&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG19&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE20&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG20&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG20&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;SFLAG20&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE21&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG21&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG21&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG21&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE22&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG22&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;QFLAG22&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG22&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE23&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG23&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG23&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG23&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE24&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG24&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG24&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG24&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE25&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG25&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG25&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG25&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;VALUE26&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG26&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG26&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG26&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE27&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG27&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG27&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;SFLAG27&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE28&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG28&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG28&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG28&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE29&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG29&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;QFLAG29&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG29&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE30&#39;</span><span class="p">,</span> <span class="s1">&#39;MFLAG30&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG30&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG30&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE31&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MFLAG31&#39;</span><span class="p">,</span> <span class="s1">&#39;QFLAG31&#39;</span><span class="p">,</span> <span class="s1">&#39;SFLAG31&#39;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="load_dataset"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.references.html#task_geo.data_sources.noaa.references.load_dataset">[docs]</a><span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load a downloaded dataset as a pandas dataframe.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        dataset_name(str):</span>
+<span class="sd">            Name of the dataset, supported values are &#39;countries&#39;, &#39;stations&#39;,</span>
+<span class="sd">            &#39;inventory&#39; and the value of a station ID.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dataset_params</span> <span class="o">=</span> <span class="n">DATASETS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">dataset_params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dataset_params</span> <span class="o">=</span> <span class="n">DATASETS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;daily_report&#39;</span><span class="p">)</span>
+        <span class="n">dataset_params</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;./all_daily/ghcnd_all/</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s1">.dly&#39;</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIRECTORY</span><span class="p">,</span> <span class="n">dataset_params</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">dataset_params</span><span class="p">[</span><span class="s1">&#39;args&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="get_territory_codes"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.references.html#task_geo.data_sources.noaa.references.get_territory_codes">[docs]</a><span class="k">def</span> <span class="nf">get_territory_codes</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">countries</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get all the codes for territories that belong to another country.&quot;&quot;&quot;</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="n">countries</span><span class="p">[</span><span class="n">countries</span><span class="o">.</span><span class="n">COUNTRY</span> <span class="o">==</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">COUNTRY_CODE</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">codes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">countries</span><span class="p">[</span><span class="n">countries</span><span class="o">.</span><span class="n">COUNTRY</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; [</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">COUNTRY_CODE</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">codes</span></div>
+
+
+<div class="viewcode-block" id="get_country_territory_codes_map"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.references.html#task_geo.data_sources.noaa.references.get_country_territory_codes_map">[docs]</a><span class="k">def</span> <span class="nf">get_country_territory_codes_map</span><span class="p">(</span><span class="n">df_countries</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate the mapping of countries and all their territories codes.&quot;&quot;&quot;</span>
+    <span class="n">metropolis</span> <span class="o">=</span> <span class="n">df_countries</span><span class="p">[</span><span class="o">~</span><span class="n">df_countries</span><span class="o">.</span><span class="n">COUNTRY</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\[&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;COUNTRY_CODE&#39;</span><span class="p">]:</span> <span class="n">get_territory_codes</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;COUNTRY&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">metropolis</span><span class="p">}</span></div>
+
+
+<span class="sd">&quot;&quot;&quot;This dictionary was obtained by running:</span>
+<span class="sd">&gt;&gt;&gt; countries = load_dataset(&#39;countries&#39;)</span>
+<span class="sd">&gt;&gt;&gt; get_country_territory_map(countries)&quot;&quot;&quot;</span>
+<span class="n">COUNTRY_AND_TERRITORY_CODES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;AC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AF&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AF&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AJ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AJ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AL&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;CK&#39;</span><span class="p">,</span> <span class="s1">&#39;KT&#39;</span><span class="p">,</span> <span class="s1">&#39;NF&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;AY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BB&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BF&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BF&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BH&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BK&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BK&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BL&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BX&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BX&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;BY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;BY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CB&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CD&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CF&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CF&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CH&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CT&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CV&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;DA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DA&#39;</span><span class="p">,</span> <span class="s1">&#39;GL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;DO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;DR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EK&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EK&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ER&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ER&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ES&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ES&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ET&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ET&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;EZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;EZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;FI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;FI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;FJ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;FJ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;FM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;FM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;FP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;FP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;FR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;FR&#39;</span><span class="p">,</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span> <span class="s1">&#39;FG&#39;</span><span class="p">,</span> <span class="s1">&#39;FS&#39;</span><span class="p">,</span> <span class="s1">&#39;GP&#39;</span><span class="p">,</span> <span class="s1">&#39;JU&#39;</span><span class="p">,</span> <span class="s1">&#39;MB&#39;</span><span class="p">,</span> <span class="s1">&#39;MF&#39;</span><span class="p">,</span> <span class="s1">&#39;NC&#39;</span><span class="p">,</span> <span class="s1">&#39;RE&#39;</span><span class="p">,</span> <span class="s1">&#39;SB&#39;</span><span class="p">,</span> <span class="s1">&#39;TE&#39;</span><span class="p">,</span> <span class="s1">&#39;WF&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GB&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GB&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GH&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GT&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GV&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;GY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;GY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;HO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;HR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;HU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IT&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IV&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;IZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;JA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;JA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;JM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;JM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;JO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;JO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;KZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;KZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LH&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LT&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;LY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;LY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MD&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MJ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MJ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MK&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MK&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ML&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ML&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MR&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MT&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MV&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MX&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MX&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NH&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NL&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;JN&#39;</span><span class="p">,</span> <span class="s1">&#39;SV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;NZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NZ&#39;</span><span class="p">,</span> <span class="s1">&#39;CW&#39;</span><span class="p">,</span> <span class="s1">&#39;NE&#39;</span><span class="p">,</span> <span class="s1">&#39;TL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PK&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PK&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PL&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;PU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;QA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;QA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;RI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;RM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;RO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;RP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;RS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;RW&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RW&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SF&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SF&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SL&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SL&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ST&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ST&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SW&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;SZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;SZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TD&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TH&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TN&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TN&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TO&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TO&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TS&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TU&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TU&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TV&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TX&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TX&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UG&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UG&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UK&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UK&#39;</span><span class="p">,</span> <span class="s1">&#39;BD&#39;</span><span class="p">,</span> <span class="s1">&#39;CJ&#39;</span><span class="p">,</span> <span class="s1">&#39;FK&#39;</span><span class="p">,</span> <span class="s1">&#39;GI&#39;</span><span class="p">,</span> <span class="s1">&#39;IO&#39;</span><span class="p">,</span> <span class="s1">&#39;PC&#39;</span><span class="p">,</span> <span class="s1">&#39;SH&#39;</span><span class="p">,</span> <span class="s1">&#39;SX&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UP&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;US&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;AQ&#39;</span><span class="p">,</span> <span class="s1">&#39;CQ&#39;</span><span class="p">,</span> <span class="s1">&#39;GQ&#39;</span><span class="p">,</span> <span class="s1">&#39;JQ&#39;</span><span class="p">,</span> <span class="s1">&#39;LQ&#39;</span><span class="p">,</span> <span class="s1">&#39;RQ&#39;</span><span class="p">,</span> <span class="s1">&#39;VQ&#39;</span><span class="p">,</span> <span class="s1">&#39;WQ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UV&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UV&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UY&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UY&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;UZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;UZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;VE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;VE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;VM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;VM&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;WA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;WA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;WI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;WI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;WZ&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;WZ&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ZA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ZA&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;ZI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ZI&#39;</span><span class="p">]}</span>
+
+
+<div class="viewcode-block" id="filter_active_stations_map_country"><a class="viewcode-back" href="../../../../api/task_geo.data_sources.noaa.references.html#task_geo.data_sources.noaa.references.filter_active_stations_map_country">[docs]</a><span class="k">def</span> <span class="nf">filter_active_stations_map_country</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Filter active stations using inventory data and returns a dictionary country -&gt; stations&quot;&quot;&quot;</span>
+    <span class="n">stations</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;stations&#39;</span><span class="p">)</span>
+    <span class="n">inventory</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;inventory&#39;</span><span class="p">)</span>
+
+    <span class="n">stations</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stations</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">active_stations</span> <span class="o">=</span> <span class="n">inventory</span><span class="p">[</span><span class="n">inventory</span><span class="o">.</span><span class="n">end_date</span> <span class="o">&gt;=</span> <span class="mi">2019</span><span class="p">]</span>
+    <span class="n">active</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[</span><span class="n">stations</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_stations</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span>
+    <span class="k">return</span> <span class="n">active</span><span class="p">[[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">)[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span></div>
+
+
+<span class="sd">&quot;&quot;&quot;Map territory codes to active stations, it was generated by running:</span>
+<span class="sd">&gt;&gt;&gt; filter_active_stations_map_country(&#39;country_stations_map.json&#39;)</span>
+<span class="sd">Due to its size its on a separate file, and retrieved once on module loading.</span>
+<span class="sd">Not the best practice, but better than having a 8k lines dictionary roaming free in the file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;country_stations_map.json&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">TERRITORY_ACTIVE_STATIONS_MAP</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

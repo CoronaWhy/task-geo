@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Sources &mdash; task-geo 0.1.0.dev0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/coronawhy.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="task_geo package" href="api/task_geo.html" />
+    <link rel="prev" title="Data model" href="data_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> task-geo
+          
+
+          
+            
+            <img src="_static/coronawhy.jpg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">CoronaWhy Geography Task Force</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#about-coronawhy">About CoronaWhy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#about-coronawhy-task-geo-tea">About CoronaWhy Task Geo Tea,</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#usage-example">Usage Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#try-it-out">Try it out!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#what-s-next">What’s next?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#native-python">Native Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#docker">Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/Getting_Started.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/Getting_Started.html#Selecting-a-Data-Source">Selecting a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/Getting_Started.html#Loading-a-Data-Source">Loading a Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/Getting_Started.html#Using-the-Data-Source">Using the Data Source</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Data Source Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/data_sources/NOAA_API.html">NOAA Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/data_sources/NOAA_API.html#Using-the-API">Using the API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/data_sources/NOAA_API.html#Using-the-FTP">Using the FTP</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Resources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#report-bugs">Report Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#fix-bugs">Fix Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#implement-features">Implement Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#write-documentation">Write Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#submit-feedback">Submit Feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#get-started">Get Started!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-guidelines">Pull Request Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#unit-testing-guidelines">Unit Testing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="code_of_conduct.html#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="style_guide.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_guide.html#philosophy">Philosophy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#lazy-programming">Lazy programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#write-test-find-bug">Write Test, Find Bug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#coding-format">Coding format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#naming-and-module-conventions">Naming and module conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style_guide.html#other-resources">Other resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_model.html">Data model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_model.html#general-guidelines">General guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_model.html#geographical-data">Geographical data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_model.html#time-related-data">Time-related data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-a-data-source">What is a data source?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connector-specification">Connector specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formatter-specification">Formatter specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-source-specification">Data source specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples-and-documentation">Examples and documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-audit-and-metadata">Data audit and metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datapackage-json">datapackage.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audit-md">audit.md</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-source-module-structure">Data Source module structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/task_geo.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/task_geo.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.common.html">task_geo.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.common.html#module-task_geo.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.data_sources.html">task_geo.data_sources package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.data_sources.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.data_sources.html#module-task_geo.data_sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.dataset_builders.html">task_geo.dataset_builders package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.dataset_builders.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.dataset_builders.html#module-task_geo.dataset_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api/task_geo.testing.html">task_geo.testing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/task_geo.testing.html#module-task_geo.testing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/task_geo.html#module-task_geo">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#contributors">Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#data-sources">Data Sources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authors.html#noaa-data-source">NOAA Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authors.html#hdx-data-source">HDX Data Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#special-thanks">Special Thanks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">task-geo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Sources</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/CoronaWhy/task-geo/blob/master/docs/data_sources.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="data-sources">
+<h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-data-source">
+<h2>What is a data source?<a class="headerlink" href="#what-is-a-data-source" title="Permalink to this headline">¶</a></h2>
+<p>A data source is a function that is able to retrieve data available anywhere (may it be a website, webservice, FTP, file,..)  and return in a format compatible with the Data Model specification.</p>
+<p>Usually a data source is composed of two parts:</p>
+<ol class="arabic simple">
+<li><p>A <strong>connector</strong>: Handles the retrieval of the raw data.</p></li>
+<li><p>A <strong>formatter</strong>: Transform the raw data to follow the data model specification.</p></li>
+</ol>
+<p>We get into the details for each component in the following sections</p>
+</div>
+<div class="section" id="connector-specification">
+<h2>Connector specification<a class="headerlink" href="#connector-specification" title="Permalink to this headline">¶</a></h2>
+<p>A connector is a function that handles the retrieval of data, it follows the prototype:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">xxx_connector</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retrieves data from xxxx.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        argument_1(type): Explanation of what it does</span>
+<span class="sd">        ...</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It must follow these rules:</p>
+<ul class="simple">
+<li><p>It doesn’t have a fixed set of arguments, as it depends from the data we are trying to retrieve.
+It’s not the same a function that downloads a file, and has no need for arguments, that a function
+that connects to an API accepting for 5 diferent parameters.</p></li>
+<li><p>It allows, however, use with the least possible amount of parameters, that is,
+accepting as many default arguments as possible.</p></li>
+<li><p>It must return a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p></li>
+<li><p>It have a docstring explaining its arguments and type.</p></li>
+<li><p>All access to external data, as mapping of reference values is done at this step.</p></li>
+<li><p>It’s named <code class="docutils literal notranslate"><span class="pre">xxxx_connector</span></code> where <code class="docutils literal notranslate"><span class="pre">xxxx</span></code> is the name of the source.</p></li>
+</ul>
+</div>
+<div class="section" id="formatter-specification">
+<h2>Formatter specification<a class="headerlink" href="#formatter-specification" title="Permalink to this headline">¶</a></h2>
+<p>A formatter is a function that recieves as only argument the <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> returned by the
+connector, and returns a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> following the Data Model specification.
+It has a prototype:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">xxx_formatter</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats data retrieved from xxx.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        raw(pandas.DataFrame):</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span> <span class="c1"># pandas magic happens here</span>
+
+    <span class="k">return</span> <span class="n">formatted_dataset</span>
+</pre></div>
+</div>
+<p>It must follow these rules:</p>
+<ul class="simple">
+<li><p>Its first argument is a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> and return a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> too.
+In case that the connector allows to multiple formats and/or metrics in the data, additional parameters
+can be passed to the formatter too.</p></li>
+<li><p>The returned <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> must follow the Data Model.</p></li>
+<li><p>It’snamed <code class="docutils literal notranslate"><span class="pre">xxx_formatter</span></code> where <code class="docutils literal notranslate"><span class="pre">xxx</span></code> is the name of the source.</p></li>
+<li><p>It should not access to any external data.</p></li>
+</ul>
+</div>
+<div class="section" id="data-source-specification">
+<h2>Data source specification<a class="headerlink" href="#data-source-specification" title="Permalink to this headline">¶</a></h2>
+<p>Data sources are functions that retrieve data and format them to follow the Data Model, internally, shouldn’t be more complex than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">xxx</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Data Source for xxx.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        argument_1(type):</span>
+<span class="sd">        ...</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">xxx_connector</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xxx_formatter</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It have to follow the rules:</p>
+<ul class="simple">
+<li><p>It will have the same exact arguments that it’s connector and will return a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>.</p></li>
+<li><p>It will be importable from top-module level, that is:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">task_geo.data_sources.xxx</span> <span class="kn">import</span> <span class="n">xxx</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-and-documentation">
+<h2>Examples and documentation<a class="headerlink" href="#examples-and-documentation" title="Permalink to this headline">¶</a></h2>
+<p>To help other members of CoronaWhy getting started using task_geo data sources, we will include
+along our submission a notebook in the <cite>notebooks/examples</cite> folder containing the following:</p>
+<ol class="arabic simple">
+<li><p>An explanation of the diffent argument the data source requires, it’s type, expected format
+and values.</p></li>
+<li><p>A minimal basic usage of the data source provided, that is, leaving all optional arguments
+with their default values.</p></li>
+</ol>
+<p>This notebook will be rendered along the documentation in the section <a class="reference external" href="https://github.com/CoronaWhy/task-geo/issues">Examples</a> of the
+documentation. Try to be as clear and concise as you can with the explanation of the usage and
+parameters of your data source, as some of the potential users may not a high technical level.</p>
+<p>To help other members of our team who may need to use, modify or improve our work, we should
+include complete docstrings in the high-level API we provide, the docstring should contain:</p>
+<ul class="simple">
+<li><p>Brief description of what the object does.</p></li>
+<li><p>List of arguments, its type and a brief description.</p></li>
+<li><p>An simple, minimal and complete example of usage.</p></li>
+</ul>
+<p>For a complete reference of how to format the docstrings, please check the
+<a class="reference external" href="https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments">Google docstrings style</a>.</p>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>As per the Contributing Guide you are required to add unit tests to your submissions, beyond that, a
+compliance test for your formatter is also required, the test should be done in the following way.</p>
+<ol class="arabic simple">
+<li><p>Retrieve some data using your <cite>connector</cite>, and store 50 rows in a csv file.</p></li>
+<li><p>Create a fixture in <code class="docutils literal notranslate"><span class="pre">tests/folders</span></code>.</p></li>
+<li><p>Create a unit test that loads your fixture, passes it to your formatter and then passes the
+result to <code class="docutils literal notranslate"><span class="pre">task_geo.testing.check_dataset_format</span></code>, more or less like this:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">task_geo.data_sources.my_datasource.my_datasource_formatter</span> <span class="kn">import</span> <span class="n">my_formatter</span>
+<span class="kn">from</span> <span class="nn">task_geo.testing</span> <span class="kn">import</span> <span class="n">check_dataset_format</span>
+
+<span class="k">class</span> <span class="nc">TestMyDataSourceFormatter</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">test_formatter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate formatter output for datasource xxx.&quot;&quot;&quot;</span>
+        <span class="c1"># Setup</span>
+        <span class="n">fixture</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tests/fixtures/myfixture.csv&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Run</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">my_datasource_formatter</span><span class="p">(</span><span class="n">fixture</span><span class="p">)</span>
+
+        <span class="c1"># Check</span>
+        <span class="n">check_dataset_format</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-audit-and-metadata">
+<h2>Data audit and metadata<a class="headerlink" href="#data-audit-and-metadata" title="Permalink to this headline">¶</a></h2>
+<p>To make the results of our work usable not only to other members of the Coronawhy team, but also
+by academics who may be interested, we need to follow the <a class="reference external" href="https://specs.frictionlessdata.io/data-package/#introduction">DataPackage</a> specification.</p>
+<p>In order to do so, we need to implement two documents along the code of our data source.</p>
+<div class="section" id="datapackage-json">
+<h3>datapackage.json<a class="headerlink" href="#datapackage-json" title="Permalink to this headline">¶</a></h3>
+<p>Below have a minimal example of what your datapackage.json must contain.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;title&quot;: &quot;&quot;,
+    &quot;subtitle&quot;: &quot;&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;resources&quot;: [{
+        &quot;description&quot;: &quot;&quot;,
+        &quot;schema&quot;: {
+            &quot;fields&quot;: [
+                {
+                    &quot;name&quot;: &quot;&quot;,
+                    &quot;description&quot;: &quot;&quot;,
+                    &quot;type&quot;: &quot;&quot;
+                },
+                ...
+            ]
+        }
+    }],
+    &quot;keywords&quot;: [
+        &quot;coronawhy&quot;,
+    ]
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="audit-md">
+<h3>audit.md<a class="headerlink" href="#audit-md" title="Permalink to this headline">¶</a></h3>
+<p>Here we should describe the origin of the data, the transformations that our code has done in order
+to match our Data Model, it should follow this template:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># {DATASET_NAME}
+
+## General information
+
+- **Description**: Explain briefly what kind of data the dataset provides.
+- **Credits**: Authors of the original data.
+- **Source**: Link to the raw source.
+
+## Description
+
+For each column add a node with with the following:
+**Column Name**
+- Description:
+- Type:
+- Units: (Where make sense)
+
+## Transformations applied
+
+(List all the transformation done to your data from the moment you retrieve it, to the
+moment your data source returns it, this includes, but is not limited to:
+- Filtering
+- Aggregation
+- Merging
+- Enriching
+- Decoding / Encoding
+- Change of Units
+- Adding/removing columns
+- ...
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-source-module-structure">
+<h2>Data Source module structure<a class="headerlink" href="#data-source-module-structure" title="Permalink to this headline">¶</a></h2>
+<p>A valid data source submission, is composed of a module, a notebook with examples and tests
+should look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>task_geo/
+    data_sources/
+        my_data_source/
+            __init__.py
+            __main__.py
+            my_data_source_connector.py
+            my_data_source_formatter.py
+            datapackage.json
+            audit.md
+
+notebooks/
+    examples/
+        my_dataset_example.ipynb
+
+tests/
+    data_sources/
+        my_data_source/
+            test_formatter.py
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/task_geo.html" class="btn btn-neutral float-right" title="task_geo package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="data_model.html" class="btn btn-neutral float-left" title="Data model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Manuel Alvarez
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
